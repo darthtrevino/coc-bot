@@ -10,6 +10,9 @@ export class CharacterSheet {
   }
 }
 
+/**
+ * A character's core attributes
+ */
 export class CharacterAttributes {
   private _strength = new CharacterAttribute();
   private _dexterity = new CharacterAttribute();
@@ -53,6 +56,9 @@ export class CharacterAttributes {
   }
 }
 
+/**
+ * A single character attribute
+ */
 export class CharacterAttribute {
   private _value: number = 0;
 
@@ -61,6 +67,19 @@ export class CharacterAttribute {
   }
 
   public set value(update: number) {
+    if (update < 0) {
+      throw new IllegalCharacterAttributeValueError();
+    }
     this._value = update;
   }
+
+  public get halfValue(): number {
+    return Math.floor(this.value * 0.5);
+  }
+
+  public get fifthValue(): number {
+    return Math.floor(this.value * 0.2);
+  }
 }
+
+export class IllegalCharacterAttributeValueError extends Error {}
