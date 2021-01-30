@@ -1,4 +1,7 @@
 {
+	"server": {
+		"port": 7071
+	},
 	"database": {
 		"connectionString": ""
 	}

@@ -17,8 +17,12 @@ export class GraphQLService {
 	}
 
 	public start(): Promise<void> {
-		return this.server.listen().then(({ url }) => {
-			console.log(`🚀  apollo server ready at ${url}`)
-		})
+		return this.server
+			.listen({
+				port: this.config.serverPort,
+			})
+			.then(({ url }) => {
+				console.log(`🚀  apollo server ready at ${url}`)
+			})
 	}
 }
