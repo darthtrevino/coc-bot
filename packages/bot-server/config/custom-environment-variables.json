@@ -1,0 +1,7 @@
+{
+  "discord": {
+    "identity": {
+      "token": "DISCORD_IDENTITY_TOKEN"
+    }
+  }
+}

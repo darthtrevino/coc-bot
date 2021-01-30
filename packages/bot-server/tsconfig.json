@@ -1,0 +1,10 @@
+{
+  "extends": "@tsconfig/node14/tsconfig",
+  "compilerOptions": {
+    "target": "ES2019",
+    "outDir": "lib",
+    "declaration": true,
+    "allowSyntheticDefaultImports": true
+  },
+  "include": ["src"]
+}
