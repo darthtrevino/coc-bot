@@ -1,13 +1,17 @@
-import { IConfig } from "config";
+import { IConfig } from 'config'
 
 export class Configuration {
-  public constructor(private config: IConfig) {}
+	private config: IConfig
 
-  public get discordIdentityToken(): string {
-    return this.config.get<string>("discord.identity.token");
-  }
+	public constructor(config: IConfig) {
+		this.config = config
+	}
 
-  public get debug(): boolean {
-    return process.env.DEBUG != null && process.env.DEBUG !== "false";
-  }
+	public get discordIdentityToken(): string {
+		return this.config.get<string>('discord.identity.token')
+	}
+
+	public get debug(): boolean {
+		return process.env.DEBUG != null && process.env.DEBUG !== 'false'
+	}
 }
