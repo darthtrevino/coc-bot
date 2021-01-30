@@ -28,7 +28,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
       },
       {
         "name": "@coc-utils/core",
-        "reference": "workspace:packages/coc-core"
+        "reference": "workspace:packages/core"
       },
       {
         "name": "@cocbot/graphql-schema",
@@ -42,7 +42,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
     "enableTopLevelFallback": true,
     "ignorePatternData": "(^(?:\\.yarn\\/sdks(?:\\/(?!\\.)(?:(?:(?!(?:^|\\/)\\.).)*?)|$))$)",
     "fallbackExclusionList": [
-      ["@coc-utils/core", ["workspace:packages/coc-core"]],
+      ["@coc-utils/core", ["workspace:packages/core"]],
       ["@cocbot/bot-server", ["workspace:packages/bot-server"]],
       ["@cocbot/graphql-schema", ["workspace:packages/graphql-schema"]],
       ["@cocbot/graphql-server", ["workspace:packages/graphql-server"]],
@@ -3059,10 +3059,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         }]
       ]],
       ["@coc-utils/core", [
-        ["workspace:packages/coc-core", {
-          "packageLocation": "./packages/coc-core/",
+        ["workspace:packages/core", {
+          "packageLocation": "./packages/core/",
           "packageDependencies": [
-            ["@coc-utils/core", "workspace:packages/coc-core"],
+            ["@coc-utils/core", "workspace:packages/core"],
             ["@types/rimraf", "npm:3.0.0"],
             ["rimraf", "npm:3.0.2"],
             ["typescript", "patch:typescript@npm%3A4.1.3#builtin<compat/typescript>::version=4.1.3&hash=cc6730"]
