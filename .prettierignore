@@ -1,6 +1,7 @@
 .yarnrc.yml
 yarn.lock
 .yarn/
+.pnp.js
 
 packages/*/dist/
 packages/*/lib/
