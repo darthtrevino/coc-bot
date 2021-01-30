@@ -13,6 +13,8 @@ export class GraphQLService {
 		this.server = new ApolloServer({
 			typeDefs: schema,
 			resolvers,
+			introspection: true,
+			playground: this.config.serverPlaygroundEnabled,
 		})
 	}
 

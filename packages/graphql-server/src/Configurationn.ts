@@ -11,6 +11,10 @@ export class Configuration {
 		return this.config.get<number>('server.port') || 7071
 	}
 
+	public get serverPlaygroundEnabled(): boolean {
+		return this.config.get<boolean>('server.playground.enabled') || false
+	}
+
 	public get debug(): boolean {
 		return process.env.DEBUG != null && process.env.DEBUG !== 'false'
 	}
