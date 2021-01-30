@@ -29,12 +29,17 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           name: "@coc-utils/core",
           reference: "workspace:packages/coc-core",
         },
+        {
+          name: "@coc-utils/server",
+          reference: "workspace:packages/server",
+        },
       ],
       enableTopLevelFallback: true,
       ignorePatternData:
         "(^(?:\\.yarn\\/sdks(?:\\/(?!\\.)(?:(?:(?!(?:^|\\/)\\.).)*?)|$))$)",
       fallbackExclusionList: [
         ["@coc-utils/core", ["workspace:packages/coc-core"]],
+        ["@coc-utils/server", ["workspace:packages/server"]],
         ["coc-utils", ["workspace:."]],
       ],
       fallbackPool: [],
@@ -64,6 +69,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
                   ["@types/babel__core", "npm:7.1.12"],
                   ["@types/babel__preset-env", "npm:7.9.1"],
                   ["@types/jest", "npm:26.0.18"],
+                  ["@types/node", "npm:14.14.22"],
                   ["eslint", "npm:7.15.0"],
                   ["husky", "npm:4.3.5"],
                   ["jest", "npm:26.6.3"],
@@ -3774,6 +3780,60 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           ],
         ],
         [
+          "@coc-utils/server",
+          [
+            [
+              "workspace:packages/server",
+              {
+                packageLocation: "./packages/server/",
+                packageDependencies: [
+                  ["@coc-utils/server", "workspace:packages/server"],
+                  ["@tsconfig/node14", "npm:1.0.0"],
+                  ["discord.js", "npm:12.5.1"],
+                  [
+                    "typescript",
+                    "patch:typescript@npm%3A4.1.3#builtin<compat/typescript>::version=4.1.3&hash=cc6730",
+                  ],
+                ],
+                linkType: "SOFT",
+              },
+            ],
+          ],
+        ],
+        [
+          "@discordjs/collection",
+          [
+            [
+              "npm:0.1.6",
+              {
+                packageLocation:
+                  "./.yarn/cache/@discordjs-collection-npm-0.1.6-bad654db9e-da87faf997.zip/node_modules/@discordjs/collection/",
+                packageDependencies: [["@discordjs/collection", "npm:0.1.6"]],
+                linkType: "HARD",
+              },
+            ],
+          ],
+        ],
+        [
+          "@discordjs/form-data",
+          [
+            [
+              "npm:3.0.1",
+              {
+                packageLocation:
+                  "./.yarn/cache/@discordjs-form-data-npm-3.0.1-d60fa9fc03-2ddf4c9bba.zip/node_modules/@discordjs/form-data/",
+                packageDependencies: [
+                  ["@discordjs/form-data", "npm:3.0.1"],
+                  ["asynckit", "npm:0.4.0"],
+                  ["combined-stream", "npm:1.0.8"],
+                  ["mime-types", "npm:2.1.27"],
+                ],
+                linkType: "HARD",
+              },
+            ],
+          ],
+        ],
+        [
           "@eslint/eslintrc",
           [
             [
@@ -4155,6 +4215,20 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           ],
         ],
         [
+          "@tsconfig/node14",
+          [
+            [
+              "npm:1.0.0",
+              {
+                packageLocation:
+                  "./.yarn/cache/@tsconfig-node14-npm-1.0.0-cf320499dc-3eda14250e.zip/node_modules/@tsconfig/node14/",
+                packageDependencies: [["@tsconfig/node14", "npm:1.0.0"]],
+                linkType: "HARD",
+              },
+            ],
+          ],
+        ],
+        [
           "@types/babel__core",
           [
             [
@@ -4354,6 +4428,15 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
                 linkType: "HARD",
               },
             ],
+            [
+              "npm:14.14.22",
+              {
+                packageLocation:
+                  "./.yarn/cache/@types-node-npm-14.14.22-fe4ed4ddc2-e46e32685b.zip/node_modules/@types/node/",
+                packageDependencies: [["@types/node", "npm:14.14.22"]],
+                linkType: "HARD",
+              },
+            ],
           ],
         ],
         [
@@ -4468,6 +4551,23 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
                 packageLocation:
                   "./.yarn/cache/abbrev-npm-1.1.1-3659247eab-9f9236a3cc.zip/node_modules/abbrev/",
                 packageDependencies: [["abbrev", "npm:1.1.1"]],
+                linkType: "HARD",
+              },
+            ],
+          ],
+        ],
+        [
+          "abort-controller",
+          [
+            [
+              "npm:3.0.0",
+              {
+                packageLocation:
+                  "./.yarn/cache/abort-controller-npm-3.0.0-2f3a9a2bcb-cc53ad8df9.zip/node_modules/abort-controller/",
+                packageDependencies: [
+                  ["abort-controller", "npm:3.0.0"],
+                  ["event-target-shim", "npm:5.0.1"],
+                ],
                 linkType: "HARD",
               },
             ],
@@ -5660,6 +5760,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
                   ["@types/babel__core", "npm:7.1.12"],
                   ["@types/babel__preset-env", "npm:7.9.1"],
                   ["@types/jest", "npm:26.0.18"],
+                  ["@types/node", "npm:14.14.22"],
                   ["eslint", "npm:7.15.0"],
                   ["husky", "npm:4.3.5"],
                   ["jest", "npm:26.6.3"],
@@ -6301,6 +6402,36 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           ],
         ],
         [
+          "discord.js",
+          [
+            [
+              "npm:12.5.1",
+              {
+                packageLocation:
+                  "./.yarn/cache/discord.js-npm-12.5.1-e8b380c863-18850040f3.zip/node_modules/discord.js/",
+                packageDependencies: [
+                  ["discord.js", "npm:12.5.1"],
+                  ["@discordjs/collection", "npm:0.1.6"],
+                  ["@discordjs/form-data", "npm:3.0.1"],
+                  ["abort-controller", "npm:3.0.0"],
+                  ["node-fetch", "npm:2.6.1"],
+                  [
+                    "prism-media",
+                    "virtual:e8b380c863850045a09fce6a1a72065e59ee06032967e3a05d31d31a6b12f36728a27d7aa0dd96dbe022359b27ded736a360a4131e9d020175782aee48634e4d#npm:1.2.3",
+                  ],
+                  ["setimmediate", "npm:1.0.5"],
+                  ["tweetnacl", "npm:1.0.3"],
+                  [
+                    "ws",
+                    "virtual:e8b380c863850045a09fce6a1a72065e59ee06032967e3a05d31d31a6b12f36728a27d7aa0dd96dbe022359b27ded736a360a4131e9d020175782aee48634e4d#npm:7.4.2",
+                  ],
+                ],
+                linkType: "HARD",
+              },
+            ],
+          ],
+        ],
+        [
           "doctrine",
           [
             [
@@ -6742,6 +6873,20 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
                 packageLocation:
                   "./.yarn/cache/esutils-npm-2.0.3-f865beafd5-590b045331.zip/node_modules/esutils/",
                 packageDependencies: [["esutils", "npm:2.0.3"]],
+                linkType: "HARD",
+              },
+            ],
+          ],
+        ],
+        [
+          "event-target-shim",
+          [
+            [
+              "npm:5.0.1",
+              {
+                packageLocation:
+                  "./.yarn/cache/event-target-shim-npm-5.0.1-cb48709025-d176477a31.zip/node_modules/event-target-shim/",
+                packageDependencies: [["event-target-shim", "npm:5.0.1"]],
                 linkType: "HARD",
               },
             ],
@@ -9986,6 +10131,20 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           ],
         ],
         [
+          "node-fetch",
+          [
+            [
+              "npm:2.6.1",
+              {
+                packageLocation:
+                  "./.yarn/cache/node-fetch-npm-2.6.1-46c670dbc1-cbb171635e.zip/node_modules/node-fetch/",
+                packageDependencies: [["node-fetch", "npm:2.6.1"]],
+                linkType: "HARD",
+              },
+            ],
+          ],
+        ],
+        [
           "node-gyp",
           [
             [
@@ -10830,6 +10989,52 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           ],
         ],
         [
+          "prism-media",
+          [
+            [
+              "npm:1.2.3",
+              {
+                packageLocation:
+                  "./.yarn/cache/prism-media-npm-1.2.3-1827a84d31-337cfb80db.zip/node_modules/prism-media/",
+                packageDependencies: [["prism-media", "npm:1.2.3"]],
+                linkType: "SOFT",
+              },
+            ],
+            [
+              "virtual:e8b380c863850045a09fce6a1a72065e59ee06032967e3a05d31d31a6b12f36728a27d7aa0dd96dbe022359b27ded736a360a4131e9d020175782aee48634e4d#npm:1.2.3",
+              {
+                packageLocation:
+                  "./.yarn/$$virtual/prism-media-virtual-13a3255bbf/0/cache/prism-media-npm-1.2.3-1827a84d31-337cfb80db.zip/node_modules/prism-media/",
+                packageDependencies: [
+                  [
+                    "prism-media",
+                    "virtual:e8b380c863850045a09fce6a1a72065e59ee06032967e3a05d31d31a6b12f36728a27d7aa0dd96dbe022359b27ded736a360a4131e9d020175782aee48634e4d#npm:1.2.3",
+                  ],
+                  ["@discordjs/opus", null],
+                  ["@types/discordjs__opus", null],
+                  ["@types/ffmpeg-static", null],
+                  ["@types/node-opus", null],
+                  ["@types/opusscript", null],
+                  ["ffmpeg-static", null],
+                  ["node-opus", null],
+                  ["opusscript", null],
+                ],
+                packagePeers: [
+                  "@discordjs/opus",
+                  "@types/discordjs__opus",
+                  "@types/ffmpeg-static",
+                  "@types/node-opus",
+                  "@types/opusscript",
+                  "ffmpeg-static",
+                  "node-opus",
+                  "opusscript",
+                ],
+                linkType: "HARD",
+              },
+            ],
+          ],
+        ],
+        [
           "process-nextick-args",
           [
             [
@@ -11652,6 +11857,20 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
                   ["is-plain-object", "npm:2.0.4"],
                   ["split-string", "npm:3.1.0"],
                 ],
+                linkType: "HARD",
+              },
+            ],
+          ],
+        ],
+        [
+          "setimmediate",
+          [
+            [
+              "npm:1.0.5",
+              {
+                packageLocation:
+                  "./.yarn/cache/setimmediate-npm-1.0.5-54587459b6-87884d8add.zip/node_modules/setimmediate/",
+                packageDependencies: [["setimmediate", "npm:1.0.5"]],
                 linkType: "HARD",
               },
             ],
@@ -12646,6 +12865,15 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
                 linkType: "HARD",
               },
             ],
+            [
+              "npm:1.0.3",
+              {
+                packageLocation:
+                  "./.yarn/cache/tweetnacl-npm-1.0.3-b7eef04660-1188f3ef85.zip/node_modules/tweetnacl/",
+                packageDependencies: [["tweetnacl", "npm:1.0.3"]],
+                linkType: "HARD",
+              },
+            ],
           ],
         ],
         [
@@ -12752,6 +12980,20 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
                   [
                     "typescript",
                     "patch:typescript@npm%3A4.1.2#builtin<compat/typescript>::version=4.1.2&hash=cc6730",
+                  ],
+                ],
+                linkType: "HARD",
+              },
+            ],
+            [
+              "patch:typescript@npm%3A4.1.3#builtin<compat/typescript>::version=4.1.3&hash=cc6730",
+              {
+                packageLocation:
+                  "./.yarn/cache/typescript-patch-7a9e6321b3-017af99214.zip/node_modules/typescript/",
+                packageDependencies: [
+                  [
+                    "typescript",
+                    "patch:typescript@npm%3A4.1.3#builtin<compat/typescript>::version=4.1.3&hash=cc6730",
                   ],
                 ],
                 linkType: "HARD",
@@ -13293,6 +13535,15 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
               },
             ],
             [
+              "npm:7.4.2",
+              {
+                packageLocation:
+                  "./.yarn/cache/ws-npm-7.4.2-4485e6ad6c-832efdf144.zip/node_modules/ws/",
+                packageDependencies: [["ws", "npm:7.4.2"]],
+                linkType: "SOFT",
+              },
+            ],
+            [
               "virtual:0029c64cedb03afb3e8f955289eb8fb53c28afb692fc03c927d60b43257499232baab01f458ec4d93b5d0c987193b1cd454e1b6033d004694545f8cc7e80dd50#npm:7.4.1",
               {
                 packageLocation:
@@ -13301,6 +13552,30 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
                   [
                     "ws",
                     "virtual:0029c64cedb03afb3e8f955289eb8fb53c28afb692fc03c927d60b43257499232baab01f458ec4d93b5d0c987193b1cd454e1b6033d004694545f8cc7e80dd50#npm:7.4.1",
+                  ],
+                  ["@types/bufferutil", null],
+                  ["@types/utf-8-validate", null],
+                  ["bufferutil", null],
+                  ["utf-8-validate", null],
+                ],
+                packagePeers: [
+                  "@types/bufferutil",
+                  "@types/utf-8-validate",
+                  "bufferutil",
+                  "utf-8-validate",
+                ],
+                linkType: "HARD",
+              },
+            ],
+            [
+              "virtual:e8b380c863850045a09fce6a1a72065e59ee06032967e3a05d31d31a6b12f36728a27d7aa0dd96dbe022359b27ded736a360a4131e9d020175782aee48634e4d#npm:7.4.2",
+              {
+                packageLocation:
+                  "./.yarn/$$virtual/ws-virtual-783831d0d2/0/cache/ws-npm-7.4.2-4485e6ad6c-832efdf144.zip/node_modules/ws/",
+                packageDependencies: [
+                  [
+                    "ws",
+                    "virtual:e8b380c863850045a09fce6a1a72065e59ee06032967e3a05d31d31a6b12f36728a27d7aa0dd96dbe022359b27ded736a360a4131e9d020175782aee48634e4d#npm:7.4.2",
                   ],
                   ["@types/bufferutil", null],
                   ["@types/utf-8-validate", null],

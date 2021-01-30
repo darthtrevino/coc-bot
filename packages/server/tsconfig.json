@@ -1,0 +1,9 @@
+{
+  "extends": "@tsconfig/node14/tsconfig.jso",
+  "compilerOptions": {
+    "target": "ES2019",
+    "outDir": "lib",
+    "declaration": true
+  },
+  "include": ["src"]
+}
