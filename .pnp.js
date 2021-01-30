@@ -3062,7 +3062,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         ["workspace:packages/coc-core", {
           "packageLocation": "./packages/coc-core/",
           "packageDependencies": [
-            ["@coc-utils/core", "workspace:packages/coc-core"]
+            ["@coc-utils/core", "workspace:packages/coc-core"],
+            ["@types/rimraf", "npm:3.0.0"],
+            ["rimraf", "npm:3.0.2"],
+            ["typescript", "patch:typescript@npm%3A4.1.3#builtin<compat/typescript>::version=4.1.3&hash=cc6730"]
           ],
           "linkType": "SOFT",
         }]
