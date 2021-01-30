@@ -1,0 +1,5 @@
+{
+	"database": {
+		"connectionString": "COSMOSDB_CONNECTION_STRING"
+	}
+}
