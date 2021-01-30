@@ -47,6 +47,25 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@azure/cosmos@npm:^3.9.5":
+  version: 3.9.5
+  resolution: "@azure/cosmos@npm:3.9.5"
+  dependencies:
+    "@types/debug": ^4.1.4
+    debug: ^4.1.1
+    fast-json-stable-stringify: ^2.0.0
+    jsbi: ^3.1.3
+    node-abort-controller: ^1.0.4
+    node-fetch: ^2.6.0
+    priorityqueuejs: ^1.0.0
+    semaphore: ^1.0.5
+    tslib: ^2.0.0
+    universal-user-agent: ^6.0.0
+    uuid: ^8.3.0
+  checksum: 53fd51558888d1c97de1a7b847a56fb4d810a857c368894a07bd645bd02939601f4f12c3ca5d6d660c50951e697c01c6490913da87b8c7de0dc3eb445b47be22
+  languageName: node
+  linkType: hard
+
 "@babel/code-frame@npm:^7.0.0, @babel/code-frame@npm:^7.10.4":
   version: 7.10.4
   resolution: "@babel/code-frame@npm:7.10.4"
@@ -1399,6 +1418,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@cocbot/graphql-server@workspace:packages/graphql-server"
   dependencies:
+    "@azure/cosmos": ^3.9.5
     "@tsconfig/node14": ^1.0.0
     "@types/config": ^0.0.38
     "@types/node": ^14.14.22
@@ -1906,6 +1926,13 @@ __metadata:
   dependencies:
     "@types/express": "*"
   checksum: 4a11dd4d1e76056b0c76e69e29347003338346cf3cf72a0aad94742fc99bf4bb540b0cc2b3f61ed4fdfd9cf979d7b40afe0816458d20a9c865e8c286b14373a4
+  languageName: node
+  linkType: hard
+
+"@types/debug@npm:^4.1.4":
+  version: 4.1.5
+  resolution: "@types/debug@npm:4.1.5"
+  checksum: 416ad24bc589be0fb8c78bea972aa7d4ffdf6b136239701b1792674463b2dbf8c6707f6055ec484f79ec1f2b528ffef90c87e55df7e4a0f458184cad5bf0cfc8
   languageName: node
   linkType: hard
 
@@ -6042,6 +6069,13 @@ fsevents@~2.3.1:
   languageName: node
   linkType: hard
 
+"jsbi@npm:^3.1.3":
+  version: 3.1.4
+  resolution: "jsbi@npm:3.1.4"
+  checksum: 8e8e03bbdde1023f7580ce3b9afeafe1b25a294a0efd2519f829eb9b0e141eda5344e31de5aa204932fa758ad3ebd5cdfe16071ff68ad685523340056ed1a48e
+  languageName: node
+  linkType: hard
+
 "jsbn@npm:~0.1.0":
   version: 0.1.1
   resolution: "jsbn@npm:0.1.1"
@@ -6619,7 +6653,14 @@ fsevents@~2.3.1:
   languageName: node
   linkType: hard
 
-"node-fetch@npm:^2.1.2, node-fetch@npm:^2.2.0, node-fetch@npm:^2.6.1":
+"node-abort-controller@npm:^1.0.4":
+  version: 1.1.0
+  resolution: "node-abort-controller@npm:1.1.0"
+  checksum: 33d856f97d178aae59015507e8e6865ebdf20c1a37299b2064decfc14e9446fe98a1fcd67cd3e9757eb109dec0936922f8ca8876802c8deb3b61510ddb2162da
+  languageName: node
+  linkType: hard
+
+"node-fetch@npm:^2.1.2, node-fetch@npm:^2.2.0, node-fetch@npm:^2.6.0, node-fetch@npm:^2.6.1":
   version: 2.6.1
   resolution: "node-fetch@npm:2.6.1"
   checksum: cbb171635e538162b977eac5dfe7a1e07a9a02e991924377a6435502291e2f823d306b95aabc455caebf4a118ccf836868462bc70ccc3095af02bb9da61fda37
@@ -7210,6 +7251,13 @@ fsevents@~2.3.1:
   languageName: node
   linkType: hard
 
+"priorityqueuejs@npm:^1.0.0":
+  version: 1.0.0
+  resolution: "priorityqueuejs@npm:1.0.0"
+  checksum: 5b6a4ed650bfe13264cec55023778b8a2b2980d7d15881a3fe920de548985bc125f39771d46cb4a4262ae50bd0305ef8eaff4920a6d894e28c98fa8f8846a256
+  languageName: node
+  linkType: hard
+
 "prism-media@npm:^1.2.2":
   version: 1.2.3
   resolution: "prism-media@npm:1.2.3"
@@ -7738,6 +7786,13 @@ fsevents@~2.3.1:
   dependencies:
     xmlchars: ^2.2.0
   checksum: 6ad14be68da9b84af0fa3de346fd78bd3a8e8a73a462e2852279a1fff1e2619988919294001abe3ecef3783f9498962a0619d960ccca4ec2ca914526fde1acc2
+  languageName: node
+  linkType: hard
+
+"semaphore@npm:^1.0.5":
+  version: 1.1.0
+  resolution: "semaphore@npm:1.1.0"
+  checksum: af3a1cd598ce34a62e63714361f221570943231bda20204cf877ad17934df373ae06185da0eabeef0878b135ac65bdf4b4668293479b9542e8473d9941a83d17
   languageName: node
   linkType: hard
 
@@ -8580,6 +8635,13 @@ fsevents@~2.3.1:
   languageName: node
   linkType: hard
 
+"tslib@npm:^2.0.0":
+  version: 2.1.0
+  resolution: "tslib@npm:2.1.0"
+  checksum: d8f5bdd067611651c6b846c2388f4dc8ba1f5af124e66105f5263d1ad56da17f4b8c6566887ca2f205c5a9758451871ceca87d5d06087af2dca1699c5e33db69
+  languageName: node
+  linkType: hard
+
 "tunnel-agent@npm:^0.6.0":
   version: 0.6.0
   resolution: "tunnel-agent@npm:0.6.0"
@@ -8766,6 +8828,13 @@ typescript@^4.1.3:
   dependencies:
     crypto-random-string: ^2.0.0
   checksum: a2748b41eaada391800773c16674fe4e9a3f078162e49b2c6b4e67d36061a0f97be4b7851136d786ed5e4ddc90770400fd54bf32aed1e08ec9a9219d9b66bad3
+  languageName: node
+  linkType: hard
+
+"universal-user-agent@npm:^6.0.0":
+  version: 6.0.0
+  resolution: "universal-user-agent@npm:6.0.0"
+  checksum: 725797ab636f1786a824f805eca2b227019ae8e82fdbe03e3e26a7f2917669bfcf7ef723c7d4b2c60a5e1603108d32bec3987b4f52821360523cb609fb7ae782
   languageName: node
   linkType: hard
 

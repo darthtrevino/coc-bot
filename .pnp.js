@@ -174,6 +174,36 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           ],
         ],
         [
+          "@azure/cosmos",
+          [
+            [
+              "npm:3.9.5",
+              {
+                packageLocation:
+                  "./.yarn/cache/@azure-cosmos-npm-3.9.5-4491b91fb2-53fd515588.zip/node_modules/@azure/cosmos/",
+                packageDependencies: [
+                  ["@azure/cosmos", "npm:3.9.5"],
+                  ["@types/debug", "npm:4.1.5"],
+                  [
+                    "debug",
+                    "virtual:2eb67583a9b3f2cc91b648ac5cac0a1c3aaacb7b17b8d5c772ae7dcb393b5fe37b8b54bb54cb4bb44044aec14d898cec87b05d451d11aa2c15bd1d5d6f9264a4#npm:4.3.1",
+                  ],
+                  ["fast-json-stable-stringify", "npm:2.1.0"],
+                  ["jsbi", "npm:3.1.4"],
+                  ["node-abort-controller", "npm:1.1.0"],
+                  ["node-fetch", "npm:2.6.1"],
+                  ["priorityqueuejs", "npm:1.0.0"],
+                  ["semaphore", "npm:1.1.0"],
+                  ["tslib", "npm:2.1.0"],
+                  ["universal-user-agent", "npm:6.0.0"],
+                  ["uuid", "npm:8.3.2"],
+                ],
+                linkType: "HARD",
+              },
+            ],
+          ],
+        ],
+        [
           "@babel/code-frame",
           [
             [
@@ -3908,6 +3938,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
                     "@cocbot/graphql-server",
                     "workspace:packages/graphql-server",
                   ],
+                  ["@azure/cosmos", "npm:3.9.5"],
                   ["@tsconfig/node14", "npm:1.0.0"],
                   ["@types/config", "npm:0.0.38"],
                   ["@types/node", "npm:14.14.22"],
@@ -4785,6 +4816,20 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
                   ["@types/cors", "npm:2.8.8"],
                   ["@types/express", "npm:4.17.11"],
                 ],
+                linkType: "HARD",
+              },
+            ],
+          ],
+        ],
+        [
+          "@types/debug",
+          [
+            [
+              "npm:4.1.5",
+              {
+                packageLocation:
+                  "./.yarn/cache/@types-debug-npm-4.1.5-3464d6c971-416ad24bc5.zip/node_modules/@types/debug/",
+                packageDependencies: [["@types/debug", "npm:4.1.5"]],
                 linkType: "HARD",
               },
             ],
@@ -12322,6 +12367,20 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           ],
         ],
         [
+          "jsbi",
+          [
+            [
+              "npm:3.1.4",
+              {
+                packageLocation:
+                  "./.yarn/cache/jsbi-npm-3.1.4-248bd487e1-8e8e03bbdd.zip/node_modules/jsbi/",
+                packageDependencies: [["jsbi", "npm:3.1.4"]],
+                linkType: "HARD",
+              },
+            ],
+          ],
+        ],
+        [
           "jsbn",
           [
             [
@@ -13322,6 +13381,20 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
                 packageLocation:
                   "./.yarn/cache/nice-try-npm-1.0.5-963856b16f-330f190bf6.zip/node_modules/nice-try/",
                 packageDependencies: [["nice-try", "npm:1.0.5"]],
+                linkType: "HARD",
+              },
+            ],
+          ],
+        ],
+        [
+          "node-abort-controller",
+          [
+            [
+              "npm:1.1.0",
+              {
+                packageLocation:
+                  "./.yarn/cache/node-abort-controller-npm-1.1.0-2845429cff-33d856f97d.zip/node_modules/node-abort-controller/",
+                packageDependencies: [["node-abort-controller", "npm:1.1.0"]],
                 linkType: "HARD",
               },
             ],
@@ -14381,6 +14454,20 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           ],
         ],
         [
+          "priorityqueuejs",
+          [
+            [
+              "npm:1.0.0",
+              {
+                packageLocation:
+                  "./.yarn/cache/priorityqueuejs-npm-1.0.0-c0939d49c4-5b6a4ed650.zip/node_modules/priorityqueuejs/",
+                packageDependencies: [["priorityqueuejs", "npm:1.0.0"]],
+                linkType: "HARD",
+              },
+            ],
+          ],
+        ],
+        [
           "prism-media",
           [
             [
@@ -15337,6 +15424,20 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
                   ["saxes", "npm:5.0.1"],
                   ["xmlchars", "npm:2.2.0"],
                 ],
+                linkType: "HARD",
+              },
+            ],
+          ],
+        ],
+        [
+          "semaphore",
+          [
+            [
+              "npm:1.1.0",
+              {
+                packageLocation:
+                  "./.yarn/cache/semaphore-npm-1.1.0-183cafa608-af3a1cd598.zip/node_modules/semaphore/",
+                packageDependencies: [["semaphore", "npm:1.1.0"]],
                 linkType: "HARD",
               },
             ],
@@ -16788,6 +16889,15 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
                 linkType: "HARD",
               },
             ],
+            [
+              "npm:2.1.0",
+              {
+                packageLocation:
+                  "./.yarn/cache/tslib-npm-2.1.0-81c9ac9b82-d8f5bdd067.zip/node_modules/tslib/",
+                packageDependencies: [["tslib", "npm:2.1.0"]],
+                linkType: "HARD",
+              },
+            ],
           ],
         ],
         [
@@ -17091,6 +17201,20 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
                   ["unique-string", "npm:2.0.0"],
                   ["crypto-random-string", "npm:2.0.0"],
                 ],
+                linkType: "HARD",
+              },
+            ],
+          ],
+        ],
+        [
+          "universal-user-agent",
+          [
+            [
+              "npm:6.0.0",
+              {
+                packageLocation:
+                  "./.yarn/cache/universal-user-agent-npm-6.0.0-b148fb997a-725797ab63.zip/node_modules/universal-user-agent/",
+                packageDependencies: [["universal-user-agent", "npm:6.0.0"]],
                 linkType: "HARD",
               },
             ],
