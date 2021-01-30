@@ -1,4 +1,6 @@
 .yarn/
+.pnp.js
+yarn.lock
 
 packages/*/dist/
 packages/*/lib/
