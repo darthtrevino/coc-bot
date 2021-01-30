@@ -1,5 +1,5 @@
 {
-  "name": "@coc-utils/core",
+  "name": "@cocbot/core",
   "main": "src/index.ts",
   "publishConfig": {
     "main": "lib/index.js",

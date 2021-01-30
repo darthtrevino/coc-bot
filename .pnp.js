@@ -27,7 +27,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         "reference": "workspace:packages/bot-server"
       },
       {
-        "name": "@coc-utils/core",
+        "name": "@cocbot/core",
         "reference": "workspace:packages/core"
       },
       {
@@ -42,8 +42,8 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
     "enableTopLevelFallback": true,
     "ignorePatternData": "(^(?:\\.yarn\\/sdks(?:\\/(?!\\.)(?:(?:(?!(?:^|\\/)\\.).)*?)|$))$)",
     "fallbackExclusionList": [
-      ["@coc-utils/core", ["workspace:packages/core"]],
       ["@cocbot/bot-server", ["workspace:packages/bot-server"]],
+      ["@cocbot/core", ["workspace:packages/core"]],
       ["@cocbot/graphql-schema", ["workspace:packages/graphql-schema"]],
       ["@cocbot/graphql-server", ["workspace:packages/graphql-server"]],
       ["@cocbot/project", ["workspace:."]]
@@ -3058,23 +3058,12 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "linkType": "HARD",
         }]
       ]],
-      ["@coc-utils/core", [
-        ["workspace:packages/core", {
-          "packageLocation": "./packages/core/",
-          "packageDependencies": [
-            ["@coc-utils/core", "workspace:packages/core"],
-            ["@types/rimraf", "npm:3.0.0"],
-            ["rimraf", "npm:3.0.2"],
-            ["typescript", "patch:typescript@npm%3A4.1.3#builtin<compat/typescript>::version=4.1.3&hash=cc6730"]
-          ],
-          "linkType": "SOFT",
-        }]
-      ]],
       ["@cocbot/bot-server", [
         ["workspace:packages/bot-server", {
           "packageLocation": "./packages/bot-server/",
           "packageDependencies": [
             ["@cocbot/bot-server", "workspace:packages/bot-server"],
+            ["@cocbot/core", "workspace:packages/core"],
             ["@cocbot/graphql-schema", "workspace:packages/graphql-schema"],
             ["@tsconfig/node14", "npm:1.0.0"],
             ["@types/config", "npm:0.0.38"],
@@ -3086,6 +3075,18 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["nodemon", "npm:2.0.7"],
             ["rimraf", "npm:3.0.2"],
             ["ts-node", "virtual:1e6dc2bf1bc4436409d17a6d4fcdf0bb05330c89641ffdad9d9594bd49782e834bfcb0f068efd199cf1cf2be6d18b8b9f0401aa65f4a8af2f92dbbc013bc44c4#npm:9.1.1"],
+            ["typescript", "patch:typescript@npm%3A4.1.3#builtin<compat/typescript>::version=4.1.3&hash=cc6730"]
+          ],
+          "linkType": "SOFT",
+        }]
+      ]],
+      ["@cocbot/core", [
+        ["workspace:packages/core", {
+          "packageLocation": "./packages/core/",
+          "packageDependencies": [
+            ["@cocbot/core", "workspace:packages/core"],
+            ["@types/rimraf", "npm:3.0.0"],
+            ["rimraf", "npm:3.0.2"],
             ["typescript", "patch:typescript@npm%3A4.1.3#builtin<compat/typescript>::version=4.1.3&hash=cc6730"]
           ],
           "linkType": "SOFT",
