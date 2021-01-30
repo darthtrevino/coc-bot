@@ -4676,6 +4676,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
                 packageLocation: "./packages/bot-server/",
                 packageDependencies: [
                   ["@cocbot/bot-server", "workspace:packages/bot-server"],
+                  [
+                    "@cocbot/graphql-schema",
+                    "workspace:packages/graphql-schema",
+                  ],
                   ["@tsconfig/node14", "npm:1.0.0"],
                   ["@types/config", "npm:0.0.38"],
                   ["@types/node", "npm:14.14.22"],
@@ -4752,6 +4756,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
                     "workspace:packages/graphql-server",
                   ],
                   ["@azure/cosmos", "npm:3.9.5"],
+                  [
+                    "@cocbot/graphql-schema",
+                    "workspace:packages/graphql-schema",
+                  ],
                   ["@tsconfig/node14", "npm:1.0.0"],
                   ["@types/config", "npm:0.0.38"],
                   ["@types/node", "npm:14.14.22"],
@@ -6106,7 +6114,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
                   ["valid-url", "npm:1.0.9"],
                   [
                     "ws",
-                    "virtual:e8b380c863850045a09fce6a1a72065e59ee06032967e3a05d31d31a6b12f36728a27d7aa0dd96dbe022359b27ded736a360a4131e9d020175782aee48634e4d#npm:7.4.2",
+                    "virtual:ae31bb927e0d22a73a2c96998eb00bb8535dd3153ccee6ae7207c9c0b52101f2013b18e9cc38d091c0fb8475923e84d79dd0228f71873f1aba27c8f8f2a382f1#npm:7.4.2",
                   ],
                 ],
                 packagePeers: ["@types/graphql", "graphql"],
@@ -11692,7 +11700,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
                   ["tweetnacl", "npm:1.0.3"],
                   [
                     "ws",
-                    "virtual:e8b380c863850045a09fce6a1a72065e59ee06032967e3a05d31d31a6b12f36728a27d7aa0dd96dbe022359b27ded736a360a4131e9d020175782aee48634e4d#npm:7.4.2",
+                    "virtual:ae31bb927e0d22a73a2c96998eb00bb8535dd3153ccee6ae7207c9c0b52101f2013b18e9cc38d091c0fb8475923e84d79dd0228f71873f1aba27c8f8f2a382f1#npm:7.4.2",
                   ],
                 ],
                 linkType: "HARD",
@@ -15560,7 +15568,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
                   ["@types/ws", null],
                   [
                     "ws",
-                    "virtual:e8b380c863850045a09fce6a1a72065e59ee06032967e3a05d31d31a6b12f36728a27d7aa0dd96dbe022359b27ded736a360a4131e9d020175782aee48634e4d#npm:7.4.2",
+                    "virtual:ae31bb927e0d22a73a2c96998eb00bb8535dd3153ccee6ae7207c9c0b52101f2013b18e9cc38d091c0fb8475923e84d79dd0228f71873f1aba27c8f8f2a382f1#npm:7.4.2",
                   ],
                 ],
                 packagePeers: ["@types/ws", "ws"],
@@ -23474,14 +23482,14 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
               },
             ],
             [
-              "virtual:e8b380c863850045a09fce6a1a72065e59ee06032967e3a05d31d31a6b12f36728a27d7aa0dd96dbe022359b27ded736a360a4131e9d020175782aee48634e4d#npm:7.4.2",
+              "virtual:ae31bb927e0d22a73a2c96998eb00bb8535dd3153ccee6ae7207c9c0b52101f2013b18e9cc38d091c0fb8475923e84d79dd0228f71873f1aba27c8f8f2a382f1#npm:7.4.2",
               {
                 packageLocation:
-                  "./.yarn/$$virtual/ws-virtual-783831d0d2/0/cache/ws-npm-7.4.2-4485e6ad6c-832efdf144.zip/node_modules/ws/",
+                  "./.yarn/$$virtual/ws-virtual-5e30f54e4b/0/cache/ws-npm-7.4.2-4485e6ad6c-832efdf144.zip/node_modules/ws/",
                 packageDependencies: [
                   [
                     "ws",
-                    "virtual:e8b380c863850045a09fce6a1a72065e59ee06032967e3a05d31d31a6b12f36728a27d7aa0dd96dbe022359b27ded736a360a4131e9d020175782aee48634e4d#npm:7.4.2",
+                    "virtual:ae31bb927e0d22a73a2c96998eb00bb8535dd3153ccee6ae7207c9c0b52101f2013b18e9cc38d091c0fb8475923e84d79dd0228f71873f1aba27c8f8f2a382f1#npm:7.4.2",
                   ],
                   ["@types/bufferutil", null],
                   ["@types/utf-8-validate", null],

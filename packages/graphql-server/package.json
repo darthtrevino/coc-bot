@@ -21,6 +21,7 @@
   },
   "dependencies": {
     "@azure/cosmos": "^3.9.5",
+    "@cocbot/graphql-schema": "workspace:packages/graphql-schema",
     "apollo-server": "^2.19.2",
     "config": "^3.3.3",
     "dotenv": "^8.2.0",

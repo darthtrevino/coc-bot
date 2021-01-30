@@ -1583,6 +1583,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@cocbot/bot-server@workspace:packages/bot-server"
   dependencies:
+    "@cocbot/graphql-schema": "workspace:packages/graphql-schema"
     "@tsconfig/node14": ^1.0.0
     "@types/config": ^0.0.38
     "@types/node": ^14.14.22
@@ -1616,6 +1617,7 @@ __metadata:
   resolution: "@cocbot/graphql-server@workspace:packages/graphql-server"
   dependencies:
     "@azure/cosmos": ^3.9.5
+    "@cocbot/graphql-schema": "workspace:packages/graphql-schema"
     "@tsconfig/node14": ^1.0.0
     "@types/config": ^0.0.38
     "@types/node": ^14.14.22

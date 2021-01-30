@@ -20,6 +20,7 @@
     "typescript": "^4.1.3"
   },
   "dependencies": {
+    "@cocbot/graphql-schema": "workspace:packages/graphql-schema",
     "config": "^3.3.3",
     "discord.js": "^12.5.1",
     "dotenv": "^8.2.0"
