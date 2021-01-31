@@ -1,7 +1,10 @@
 {
-  "discord": {
-    "identity": {
-      "token": ""
-    }
-  }
+	"discord": {
+		"identity": {
+			"token": ""
+		}
+	},
+	"service": {
+		"url": "http://localhost:7071/"
+	}
 }

@@ -11,6 +11,10 @@ export class Configuration {
 		return this.config.get<string>('discord.identity.token')
 	}
 
+	public get serviceUrl(): string {
+		return this.config.get<string>('service.url')
+	}
+
 	public get debug(): boolean {
 		return process.env.DEBUG != null && process.env.DEBUG !== 'false'
 	}

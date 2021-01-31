@@ -2,8 +2,7 @@ import { ApolloServer } from 'apollo-server'
 import { Configuration } from './Configuration'
 import { DocumentNode } from 'graphql'
 import { Database } from './Database'
-
-const resolvers = {}
+import { resolvers } from './resolvers'
 
 export class Service {
 	private config: Configuration
@@ -19,7 +18,7 @@ export class Service {
 		this.database = database
 		this.server = new ApolloServer({
 			typeDefs: schema,
-			resolvers,
+			resolvers: resolvers as any,
 			introspection: true,
 			playground: this.config.serverPlaygroundEnabled,
 		})

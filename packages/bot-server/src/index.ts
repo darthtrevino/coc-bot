@@ -1,8 +1,10 @@
+import 'cross-fetch/polyfill'
 import { config as configDotEnv } from 'dotenv'
 import { Bot } from './Bot'
 import { Configuration } from './Configuration'
-/* eslint-disable @typescript-eslint/no-var-requires */
+import { DataStore } from './DataStore'
 
+/* eslint-disable @typescript-eslint/no-var-requires */
 async function bootstrap(): Promise<void> {
 	try {
 		configDotEnv()
@@ -15,7 +17,8 @@ async function bootstrap(): Promise<void> {
 }
 
 async function startBot(config: Configuration): Promise<void> {
-	const bot = new Bot()
+	const dataStore = new DataStore(config)
+	const bot = new Bot(dataStore)
 	const identityToken = config.discordIdentityToken
 	if (identityToken == null) {
 		throw new Error('Discord identity token is not defined')

@@ -1,13 +1,5 @@
 # Call of Cthulhu Server & Bot Code
 
-## Server Resources
-
-| Resource                       | Methods | Description      |
-| ------------------------------ | ------- | ---------------- |
-| /api/game                      | \*      | Game Instance    |
-| /api/game/{id}/characters      | \*      | Game Characters  |
-| /api/game/{id}/characters/{id} | \*      | Single Character |
-
 ## Bot Commands
 
 | Command                                     | Response      | Description                                    |

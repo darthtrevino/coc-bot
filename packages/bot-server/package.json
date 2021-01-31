@@ -23,7 +23,10 @@
 		"@cocbot/core": "workspace:packages/core",
 		"@cocbot/graphql-schema": "workspace:packages/graphql-schema",
 		"config": "^3.3.3",
+		"cross-fetch": "^3.0.6",
 		"discord.js": "^12.5.1",
-		"dotenv": "^8.2.0"
+		"dotenv": "^8.2.0",
+		"graphql": "^15.5.0",
+		"graphql-request": "^3.4.0"
 	}
 }

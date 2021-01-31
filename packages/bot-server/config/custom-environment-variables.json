@@ -1,7 +1,10 @@
 {
-  "discord": {
-    "identity": {
-      "token": "DISCORD_IDENTITY_TOKEN"
-    }
-  }
+	"discord": {
+		"identity": {
+			"token": "DISCORD_IDENTITY_TOKEN"
+		}
+	},
+	"service": {
+		"url": "SERVICE_URL"
+	}
 }
