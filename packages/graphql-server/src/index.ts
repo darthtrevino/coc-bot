@@ -1,7 +1,7 @@
 import { config as configDotEnv } from 'dotenv'
 import { Configuration } from './Configuration'
 import { Service } from './Service'
-import { Database } from './Database1'
+import { Database } from './Database'
 import { readSchema } from './readSchema'
 
 /* eslint-disable @typescript-eslint/no-var-requires */
