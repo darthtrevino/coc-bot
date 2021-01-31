@@ -1,10 +1,10 @@
 import { ApolloServer } from 'apollo-server'
-import { Configuration } from './Configurationn'
+import { Configuration } from './Configuration'
 import { DocumentNode } from 'graphql'
 
 const resolvers = {}
 
-export class GraphQLService {
+export class Service {
 	private config: Configuration
 	private server: ApolloServer
 

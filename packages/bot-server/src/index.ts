@@ -1,14 +1,13 @@
+import { config as configDotEnv } from 'dotenv'
 import { Bot } from './Bot'
 import { Configuration } from './Configuration'
 /* eslint-disable @typescript-eslint/no-var-requires */
 
 async function bootstrap(): Promise<void> {
 	try {
-		const { config: configDotEnv } = require('dotenv')
-		configDotEnv({ debug: true })
+		configDotEnv()
 		const nodeConfig = require('config')
 		const configuration = new Configuration(nodeConfig)
-
 		startBot(configuration)
 	} catch (err) {
 		console.error('error launching CthulhuBot', err)
