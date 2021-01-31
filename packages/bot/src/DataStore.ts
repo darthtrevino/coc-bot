@@ -1,4 +1,4 @@
-import { Game } from '@cocbot/graphql-schema/lib/client-types'
+import { Game } from '@cocbot/schema/lib/client-types'
 import { GraphQLClient, gql } from 'graphql-request'
 import { Configuration } from './Configuration'
 

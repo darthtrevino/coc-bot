@@ -1,5 +1,5 @@
 import * as Discord from 'discord.js'
-import { Game } from '@cocbot/graphql-schema/lib/client-types'
+import { Game } from '@cocbot/schema/lib/client-types'
 import { DataStore } from './DataStore'
 
 const CC = '/cc'

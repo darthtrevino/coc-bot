@@ -1,5 +1,5 @@
 {
-  "name": "@cocbot/graphql-schema",
+  "name": "@cocbot/schema",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",

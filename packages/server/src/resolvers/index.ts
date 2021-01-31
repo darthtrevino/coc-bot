@@ -1,5 +1,5 @@
-import { Game, Resolvers } from '@cocbot/graphql-schema/lib/provider-types'
-import { GraphQLResolveInfo } from 'graphql'
+import { Game, Resolvers } from '@cocbot/schema/lib/provider-types'
+import { GraphQLResolveInfo } from './graphql'
 
 export const resolvers: Resolvers = {
 	Query: {
