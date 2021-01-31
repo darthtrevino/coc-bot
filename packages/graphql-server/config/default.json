@@ -6,6 +6,7 @@
 		}
 	},
 	"database": {
-		"connectionString": ""
+		"connectionString": "",
+		"databaseName": "coc"
 	}
 }

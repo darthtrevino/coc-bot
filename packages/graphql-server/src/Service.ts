@@ -1,15 +1,22 @@
 import { ApolloServer } from 'apollo-server'
 import { Configuration } from './Configuration'
 import { DocumentNode } from 'graphql'
+import { Database } from './Database'
 
 const resolvers = {}
 
 export class Service {
 	private config: Configuration
 	private server: ApolloServer
+	private database: Database
 
-	public constructor(config: Configuration, schema: DocumentNode) {
+	public constructor(
+		config: Configuration,
+		schema: DocumentNode,
+		database: Database
+	) {
 		this.config = config
+		this.database = database
 		this.server = new ApolloServer({
 			typeDefs: schema,
 			resolvers,

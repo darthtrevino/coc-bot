@@ -18,4 +18,12 @@ export class Configuration {
 	public get debug(): boolean {
 		return process.env.DEBUG != null && process.env.DEBUG !== 'false'
 	}
+
+	public get dbConnectionString(): string {
+		return this.config.get('database.connectionString')
+	}
+
+	public get dbDatabaseName(): string {
+		return this.config.get('database.databaseName')
+	}
 }
