@@ -1,5 +1,6 @@
 import * as Discord from 'discord.js'
 import { DataStore } from './DataStore'
+import { describeGame } from './describers'
 
 const CMD_PREFIX = '/cc'
 
@@ -45,9 +46,7 @@ export class Bot {
 		const games = await this.dataStore.getGames()
 		msg.reply(
 			'The following games are being run:\n\n' +
-				games
-					.map(({ title, description }) => `\t**${title}**: _${description}_`)
-					.join('\n\n')
+				games.map((game) => `\t${describeGame(game)}`).join('\n\n')
 		)
 	}
 }
