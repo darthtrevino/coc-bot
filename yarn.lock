@@ -1583,6 +1583,7 @@ __metadata:
     dotenv: ^8.2.0
     dotenv-expand: ^5.1.0
     graphql: ^15.5.0
+    nanoid: ^3.1.20
     nodemon: ^2.0.7
     rimraf: ^3.0.2
     ts-node: ^9.1.1
@@ -9013,6 +9014,15 @@ fsevents@~2.3.1:
   version: 0.0.8
   resolution: "mute-stream@npm:0.0.8"
   checksum: 315c40f463ec31deee54c5b8779207feb6b63dd4c58fe0f84ad46abdd6dac1ada578d53efde4a47b0ae4d29d453d35bb39ecdd98ee9ebf538929039a3a9945df
+  languageName: node
+  linkType: hard
+
+"nanoid@npm:^3.1.20":
+  version: 3.1.20
+  resolution: "nanoid@npm:3.1.20"
+  bin:
+    nanoid: bin/nanoid.cjs
+  checksum: 4788d36edcfec7bb32ddf33ed8f1f46df2867f70e9b1993bb131f7677e04ead2b621e5d614d2736308be18db1d54208d8ab207b4586bd5b052f71fb9d4c0ebea
   languageName: node
   linkType: hard
 

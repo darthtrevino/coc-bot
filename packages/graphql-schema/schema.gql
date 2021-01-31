@@ -10,18 +10,32 @@ type Query {
 	Characters: [Character!]!
 }
 
+type Mutation {
+	createGame: Game!
+
+	updateGame(game: GameInput): Game!
+}
+
 type Game {
 	"""
-	The game's title
+	The ID of the game
+	"""
+	id: String!
+
+	"""
+	The title of the game
 	"""
 	title: String!
-
-	schedule: GameSchedule!
-
+	
 	"""
-	More descriptive details about the game
+	A longer-form description about the game
 	"""
 	description: String!
+
+	"""
+	The game schedule
+	"""
+	schedule: GameSchedule!
 
 	"""
 	Player characters used in this game
@@ -34,10 +48,31 @@ type Game {
 	npcs: [Character!]!
 }
 
+
+input GameInput {
+	"""
+	The title of the game
+	"""
+	title: String!
+	
+	"""
+	A longer-form description about the game
+	"""
+	description: String!
+
+	"""
+	The game schedule
+	"""
+	schedule: GameScheduleInput!
+}
+
 type Character {
 	name: String!
 }
 
 type GameSchedule {
+	time_zone: String!
+}
+input GameScheduleInput {
 	time_zone: String!
 }

@@ -3127,6 +3127,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["dotenv", "npm:8.2.0"],
             ["dotenv-expand", "npm:5.1.0"],
             ["graphql", "npm:15.5.0"],
+            ["nanoid", "npm:3.1.20"],
             ["nodemon", "npm:2.0.7"],
             ["rimraf", "npm:3.0.2"],
             ["ts-node", "virtual:1e6dc2bf1bc4436409d17a6d4fcdf0bb05330c89641ffdad9d9594bd49782e834bfcb0f068efd199cf1cf2be6d18b8b9f0401aa65f4a8af2f92dbbc013bc44c4#npm:9.1.1"],
@@ -12182,6 +12183,15 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/cache/mute-stream-npm-0.0.8-489a7d6c2b-315c40f463.zip/node_modules/mute-stream/",
           "packageDependencies": [
             ["mute-stream", "npm:0.0.8"]
+          ],
+          "linkType": "HARD",
+        }]
+      ]],
+      ["nanoid", [
+        ["npm:3.1.20", {
+          "packageLocation": "./.yarn/cache/nanoid-npm-3.1.20-3b284e9eb5-4788d36edc.zip/node_modules/nanoid/",
+          "packageDependencies": [
+            ["nanoid", "npm:3.1.20"]
           ],
           "linkType": "HARD",
         }]

@@ -26,6 +26,7 @@
 		"config": "^3.3.3",
 		"dotenv": "^8.2.0",
 		"dotenv-expand": "^5.1.0",
-		"graphql": "^15.5.0"
+		"graphql": "^15.5.0",
+		"nanoid": "^3.1.20"
 	}
 }

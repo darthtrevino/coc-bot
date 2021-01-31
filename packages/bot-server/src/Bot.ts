@@ -1,8 +1,8 @@
 import * as Discord from 'discord.js'
+import { Game } from '@cocbot/graphql-schema/lib/client-types'
 import { DataStore } from './DataStore'
-import { describeGame } from './describers'
 
-const CMD_PREFIX = '/cc'
+const CC = '/cc'
 
 export class Bot {
 	private client = new Discord.Client()
@@ -23,34 +23,43 @@ export class Bot {
 	}
 
 	private _handleMessage = (msg: Discord.Message): void => {
-		if (msg.content.startsWith(CMD_PREFIX)) {
-			console.log('command message received')
-			const command = peel(msg.content, CMD_PREFIX)
-			console.log('command=', command)
+		if (msg.content.startsWith(CC)) {
+			console.log(
+				`command message received. channelId=${msg.reference?.channelID}, guild=${msg.guild?.id}, user=${msg.member?.user.id}`
+			)
+			if (msg.content.startsWith(CC)) {
+				let command = peel(msg.content, CC)
+				console.log(`command: ${command}`)
 
-			if (command.startsWith('game')) {
-				this._handleGameCommand(peel(command, 'game'), msg)
-			} else {
-				msg.reply('Pong: ' + command)
+				if (command.startsWith('game')) {
+					command = peel(command, 'game')
+					if (command === 'list') {
+						this._handleListGames(peel(command, 'list'), msg)
+						return
+					}
+				}
 			}
+			msg.reply("Oops, I didn't understand that command.")
 		}
 	}
 
-	private async _handleGameCommand(command: string, msg: Discord.Message) {
-		if (command === 'list') {
-			this._handleListGames(command, msg)
-		}
-	}
-
-	private async _handleListGames(command: string, msg: Discord.Message) {
+	private _handleListGames = async (command: string, msg: Discord.Message) => {
 		const games = await this.dataStore.getGames()
 		msg.reply(
 			'The following games are being run:\n\n' +
-				games.map((game) => `\t${describeGame(game)}`).join('\n\n')
+				games.map((game) => `\t${describeGame(game)}`).join('\n')
 		)
 	}
 }
 
 function peel(command: string, value: string) {
 	return command.substring(value.length).trim()
+}
+
+function describeGame(game: Game): string {
+	const { title, description } = game
+	return `**Title**: _${title}_
+	**Description**: _${description}_
+	**Code**: _TBD_
+	`
 }
