@@ -19,8 +19,12 @@ export class Configuration {
 		return process.env.DEBUG != null && process.env.DEBUG !== 'false'
 	}
 
-	public get dbConnectionString(): string {
-		return this.config.get('database.connectionString')
+	public get dbEndpoint(): string {
+		return this.config.get('database.endpoint')
+	}
+
+	public get dbKey(): string {
+		return this.config.get('database.key')
 	}
 
 	public get dbDatabaseName(): string {

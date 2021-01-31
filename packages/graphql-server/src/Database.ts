@@ -9,13 +9,29 @@ export class Database {
 
 	public constructor(config: Configuration) {
 		this.config = config
-		this.client = new CosmosClient(config.dbConnectionString)
+		if (!config.dbEndpoint) {
+			throw new Error('config.dbEndpoint is not defined')
+		}
+		if (!config.dbKey) {
+			throw new Error('config.dbKey is not defined')
+		}
+		console.log(
+			`connecting to database; dbName=[${config.dbDatabaseName}], endpoint=[${config.dbEndpoint}]...`
+		)
+		this.client = new CosmosClient({
+			endpoint: config.dbEndpoint,
+			key: config.dbKey,
+		})
 		this.connectionPromise = this.client.databases
 			.createIfNotExists({
 				id: config.dbDatabaseName,
 			})
 			.then((result) => {
+				console.log('database connected!')
 				this.db = result.database
+			})
+			.catch((err) => {
+				console.error('error connecting to database', err)
 			})
 	}
 

@@ -3122,6 +3122,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["apollo-server", "virtual:4eea3f82ee0a5271d9759d8ecb664a6d436a6b3cb474f8159b626c3622187357e407728acf6dd97a60e241a27742013efd11e7689541cca387b76cbf7aeee3a4#npm:2.19.2"],
             ["config", "npm:3.3.3"],
             ["dotenv", "npm:8.2.0"],
+            ["dotenv-expand", "npm:5.1.0"],
             ["graphql", "npm:15.5.0"],
             ["nodemon", "npm:2.0.7"],
             ["rimraf", "npm:3.0.2"],
@@ -7835,6 +7836,15 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/cache/dotenv-npm-8.2.0-6b21df4d37-16cb89cbd7.zip/node_modules/dotenv/",
           "packageDependencies": [
             ["dotenv", "npm:8.2.0"]
+          ],
+          "linkType": "HARD",
+        }]
+      ]],
+      ["dotenv-expand", [
+        ["npm:5.1.0", {
+          "packageLocation": "./.yarn/cache/dotenv-expand-npm-5.1.0-c3fff50eb5-b895c6220d.zip/node_modules/dotenv-expand/",
+          "packageDependencies": [
+            ["dotenv-expand", "npm:5.1.0"]
           ],
           "linkType": "HARD",
         }]

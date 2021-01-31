@@ -1578,6 +1578,7 @@ __metadata:
     apollo-server: ^2.19.2
     config: ^3.3.3
     dotenv: ^8.2.0
+    dotenv-expand: ^5.1.0
     graphql: ^15.5.0
     nodemon: ^2.0.7
     rimraf: ^3.0.2
@@ -5251,6 +5252,13 @@ __metadata:
   dependencies:
     is-obj: ^2.0.0
   checksum: 76e6693d8803eeff9cb920988446bf223cf1f6e5b1c0c2fe07a66906392134931a481b11e3c0bd852c5cfc97fad65258bcb4359169ad1d8d624cb3f56932be98
+  languageName: node
+  linkType: hard
+
+"dotenv-expand@npm:^5.1.0":
+  version: 5.1.0
+  resolution: "dotenv-expand@npm:5.1.0"
+  checksum: b895c6220d345db8f58dca439d3bc65c2ee538659df570ed3fa8c99487df854afd6d1ddadf1e43a4091c9ed6166956e7db7bc5a05cf48fa812c0772e1f5cf860
   languageName: node
   linkType: hard
 

@@ -1,37 +1,43 @@
 type Query {
-  """
-  Gets the user's list of games
-  """
-  Games: [Game!]!
+	"""
+	Gets the user's list of games
+	"""
+	Games: [Game!]!
 
-  """
-  Gets the user's list of characters
-  """
-  Characters: [Character!]!
+	"""
+	Gets the user's list of characters
+	"""
+	Characters: [Character!]!
 }
 
 type Game {
-  """
-  The game's title
-  """
-  title: String!
+	"""
+	The game's title
+	"""
+	title: String!
 
-  """
-  More descriptive details about the game
-  """
-  description: String!
+	schedule: GameSchedule!
 
-  """
-  Player characters used in this game
-  """
-  pcs: [Character!]!
+	"""
+	More descriptive details about the game
+	"""
+	description: String!
 
-  """
-  Non-player characters used in this game
-  """
-  npcs: [Character!]!
+	"""
+	Player characters used in this game
+	"""
+	pcs: [Character!]!
+
+	"""
+	Non-player characters used in this game
+	"""
+	npcs: [Character!]!
 }
 
 type Character {
-  name: String!
+	name: String!
+}
+
+type GameSchedule {
+	time_zone: String!
 }

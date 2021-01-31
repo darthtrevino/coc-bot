@@ -3,6 +3,7 @@
 		"port": "SERVER_PORT"
 	},
 	"database": {
-		"connectionString": "COSMOSDB_CONNECTION_STRING"
+		"endpoint": "DB_ENDPOINT",
+		"key": "DB_KEY"
 	}
 }

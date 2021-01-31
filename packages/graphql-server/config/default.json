@@ -6,7 +6,8 @@
 		}
 	},
 	"database": {
-		"connectionString": "",
-		"databaseName": "coc"
+		"databaseName": "coc",
+		"endpoint": null,
+		"key": null
 	}
 }
