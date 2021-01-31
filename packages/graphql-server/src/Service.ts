@@ -1,7 +1,7 @@
 import { ApolloServer } from 'apollo-server'
 import { Configuration } from './Configuration'
 import { DocumentNode } from 'graphql'
-import { Database } from './Database'
+import { Database } from './Database1'
 
 const resolvers = {}
 
