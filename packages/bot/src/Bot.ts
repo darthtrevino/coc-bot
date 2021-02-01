@@ -45,13 +45,10 @@ export class Bot {
 				return
 			}
 			console.log('command:', command)
-
 			if (command.type === CommandType.Help) {
 				this._executeHelpCommand(command as HelpCommand, msg)
-				return
 			} else if (command.type === CommandType.Roll) {
 				this._executeRollCommand(command as RollCommand, msg)
-				return
 			} else {
 				msg.reply("Oops, I didn't understand that command.")
 			}
@@ -73,7 +70,10 @@ __**CthulhuBot Available Commands**__
 `)
 	}
 
-	private _executeRollCommand(command: RollCommand, msg: Discord.Message) {
+	private async _executeRollCommand(
+		command: RollCommand,
+		msg: Discord.Message
+	): Promise<void> {
 		if (typeof command.ability === 'string') {
 			msg.reply(
 				`I can't handle ability names just yet. Try rolling against your ability value (e.g. roll against 75)`
@@ -82,9 +82,9 @@ __**CthulhuBot Available Commands**__
 			const abilityValue = command.ability as number
 			const rollValue = (tens: number, ones: number) =>
 				tens === 0 && ones === 0 ? 100 : tens * 10 + ones
-			let tens = rollD10()
+			const tens = rollD10()
 			const ones = rollD10()
-			let rolls: number[] = [rollValue(tens, ones)]
+			const rolls: number[] = [rollValue(tens, ones)]
 
 			const numExtraRolls = command.bonusDice || command.penaltyDice
 			if (numExtraRolls) {
@@ -96,10 +96,12 @@ __**CthulhuBot Available Commands**__
 			const result = command.bonusDice ? Math.min(...rolls) : Math.max(...rolls)
 			const bonusInfo = rolls.length > 1 ? ` (out of ${rolls.join(', ')})` : ''
 			let successLevel = 'Failure'
-			const extremeThresheld = Math.floor(abilityValue * 0.2)
-			const hardThreshold = Math.floor(abilityValue * 0.5)
+			const extremeThresheld = Math.floor(abilityValue / 5)
+			const hardThreshold = Math.floor(abilityValue / 2)
 			if (result === 100) {
 				successLevel = 'Critical Failure'
+			} else if (result === 1) {
+				successLevel = 'Critical Success'
 			} else if (result < extremeThresheld) {
 				successLevel = 'Extreme Success'
 			} else if (result < hardThreshold) {
@@ -107,13 +109,14 @@ __**CthulhuBot Available Commands**__
 			} else if (result < abilityValue) {
 				successLevel = 'Success'
 			}
+
 			const forLabel = command.label ? ` for ${command.label}` : ''
-			msg.reply(
-				`You rolled **${result}**${bonusInfo}, **${successLevel}**${forLabel}.
-	Success: ${abilityValue}
-	Hard Success: ${hardThreshold}
-	Extreme Success: ${extremeThresheld}`
-			)
+			const resultMessage = `You rolled **${result}**${bonusInfo}, **${successLevel}**${forLabel}.
+Success: ${abilityValue}
+Hard Success: ${hardThreshold}
+Extreme Success: ${extremeThresheld}
+`
+			await msg.reply(resultMessage)
 		}
 	}
 
