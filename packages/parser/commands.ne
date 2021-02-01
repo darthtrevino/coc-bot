@@ -12,6 +12,7 @@
 
 command -> 
   rollCommand {% d => d[0] %}
+  | helpCommand {% d => d[0] %}
 
 rollCommand -> 
   _ roll __ abilitySpec {% d => ({ type: 'roll', ability: d[3] }) %}
@@ -32,6 +33,9 @@ bonusOrPenalty ->
 forClause ->
   for __ String {% d => ({label: d[2]}) %}
 
+helpCommand ->
+  _ help _ {% d => ({type: 'help' }) %}
+
 roll -> "roll"
 with -> "with"
 bonus -> "bonus"
@@ -39,6 +43,7 @@ penalty -> "penalty"
 for -> "for"
 dice -> "dice" | "die"
 on -> "on" | "against"
+help -> "help"
 
 abilitySpec -> 
   ability {% d => d[0] %}
