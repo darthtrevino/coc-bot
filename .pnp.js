@@ -31,7 +31,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         "reference": "workspace:packages/core"
       },
       {
-        "name": "@cocbot/grammar",
+        "name": "@cocbot/parser",
         "reference": "workspace:packages/parser"
       },
       {
@@ -48,7 +48,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
     "fallbackExclusionList": [
       ["@cocbot/bot", ["workspace:packages/bot"]],
       ["@cocbot/core", ["workspace:packages/core"]],
-      ["@cocbot/grammar", ["workspace:packages/parser"]],
+      ["@cocbot/parser", ["workspace:packages/parser"]],
       ["@cocbot/project", ["workspace:."]],
       ["@cocbot/schema", ["workspace:packages/schema"]],
       ["@cocbot/server", ["workspace:packages/server"]]
@@ -3071,6 +3071,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageDependencies": [
             ["@cocbot/bot", "workspace:packages/bot"],
             ["@cocbot/core", "workspace:packages/core"],
+            ["@cocbot/parser", "workspace:packages/parser"],
             ["@cocbot/schema", "workspace:packages/schema"],
             ["@tsconfig/node14", "npm:1.0.0"],
             ["@types/config", "npm:0.0.38"],
@@ -3104,11 +3105,11 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "linkType": "SOFT",
         }]
       ]],
-      ["@cocbot/grammar", [
+      ["@cocbot/parser", [
         ["workspace:packages/parser", {
           "packageLocation": "./packages/parser/",
           "packageDependencies": [
-            ["@cocbot/grammar", "workspace:packages/parser"],
+            ["@cocbot/parser", "workspace:packages/parser"],
             ["@types/jest", "npm:26.0.20"],
             ["@types/nearley", "npm:2.11.1"],
             ["nearley", "npm:2.20.1"],

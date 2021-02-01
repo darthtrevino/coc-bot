@@ -14,8 +14,10 @@ command ->
   rollCommand {% d => d[0] %}
 
 rollCommand -> 
-  _ roll __ abilitySpec _ {% d => ({ command: 'roll', ability: d[3] }) %}
-  | _ roll __ abilitySpec  __ withBonusOrPenaltyDice _ {% d => ({ command: 'roll', ability: d[3], ...d[5] }) %}
+  _ roll __ abilitySpec {% d => ({ type: 'roll', ability: d[3] }) %}
+  | _ roll __ abilitySpec __ forClause _ {% d => ({ type: 'roll', ability: d[3], ...d[5] }) %}
+  | _ roll __ abilitySpec  __ withBonusOrPenaltyDice _ {% d => ({ type: 'roll', ability: d[3], ...d[5] }) %}
+  | _ roll __ abilitySpec  __ withBonusOrPenaltyDice __ forClause _ {% d => ({ type: 'roll', ability: d[3], ...d[5], ...d[7] }) %}
 
 withBonusOrPenaltyDice ->
   with __ bonusOrPenalty _ {% d => makeBonusOrPenalty(d[2].type, 1) %}
@@ -27,10 +29,14 @@ bonusOrPenalty ->
   bonus {% d => ({type: 'bonus' }) %}
   | penalty {% d=> ({ type: 'penalty' }) %}
 
+forClause ->
+  for __ String {% d => ({label: d[2]}) %}
+
 roll -> "roll"
 with -> "with"
 bonus -> "bonus"
 penalty -> "penalty"
+for -> "for"
 dice -> "dice" | "die"
 on -> "on" | "against"
 

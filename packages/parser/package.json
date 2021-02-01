@@ -1,8 +1,15 @@
 {
-  "name": "@cocbot/grammar",
+  "name": "@cocbot/parser",
+  "description": "CoCBot Command Parser",
   "version": "0.0.1",
+  "main": "src/index.ts",
+  "publishConfig": {
+    "main": "lib/index.js",
+    "types": "lib/index.d.ts"
+  },
   "scripts": {
     "build_grammar": "nearleyc commands.ne > grammar.js",
+    "build_ts": "tsc -b tsconfig.json",
     "build": "run-s build_grammar",
     "start": "nodemon"
   },

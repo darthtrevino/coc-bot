@@ -1526,6 +1526,7 @@ __metadata:
   resolution: "@cocbot/bot@workspace:packages/bot"
   dependencies:
     "@cocbot/core": "workspace:packages/core"
+    "@cocbot/parser": "workspace:packages/parser"
     "@cocbot/schema": "workspace:packages/schema"
     "@tsconfig/node14": ^1.0.0
     "@types/config": ^0.0.38
@@ -1556,9 +1557,9 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@cocbot/grammar@workspace:packages/parser":
+"@cocbot/parser@workspace:packages/parser":
   version: 0.0.0-use.local
-  resolution: "@cocbot/grammar@workspace:packages/parser"
+  resolution: "@cocbot/parser@workspace:packages/parser"
   dependencies:
     "@types/jest": ^26.0.20
     "@types/nearley": ^2.11.1

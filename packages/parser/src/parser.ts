@@ -1,17 +1,18 @@
-import grammar from '../grammar'
 import { Parser, Grammar } from 'nearley'
+const grammar = require('../grammar')
 
 export enum CommandType {
   Roll = 'roll'
 }
 
 export interface Command {
-  command: CommandType
+  type: CommandType
 }
 
 export interface RollCommand extends Command {
-  command: CommandType.Roll
+  type: CommandType.Roll
   ability: number | string
+  label?: string
   bonusDice?: number
   penaltyDice?: number
 }

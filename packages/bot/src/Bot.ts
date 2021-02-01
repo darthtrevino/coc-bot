@@ -1,6 +1,8 @@
 import * as Discord from 'discord.js'
 import { Game } from '@cocbot/schema/lib/client-types'
+import { Command, RollCommand, CommandType, parseCommand } from '@cocbot/parser'
 import { DataStore } from './DataStore'
+import { rollD10 } from './roller'
 
 const CC = '/cc'
 
@@ -28,19 +30,60 @@ export class Bot {
 				`command message received. channelId=${msg.reference?.channelID}, guild=${msg.guild?.id}, user=${msg.member?.user.id}`
 			)
 			if (msg.content.startsWith(CC)) {
-				let command = peel(msg.content, CC)
-				console.log(`command: ${command}`)
+				let commandText = peel(msg.content, CC)
+				let command = parseCommand(commandText)
+				console.log('command:', command)
 
-				if (command.startsWith('game ')) {
-					command = peel(command, 'game')
-					if (command === 'list') {
-						this._handleListGames(peel(command, 'list'), msg)
-						return
-					}
-				} else if (command.startsWith('roll')) {
+				if (command.type === CommandType.Roll) {
+					this._executeRollCommand(command as RollCommand, msg)
+					return
 				}
 			}
 			msg.reply("Oops, I didn't understand that command.")
+		}
+	}
+
+	private _executeRollCommand(command: RollCommand, msg: Discord.Message) {
+		if (typeof command.ability === 'string') {
+			msg.reply(
+				`I can't handle ability names just yet. Try rolling against your ability value (e.g. roll against 75)`
+			)
+		} else {
+			const abilityValue = command.ability as number
+			const rollValue = (tens: number, ones: number) =>
+				tens === 0 && ones === 0 ? 100 : tens * 10 + ones
+			let tens = rollD10()
+			const ones = rollD10()
+			let rolls: number[] = [rollValue(tens, ones)]
+
+			const numExtraRolls = command.bonusDice || command.penaltyDice
+			if (numExtraRolls) {
+				for (let i = 0; i < numExtraRolls; ++i) {
+					rolls.push(rollValue(rollD10(), ones))
+				}
+			}
+
+			const result = command.bonusDice ? Math.min(...rolls) : Math.max(...rolls)
+			const bonusInfo = rolls.length > 1 ? ` (out of ${rolls.join(', ')})` : ''
+			let successLevel = 'Failure'
+			const extremeThresheld = Math.floor(abilityValue * 0.2)
+			const hardThreshold = Math.floor(abilityValue * 0.5)
+			if (result === 100) {
+				successLevel = 'Critical Failure'
+			} else if (result < extremeThresheld) {
+				successLevel = 'Extreme Success'
+			} else if (result < hardThreshold) {
+				successLevel = 'Hard Success'
+			} else if (result < abilityValue) {
+				successLevel = 'Success'
+			}
+			const forLabel = command.label ? ` for ${command.label}` : ''
+			msg.reply(
+				`You rolled **${result}**${bonusInfo}, **${successLevel}**${forLabel}.
+	Success: ${abilityValue}
+	Hard Success: ${hardThreshold}
+	Extreme Success: ${extremeThresheld}`
+			)
 		}
 	}
 

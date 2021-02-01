@@ -22,6 +22,7 @@
 	},
 	"dependencies": {
 		"@cocbot/core": "workspace:packages/core",
+		"@cocbot/parser": "workspace:packages/parser",
 		"@cocbot/schema": "workspace:packages/schema",
 		"config": "^3.3.3",
 		"cross-fetch": "^3.0.6",
