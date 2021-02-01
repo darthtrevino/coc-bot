@@ -14,9 +14,9 @@
 | /cc play as keeper                          | ack               | Begin play mode as keeper                      |
 | /cc roll \<skill\>                          | Roll Result       | Roll a skill value                             |
 | /cc roll \<skill\> with bonus               | Roll Result       | Roll a skill value with a bonus die            |
-| /cc roll \<skill\> with bonus=\<numDice\>   | Roll Result       | Roll a skill value with a bonus die            |
+| /cc roll \<skill\> with \<numDice\> bonus   | Roll Result       | Roll a skill value with a bonus die            |
 | /cc roll \<skill\> with penalty             | Roll Result       | Roll a skill value with a penalty die          |
-| /cc roll \<skill\> with penalty=\<numDice\> | Roll Result       | Roll a skill value with a penalty die          |
+| /cc roll \<skill\> with \<numDice\> penalty | Roll Result       | Roll a skill value with a penalty die          |
 
 ## Future Ideas
 

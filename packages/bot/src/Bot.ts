@@ -31,12 +31,13 @@ export class Bot {
 				let command = peel(msg.content, CC)
 				console.log(`command: ${command}`)
 
-				if (command.startsWith('game')) {
+				if (command.startsWith('game ')) {
 					command = peel(command, 'game')
 					if (command === 'list') {
 						this._handleListGames(peel(command, 'list'), msg)
 						return
 					}
+				} else if (command.startsWith('roll')) {
 				}
 			}
 			msg.reply("Oops, I didn't understand that command.")

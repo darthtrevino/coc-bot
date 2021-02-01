@@ -1,0 +1,5 @@
+{
+  "watch": ["commands.ne"],
+  "ext": "ne",  
+  "exec": "yarn build_grammar"
+}

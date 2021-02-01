@@ -12,6 +12,7 @@
 	"devDependencies": {
 		"@tsconfig/node14": "^1.0.0",
 		"@types/config": "^0.0.38",
+		"@types/nearley": "^2.11.1",
 		"@types/node": "^14.14.22",
 		"@types/rimraf": "^3.0.0",
 		"nodemon": "^2.0.7",

@@ -1,0 +1,19 @@
+{
+  "name": "@cocbot/grammar",
+  "version": "0.0.1",
+  "scripts": {
+    "build_grammar": "nearleyc commands.ne > grammar.js",
+    "build": "run-s build_grammar",
+    "start": "nodemon"
+  },
+  "devDependencies": {
+    "@types/jest": "^26.0.20",
+    "@types/nearley": "^2.11.1",
+    "nearley-unparse": "^1.0.1",
+    "nodemon": "^2.0.7",
+    "npm-run-all": "^4.1.5"
+  },
+  "dependencies": {
+    "nearley": "^2.20.1"
+  }
+}

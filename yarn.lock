@@ -1529,6 +1529,7 @@ __metadata:
     "@cocbot/schema": "workspace:packages/schema"
     "@tsconfig/node14": ^1.0.0
     "@types/config": ^0.0.38
+    "@types/nearley": ^2.11.1
     "@types/node": ^14.14.22
     "@types/rimraf": ^3.0.0
     config: ^3.3.3
@@ -1555,6 +1556,19 @@ __metadata:
   languageName: unknown
   linkType: soft
 
+"@cocbot/grammar@workspace:packages/parser":
+  version: 0.0.0-use.local
+  resolution: "@cocbot/grammar@workspace:packages/parser"
+  dependencies:
+    "@types/jest": ^26.0.20
+    "@types/nearley": ^2.11.1
+    nearley: ^2.20.1
+    nearley-unparse: ^1.0.1
+    nodemon: ^2.0.7
+    npm-run-all: ^4.1.5
+  languageName: unknown
+  linkType: soft
+
 "@cocbot/project@workspace:.":
   version: 0.0.0-use.local
   resolution: "@cocbot/project@workspace:."
@@ -1565,12 +1579,13 @@ __metadata:
     "@babel/preset-typescript": ^7.12.7
     "@types/babel__core": ^7.1.12
     "@types/babel__preset-env": ^7.9.1
-    "@types/eslint-plugin-prettier": ^3
+    "@types/eslint-plugin-prettier": ^3.1.0
     "@types/jest": ^26.0.20
+    "@types/moo": ^0.5.3
     "@types/node": ^14.14.22
     "@typescript-eslint/eslint-plugin": ^4.14.1
     "@typescript-eslint/parser": ^4.14.1
-    eslint: ^7.18.0
+    eslint: ^7.19.0
     eslint-config-prettier: ^7.2.0
     eslint-config-standard: ^16.0.2
     eslint-import-resolver-node: ^0.3.4
@@ -1580,10 +1595,14 @@ __metadata:
     eslint-plugin-promise: ^4.2.1
     husky: ^4.3.8
     jest: ^26.6.3
+    moo: ^0.5.1
     npm-run-all: ^4.1.5
     prettier: ^2.2.1
     pretty-quick: ^3.1.0
     typescript: ^4.1.3
+  dependenciesMeta:
+    nearley@2.20.1:
+      unplugged: true
   languageName: unknown
   linkType: soft
 
@@ -2654,7 +2673,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/eslint-plugin-prettier@npm:^3":
+"@types/eslint-plugin-prettier@npm:^3.1.0":
   version: 3.1.0
   resolution: "@types/eslint-plugin-prettier@npm:3.1.0"
   dependencies:
@@ -2920,6 +2939,20 @@ __metadata:
   version: 3.0.3
   resolution: "@types/minimatch@npm:3.0.3"
   checksum: 672ccdac197e8176eed1a9441d0caf8a29a90eb139b1cefdd4c9e71b1c48f5c749f5d101a2d85da15c6259214ebda95072835021407d60330a731a2672964b82
+  languageName: node
+  linkType: hard
+
+"@types/moo@npm:^0.5.3":
+  version: 0.5.3
+  resolution: "@types/moo@npm:0.5.3"
+  checksum: 838c86f0e29c03cfcb0dd161028c868f216fd50d029f89ef37f11bd05cecc8ed51564e2f2ee2ffbe693aad7269988c575ef43f6b23f9165c449dde23b9c320f5
+  languageName: node
+  linkType: hard
+
+"@types/nearley@npm:^2.11.1":
+  version: 2.11.1
+  resolution: "@types/nearley@npm:2.11.1"
+  checksum: 78945830e06f1129153fb5e023d99b8dc8f7f46ee52a41925868931d55f1a91e21422c1ee99f1fb77a7e58b0c8c78aa3db23e3d1af175a7df8b7f6867841618f
   languageName: node
   linkType: hard
 
@@ -4626,7 +4659,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"commander@npm:^2.20.3":
+"commander@npm:^2.19.0, commander@npm:^2.20.3":
   version: 2.20.3
   resolution: "commander@npm:2.20.3"
   checksum: b73428e97de7624323f81ba13f8ed9271de487017432d18b4da3f07cfc528ad754bbd199004bd5d14e0ccd67d1fdfe0ec8dbbd4c438b401df3c4cc387bfd1daa
@@ -5196,6 +5229,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"discontinuous-range@npm:1.0.0":
+  version: 1.0.0
+  resolution: "discontinuous-range@npm:1.0.0"
+  checksum: afc5a30f1a57aae74636fe88041bb7c164ca77ba9b71ad47961dc2070cfe982cfda18b0e55ca1f312bf2a194274de944d57d86ce15626a3f969d00ae02703862
+  languageName: node
+  linkType: hard
+
 "discord.js@npm:^12.5.1":
   version: 12.5.1
   resolution: "discord.js@npm:12.5.1"
@@ -5270,6 +5310,13 @@ __metadata:
   version: 8.2.0
   resolution: "dotenv@npm:8.2.0"
   checksum: 16cb89cbd7b98b053899b8aba8c5044c8fb61a2db8a81fe70360b75035fce5fed53bd7a34d772be717d0880c0321122a4c09423f518025e1b52d96791521b1a7
+  languageName: node
+  linkType: hard
+
+"drange@npm:^1.0.0":
+  version: 1.1.1
+  resolution: "drange@npm:1.1.1"
+  checksum: a5f6f0d6ae8e4fb6bd2b722d6923c39dbcc1833a29cb01989ef82a2a99ad56ab9ce4beec96e9caa50644f0cf06b831406f323a0950225aaa5a575184e2b1e305
   languageName: node
   linkType: hard
 
@@ -5632,9 +5679,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"eslint@npm:^7.18.0":
-  version: 7.18.0
-  resolution: "eslint@npm:7.18.0"
+"eslint@npm:^7.19.0":
+  version: 7.19.0
+  resolution: "eslint@npm:7.19.0"
   dependencies:
     "@babel/code-frame": ^7.0.0
     "@eslint/eslintrc": ^0.3.0
@@ -5675,7 +5722,7 @@ __metadata:
     v8-compile-cache: ^2.0.3
   bin:
     eslint: bin/eslint.js
-  checksum: 5c6f6ca0eb6c3738a0d14d3441a23f045ef9e7f73aaba4848aea0877c5fd50ec42937ccdaf53fb9107694f5700a9989bca55334b7b17e5d3be2f6e69a42241fa
+  checksum: 0461e8b2b53c9097995efe131f659e2df77deda1daf79d7673654e2cbdac90bd2a412758b0ee0db48d29bf58f4b4d99170a70e17df1345782f0c8fa511bb0734
   languageName: node
   linkType: hard
 
@@ -6282,39 +6329,21 @@ __metadata:
   languageName: node
   linkType: hard
 
-fsevents@^2.1.2:
-  version: 2.2.1
-  resolution: "fsevents@npm:2.2.1"
-  dependencies:
-    node-gyp: latest
-  checksum: 7cc4cdc3b027f7ff6f6dee69492d460948db719393865cd29f2e6cfbcc64fecde964ef10a614f762be4212403097a2fc4088686b1b70b41a9fc117b2cc4bfecd
-  languageName: node
-  linkType: hard
-
-"fsevents@patch:fsevents@^2.1.2#builtin<compat/fsevents>":
-  version: 2.2.1
-  resolution: "fsevents@patch:fsevents@npm%3A2.2.1#builtin<compat/fsevents>::version=2.2.1&hash=11e9ea"
-  dependencies:
-    node-gyp: latest
-  checksum: 6ccb7efcb79e504f4361f344413927e5aaf0789e1498c58f0c27cd7031bf84e50830395241eac79c20e99498a0352f08223f1e9e7aa5f19bbae00bdac17ab2a5
-  languageName: node
-  linkType: hard
-
-"fsevents@patch:fsevents@~2.3.1#builtin<compat/fsevents>":
-  version: 2.3.1
-  resolution: "fsevents@patch:fsevents@npm%3A2.3.1#builtin<compat/fsevents>::version=2.3.1&hash=11e9ea"
-  dependencies:
-    node-gyp: latest
-  checksum: 66b24358e15cdd0f705b456346e58b4613f2bf54206b47874decda4152614fb0632d2d662c92b0ea54810109f646e5233e4cdd64dbb2a1949070ee5dc14dab87
-  languageName: node
-  linkType: hard
-
-fsevents@~2.3.1:
+"fsevents@^2.1.2, fsevents@~2.3.1":
   version: 2.3.1
   resolution: "fsevents@npm:2.3.1"
   dependencies:
     node-gyp: latest
   checksum: 32619a121e7f9ac8a5ce4954f5fdf06be68b7b1c16e4ac8fa6e5e13cbf97d83c86cdcdf872ab7b188ebb07b34d2271b7818aebfc305b4a7d5b35f4bc2117f8be
+  languageName: node
+  linkType: hard
+
+"fsevents@patch:fsevents@^2.1.2#builtin<compat/fsevents>, fsevents@patch:fsevents@~2.3.1#builtin<compat/fsevents>":
+  version: 2.3.1
+  resolution: "fsevents@patch:fsevents@npm%3A2.3.1#builtin<compat/fsevents>::version=2.3.1&hash=11e9ea"
+  dependencies:
+    node-gyp: latest
+  checksum: 66b24358e15cdd0f705b456346e58b4613f2bf54206b47874decda4152614fb0632d2d662c92b0ea54810109f646e5233e4cdd64dbb2a1949070ee5dc14dab87
   languageName: node
   linkType: hard
 
@@ -8603,7 +8632,7 @@ fsevents@~2.3.1:
   languageName: node
   linkType: hard
 
-"lodash@npm:^4.17.15, lodash@npm:^4.17.19, lodash@npm:^4.17.20, lodash@npm:~4.17.20":
+"lodash@npm:^4.13.1, lodash@npm:^4.17.15, lodash@npm:^4.17.19, lodash@npm:^4.17.20, lodash@npm:~4.17.20":
   version: 4.17.20
   resolution: "lodash@npm:4.17.20"
   checksum: c62101d2500c383b5f174a7e9e6fe8098149ddd6e9ccfa85f36d4789446195f5c4afd3cfba433026bcaf3da271256566b04a2bf2618e5a39f6e67f8c12030cb6
@@ -8962,6 +8991,13 @@ fsevents@~2.3.1:
   languageName: node
   linkType: hard
 
+"moo@npm:^0.5.0, moo@npm:^0.5.1":
+  version: 0.5.1
+  resolution: "moo@npm:0.5.1"
+  checksum: d637b67ae6768e3470939ee96b1916d6efdf737068b4bfce77f3f360c005a7417c0863a5aaf696c5efdb718eb09ad05239830aa6dc438b85870372c149b4fb80
+  languageName: node
+  linkType: hard
+
 "mri@npm:^1.1.5":
   version: 1.1.6
   resolution: "mri@npm:1.1.6"
@@ -9049,6 +9085,33 @@ fsevents@~2.3.1:
   version: 1.4.0
   resolution: "natural-compare@npm:1.4.0"
   checksum: 2daf93d9bb516eddb06e2e80657a605af2e494d47c65d090ba43691aaffbc41f520840f1c9d3b7b641977af950217a4ab6ffb85bafcd5dfa8ba6fe4e68c43b53
+  languageName: node
+  linkType: hard
+
+"nearley-unparse@npm:^1.0.1":
+  version: 1.0.1
+  resolution: "nearley-unparse@npm:1.0.1"
+  dependencies:
+    lodash: ^4.13.1
+    randexp: ^0.4.3
+  checksum: 042bfe4cf43c718f13fa7e3b6b57ba20c70113796da6cab3d7cfdfe5c438d05e48c6bd303d0aa0deac864c2664d033929a07255e5cd8acca813fef24b2cec775
+  languageName: node
+  linkType: hard
+
+"nearley@npm:^2.20.1":
+  version: 2.20.1
+  resolution: "nearley@npm:2.20.1"
+  dependencies:
+    commander: ^2.19.0
+    moo: ^0.5.0
+    railroad-diagrams: ^1.0.0
+    randexp: 0.4.6
+  bin:
+    nearley-railroad: bin/nearley-railroad.js
+    nearley-test: bin/nearley-test.js
+    nearley-unparse: bin/nearley-unparse.js
+    nearleyc: bin/nearleyc.js
+  checksum: 0c4bdd9230f76b4b9aa4340c186a6e07898dbb62157bb5a5f0a90f1c02ba5fd4b44e98c216bb8863cc2eaf717a14a01769d4aa4e8000046381d60ec5d44afd69
   languageName: node
   linkType: hard
 
@@ -10176,6 +10239,33 @@ fsevents@~2.3.1:
   languageName: node
   linkType: hard
 
+"railroad-diagrams@npm:^1.0.0":
+  version: 1.0.0
+  resolution: "railroad-diagrams@npm:1.0.0"
+  checksum: 070a941c45daca073fae4d9bdbaf384123cdc02b11651cc80a8b73a2f92b40b7626d8640544bfea038aac3a7aafdbabd5547165b973ba0dc07a247abdbdc2b16
+  languageName: node
+  linkType: hard
+
+"randexp@npm:0.4.6":
+  version: 0.4.6
+  resolution: "randexp@npm:0.4.6"
+  dependencies:
+    discontinuous-range: 1.0.0
+    ret: ~0.1.10
+  checksum: eb9367e0cafd89f4a40a3301c9a893cee24cdf7fb77a1e47f443bcf3e2b3c5e4203e273340c263b595354c810a7ea47f96831b148e7644e2f743363a9630f8bf
+  languageName: node
+  linkType: hard
+
+"randexp@npm:^0.4.3":
+  version: 0.4.9
+  resolution: "randexp@npm:0.4.9"
+  dependencies:
+    drange: ^1.0.0
+    ret: ^0.2.0
+  checksum: 55aeb4874632f0fca2cc5adfa2b6131cc0d0b38d61063478982dfad379330d7250460c7cd65f9dfe5b028cfb0551ad00beacf95a89657b70e030e9109b5100b2
+  languageName: node
+  linkType: hard
+
 "range-parser@npm:~1.2.1":
   version: 1.2.1
   resolution: "range-parser@npm:1.2.1"
@@ -10630,6 +10720,13 @@ fsevents@~2.3.1:
     onetime: ^5.1.0
     signal-exit: ^3.0.2
   checksum: 38e0af0830336dbc7d36b8d02e9194489dc52aaf64f41d02c427303a78552019434ad87082d67ce171a569a8be898caf7c70d5e17bd347cf6f7bd38d332d0bd4
+  languageName: node
+  linkType: hard
+
+"ret@npm:^0.2.0":
+  version: 0.2.2
+  resolution: "ret@npm:0.2.2"
+  checksum: ad260291ff71343d443016b7c6ba0831dd9a51201e621ac8cfc19ab3491ffab41d2b5e4e3a3def06568a665b37a901921f51739c5012c093f2d8582f2d39f3de
   languageName: node
   linkType: hard
 

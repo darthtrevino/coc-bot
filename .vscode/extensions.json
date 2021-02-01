@@ -4,6 +4,7 @@
 		"dbaeumer.vscode-eslint",
 		"esbenp.prettier-vscode",
 		"kumar-harsh.graphql-for-vscode",
-		"ryanluker.vscode-coverage-gutters"
+		"ryanluker.vscode-coverage-gutters",
+		"karyfoundation.nearley"
 	]
 }
