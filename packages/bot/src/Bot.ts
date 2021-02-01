@@ -59,14 +59,16 @@ export class Bot {
 		msg.reply(`\n
 __**CthulhuBot Available Commands**__
 
-\`/cc help\`                                           _Print Usage_
-\`/cc roll <number>\`                                  _Roll an ability value_
-\`/cc roll <number> with bonus die\`                   _Roll with a bonus die_
-\`/cc roll <number> with penalty die\`                 _Roll with a penalty die_
-\`/cc roll <number> with <numBonus> bonus dice\`       _Roll with a bonus dice_
-\`/cc roll <number> with <numPenalty> penalty dice\`   _Roll with penalty dice_
-\`/cc roll <number> for "label"\`                      _Label a roll_
-\`/cc roll <number> with bonus die for "label"\`       _Label a roll_
+**Rolling** 
+General Form: \`/cc roll <attribute> <bonusOrPenalty> <label>\`
+
+\`/cc help\`
+\`/cc roll <attributeScore>\`
+\`/cc roll <attributeScore>b<numBonus>\`
+\`/cc roll <attributeScore>p<numPenalty>\`
+\`/cc roll <attributeScore> "label"\`
+
+e.g. \`/cc roll 25b2 "handgun"\` rolls against a skill with a value of 25 labeled "handgun" with 2 bonus dice
 `)
 	}
 

@@ -8,7 +8,7 @@
     "types": "lib/index.d.ts"
   },
   "scripts": {
-    "build_grammar": "nearleyc commands.ne > grammar.js",
+    "build_grammar": "nearleyc grammar/commands.ne > grammar.js",
     "build_ts": "tsc -b tsconfig.json",
     "build": "run-s build_grammar",
     "start": "nodemon"
