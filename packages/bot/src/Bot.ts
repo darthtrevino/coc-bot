@@ -35,38 +35,41 @@ export class Bot {
 			console.log(
 				`command message received. channelId=${msg.reference?.channelID}, guild=${msg.guild?.id}, user=${msg.member?.user.id}`
 			)
-			if (msg.content.startsWith(CC)) {
-				const commandText = peel(msg.content, CC)
-				let command: Command
-				try {
-					command = parseCommand(commandText)
-				} catch (err) {
-					msg.reply("Oops, I didn't understand that command.")
-					return
-				}
-				console.log('command:', command)
 
-				if (command.type === CommandType.Help) {
-					this._executeHelpCommand(command as HelpCommand, msg)
-				} else if (command.type === CommandType.Roll) {
-					this._executeRollCommand(command as RollCommand, msg)
-					return
-				}
+			const commandText = peel(msg.content, CC)
+			let command: Command
+			try {
+				command = parseCommand(commandText)
+			} catch (err) {
+				msg.reply("Oops, I didn't understand that command.")
+				return
 			}
-			msg.reply("Oops, I didn't understand that command.")
+			console.log('command:', command)
+
+			if (command.type === CommandType.Help) {
+				this._executeHelpCommand(command as HelpCommand, msg)
+				return
+			} else if (command.type === CommandType.Roll) {
+				this._executeRollCommand(command as RollCommand, msg)
+				return
+			} else {
+				msg.reply("Oops, I didn't understand that command.")
+			}
 		}
 	}
 
 	private _executeHelpCommand(command: HelpCommand, msg: Discord.Message) {
-		msg.reply(`CthulhuBot Available Commands
-/cc help                                           _Print Usage_
-/cc roll <number>                                  _Roll an ability value_
-/cc roll <number> with bonus die                   _Roll with a bonus die_
-/cc roll <number> with penalty die                 _Roll with a penalty die_
-/cc roll <number> with <numBonus> bonus dice       _Roll with a bonus dice_
-/cc roll <number> with <numPenalty> penalty dice   _Roll with penalty dice_
-/cc roll <number> for "label"                      _Label a roll_
-/cc roll <number> with bonus die for "label"       _Label a roll_
+		msg.reply(`\n
+__**CthulhuBot Available Commands**__
+
+\`/cc help\`                                           _Print Usage_
+\`/cc roll <number>\`                                  _Roll an ability value_
+\`/cc roll <number> with bonus die\`                   _Roll with a bonus die_
+\`/cc roll <number> with penalty die\`                 _Roll with a penalty die_
+\`/cc roll <number> with <numBonus> bonus dice\`       _Roll with a bonus dice_
+\`/cc roll <number> with <numPenalty> penalty dice\`   _Roll with penalty dice_
+\`/cc roll <number> for "label"\`                      _Label a roll_
+\`/cc roll <number> with bonus die for "label"\`       _Label a roll_
 `)
 	}
 
