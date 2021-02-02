@@ -1,5 +1,6 @@
 import * as Discord from 'discord.js'
 import { Game } from '@cocbot/schema/lib/client-types'
+import { rollAbility, SuccessDegree } from '@cocbot/core'
 import {
 	Command,
 	HelpCommand,
@@ -8,7 +9,6 @@ import {
 	parseCommand,
 } from '@cocbot/parser'
 import { DataStore } from './DataStore'
-import { rollD10 } from './roller'
 
 const CC = '/cc'
 
@@ -82,41 +82,20 @@ e.g. \`/cc roll 25b2 "handgun"\` rolls against a skill with a value of 25 labele
 			)
 		} else {
 			const abilityValue = command.ability as number
-			const rollValue = (tens: number, ones: number) =>
-				tens === 0 && ones === 0 ? 100 : tens * 10 + ones
-			const tens = rollD10()
-			const ones = rollD10()
-			const rolls: number[] = [rollValue(tens, ones)]
-
-			const numExtraRolls = command.bonusDice || command.penaltyDice
-			if (numExtraRolls) {
-				for (let i = 0; i < numExtraRolls; ++i) {
-					rolls.push(rollValue(rollD10(), ones))
-				}
-			}
-
-			const result = command.bonusDice ? Math.min(...rolls) : Math.max(...rolls)
+			const { rolls, result, degree } = rollAbility(
+				abilityValue,
+				command.bonusDice || 0,
+				command.penaltyDice || 0
+			)
 			const bonusInfo = rolls.length > 1 ? ` (out of ${rolls.join(', ')})` : ''
-			let successLevel = 'Failure'
+			const successLevel = printSuccessDegree(degree)
 			const extremeThresheld = Math.floor(abilityValue / 5)
 			const hardThreshold = Math.floor(abilityValue / 2)
-			if (result === 100) {
-				successLevel = 'Critical Failure'
-			} else if (result === 1) {
-				successLevel = 'Critical Success'
-			} else if (result < extremeThresheld) {
-				successLevel = 'Extreme Success'
-			} else if (result < hardThreshold) {
-				successLevel = 'Hard Success'
-			} else if (result < abilityValue) {
-				successLevel = 'Success'
-			}
-
 			const forLabel = command.label ? ` for ${command.label}` : ''
 			const resultMessage = `You rolled **${result}**${bonusInfo}, **${successLevel}**${forLabel}.
-Success: ${abilityValue}
-Hard Success: ${hardThreshold}
-Extreme Success: ${extremeThresheld}
+  Success: ${abilityValue}
+  Hard Success: ${hardThreshold}
+  Extreme Success: ${extremeThresheld}
 `
 			await msg.reply(resultMessage)
 		}
@@ -141,4 +120,21 @@ function describeGame(game: Game): string {
 	**Description**: _${description}_
 	**Code**: _TBD_
 	`
+}
+
+function printSuccessDegree(deg: SuccessDegree): string {
+	switch (deg) {
+		case SuccessDegree.CriticalFailure:
+			return 'Critical Failure'
+		case SuccessDegree.CriticalSuccess:
+			return 'Critical Success'
+		case SuccessDegree.ExtremeSuccess:
+			return 'Extreme Success'
+		case SuccessDegree.Failure:
+			return 'Failure'
+		case SuccessDegree.HardSuccess:
+			return 'Hard Success'
+		case SuccessDegree.Success:
+			return 'Success'
+	}
 }
