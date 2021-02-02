@@ -4,9 +4,12 @@
 		"target": "es6",
 		"outDir": "dist",
 		"esModuleInterop": true,
-		"rootDir": ".",
 		"sourceMap": true,
 		"strict": false,
-		"baseUrl": "./"
+		"baseUrl": "./",
+		"paths": {
+			"@cocbot/core": ["../core"],
+			"@cocbot/schema": ["../schema"]
+		}
 	}
 }

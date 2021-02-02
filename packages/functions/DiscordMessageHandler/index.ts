@@ -1,5 +1,6 @@
 import { AzureFunction, Context, HttpRequest } from '@azure/functions'
 import nacl from 'tweetnacl'
+import { handleDiscordCommand } from './handleDiscordCommand'
 
 // Your public key can be found on your application in the Developer Portal
 const PUBLIC_KEY = process.env.BOT_PUBLIC_KEY
@@ -26,6 +27,7 @@ const httpTrigger: AzureFunction = async function (
 				}),
 			}
 		} else {
+			const result = handleDiscordCommand(req.body.data)
 			context.res = {
 				headers: {
 					'Content-Type': 'application/json',
@@ -33,7 +35,7 @@ const httpTrigger: AzureFunction = async function (
 				body: JSON.stringify({
 					type: 4,
 					data: {
-						content: 'congrats on sending your command',
+						content: result,
 					},
 				}),
 			}
