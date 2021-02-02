@@ -1,10 +1,8 @@
 import fetch from 'node-fetch'
+import { commandData } from './coc_command'
 const botToken = process.env.BOT_TOKEN
 const clientId = process.env.BOT_CLIENT_ID
 const apiEndpoint = `https://discord.com/api/v8/applications/${clientId}/commands`
-
-/* eslint-disable-next-line @typescript-eslint/no-var-requires */
-const commandData = require('./BOT_CLI.json')
 
 async function main() {
 	const response = await fetch(apiEndpoint, {

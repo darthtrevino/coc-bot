@@ -28,7 +28,7 @@ const httpTrigger: AzureFunction = async function (
 				}),
 			}
 		} else {
-			const result = handleDiscordCommand(req.body.data)
+			const result = handleDiscordCommand(req.body)
 			context.res = {
 				headers: {
 					'Content-Type': 'application/json',
@@ -37,6 +37,9 @@ const httpTrigger: AzureFunction = async function (
 					type: 4,
 					data: {
 						content: result,
+						allowed_mentions: {
+							parse: ['users'],
+						},
 					},
 				}),
 			}
