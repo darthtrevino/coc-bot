@@ -5,6 +5,7 @@
 		"esbenp.prettier-vscode",
 		"kumar-harsh.graphql-for-vscode",
 		"ryanluker.vscode-coverage-gutters",
-		"karyfoundation.nearley"
+		"karyfoundation.nearley",
+		"ms-azuretools.vscode-azurefunctions"
 	]
 }

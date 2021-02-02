@@ -1,0 +1,17 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"type": "func",
+			"command": "host start",
+			"problemMatcher": "$func-node-watch",
+			"isBackground": true,
+			"dependsOn": "npm build"
+		},
+		{
+			"type": "shell",
+			"label": "webpack",
+			"command": "cd packages/functions && yarn webpack"
+		}
+	]
+}

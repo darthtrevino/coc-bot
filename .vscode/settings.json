@@ -7,5 +7,10 @@
 	"prettier.prettierPath": ".yarn/sdks/prettier/index.js",
 	"typescript.tsdk": ".yarn/sdks/typescript/lib",
 	"typescript.enablePromptUseWorkspaceTsdk": true,
-	"files.eol": "\n"
+	"files.eol": "\n",
+	"azureFunctions.deploySubpath": "./packages/functions",
+	"azureFunctions.projectLanguage": "TypeScript",
+	"azureFunctions.projectRuntime": "~3",
+	"debug.internalConsoleOptions": "neverOpen",
+	"azureFunctions.preDeployTask": "webpack"
 }
