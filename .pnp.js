@@ -3085,9 +3085,12 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageDependencies": [
             ["@cocbot/azure-functions", "workspace:packages/functions"],
             ["@azure/functions", "npm:1.2.3"],
+            ["@cocbot/core", "workspace:packages/core"],
             ["@cocbot/parser", "workspace:packages/parser"],
             ["@types/node", "npm:14.14.22"],
+            ["@types/rimraf", "npm:3.0.0"],
             ["node-fetch", "npm:2.6.1"],
+            ["rimraf", "npm:3.0.2"],
             ["ts-loader", "virtual:349832316ceec2d5509404d036693b26aa10caa2640fa4c56f06e68d5be8868f41bd22177963f4d472eb756cbf35341fc36c4776ac25b7a7439192c1d99fb5ef#npm:8.0.14"],
             ["tsconfig-paths-webpack-plugin", "npm:3.3.0"],
             ["tweetnacl", "npm:1.0.3"],
