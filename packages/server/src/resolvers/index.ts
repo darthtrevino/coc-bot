@@ -3,12 +3,11 @@ import { GraphQLResolveInfo } from './graphql'
 
 export const resolvers: Resolvers = {
 	Query: {
-		Games: (
-			parent: unknown,
-			args: {},
-			context: {},
-			info: GraphQLResolveInfo
-		): Game[] => {
+		Games: (): // parent: unknown,
+		// args: unknown,
+		// context: unknown,
+		// info: GraphQLResolveInfo
+		Game[] => {
 			return [
 				{
 					id: '1',

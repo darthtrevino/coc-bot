@@ -1,6 +1,7 @@
 .yarn/
 .pnp.js
 yarn.lock
+grammar.js
 
 packages/*/dist/
 packages/*/lib/

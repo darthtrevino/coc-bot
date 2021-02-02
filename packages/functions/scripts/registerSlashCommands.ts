@@ -16,7 +16,7 @@ async function main() {
 		},
 	})
 	const json = await response.json()
-	const { code, errors, message } = json
+	const { errors } = json
 	console.log(json, errors?.name?._errors)
 }
 main()
