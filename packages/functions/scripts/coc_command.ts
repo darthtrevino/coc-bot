@@ -7,20 +7,14 @@ export const commandData = {
 	options: [
 		{
 			name: 'roll',
-			description: 'Roll on a skill',
+			description: 'Roll against an attribute/skill',
 			type: 1,
 			options: [
 				{
-					name: 'expr',
-					description: 'The shorthand roll expression (e.g. 15b, 25b2, 12p2)',
-					type: STRING_TYPE,
-					required: false,
-				},
-				{
 					name: 'target',
-					description: 'The target value to roll against',
+					description: 'The target skill or attribute value to roll against',
 					type: INT_TYPE,
-					required: false,
+					required: true,
 				},
 				{
 					name: 'bonus',
@@ -33,6 +27,26 @@ export const commandData = {
 					description: 'The number of penalty dice to use',
 					type: INT_TYPE,
 					required: false,
+				},
+				{
+					name: 'label',
+					description: 'The roll label',
+					type: STRING_TYPE,
+					required: false,
+				},
+			],
+		},
+		{
+			name: 'r',
+			description: 'Roll against an attribute/skill (terse form)',
+			type: 1,
+			options: [
+				{
+					name: 'expr',
+					description:
+						'The roll expression <target>(b|p)<numDice>. (e.g. 25b, 25b2, 25p1) ',
+					type: STRING_TYPE,
+					required: true,
 				},
 				{
 					name: 'label',

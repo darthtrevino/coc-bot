@@ -1,5 +1,5 @@
 import fetch from 'node-fetch'
-import { commandData } from './command'
+import { commandData } from './coc_command'
 const botToken = process.env.BOT_TOKEN
 const clientId = process.env.BOT_CLIENT_ID
 const apiEndpoint = `https://discord.com/api/v8/applications/${clientId}/commands`
