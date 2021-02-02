@@ -83,9 +83,9 @@ function printRollResult(
 	const successLevel = printSuccessDegree(degree)
 	const forLabel = label ? ` for ${label}` : ''
 	return `**${result}**${bonusInfo}, **${successLevel}**${forLabel}.
-  Success: ${thresholds[SuccessDegree.Success]}
-  Hard Success: ${thresholds[SuccessDegree.HardSuccess]}
-	Extreme Success: ${thresholds[SuccessDegree.ExtremeSuccess]}
+\tSuccess: ${thresholds[SuccessDegree.Success]}
+\tHard Success: ${thresholds[SuccessDegree.HardSuccess]}
+\tExtreme Success: ${thresholds[SuccessDegree.ExtremeSuccess]}
 `
 }
 
