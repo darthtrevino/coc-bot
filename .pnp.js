@@ -3134,6 +3134,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageDependencies": [
             ["@cocbot/core", "workspace:packages/core"],
             ["@types/jest", "npm:26.0.20"],
+            ["@types/node", "npm:14.14.22"],
             ["@types/rimraf", "npm:3.0.0"],
             ["rimraf", "npm:3.0.2"],
             ["typescript", "patch:typescript@npm%3A4.1.3#builtin<compat/typescript>::version=4.1.3&hash=cc6730"]
