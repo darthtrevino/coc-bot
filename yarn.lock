@@ -1528,9 +1528,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@cocbot/azure-functions@workspace:packages/functions":
+"@cocbot/azure-functions@workspace:packages/az-functions":
   version: 0.0.0-use.local
-  resolution: "@cocbot/azure-functions@workspace:packages/functions"
+  resolution: "@cocbot/azure-functions@workspace:packages/az-functions"
   dependencies:
     "@azure/functions": ^1.2.3
     "@cocbot/core": "workspace:packages/core"
