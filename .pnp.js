@@ -3092,6 +3092,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["node-fetch", "npm:2.6.1"],
             ["rimraf", "npm:3.0.2"],
             ["ts-loader", "virtual:349832316ceec2d5509404d036693b26aa10caa2640fa4c56f06e68d5be8868f41bd22177963f4d472eb756cbf35341fc36c4776ac25b7a7439192c1d99fb5ef#npm:8.0.14"],
+            ["ts-node", "virtual:349832316ceec2d5509404d036693b26aa10caa2640fa4c56f06e68d5be8868f41bd22177963f4d472eb756cbf35341fc36c4776ac25b7a7439192c1d99fb5ef#npm:9.1.1"],
             ["tsconfig-paths-webpack-plugin", "npm:3.3.0"],
             ["tweetnacl", "npm:1.0.3"],
             ["typescript", "patch:typescript@npm%3A3.9.7#builtin<compat/typescript>::version=3.9.7&hash=cc6730"],
@@ -16030,6 +16031,25 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["make-error", "npm:1.3.6"],
             ["source-map-support", "npm:0.5.19"],
             ["typescript", null],
+            ["yn", "npm:3.1.1"]
+          ],
+          "packagePeers": [
+            "@types/typescript",
+            "typescript"
+          ],
+          "linkType": "HARD",
+        }],
+        ["virtual:349832316ceec2d5509404d036693b26aa10caa2640fa4c56f06e68d5be8868f41bd22177963f4d472eb756cbf35341fc36c4776ac25b7a7439192c1d99fb5ef#npm:9.1.1", {
+          "packageLocation": "./.yarn/$$virtual/ts-node-virtual-3215f8cbeb/0/cache/ts-node-npm-9.1.1-4ad31da228-a90db4a342.zip/node_modules/ts-node/",
+          "packageDependencies": [
+            ["ts-node", "virtual:349832316ceec2d5509404d036693b26aa10caa2640fa4c56f06e68d5be8868f41bd22177963f4d472eb756cbf35341fc36c4776ac25b7a7439192c1d99fb5ef#npm:9.1.1"],
+            ["@types/typescript", null],
+            ["arg", "npm:4.1.3"],
+            ["create-require", "npm:1.1.1"],
+            ["diff", "npm:4.0.2"],
+            ["make-error", "npm:1.3.6"],
+            ["source-map-support", "npm:0.5.19"],
+            ["typescript", "patch:typescript@npm%3A3.9.7#builtin<compat/typescript>::version=3.9.7&hash=cc6730"],
             ["yn", "npm:3.1.1"]
           ],
           "packagePeers": [
