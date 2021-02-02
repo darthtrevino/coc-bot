@@ -32,13 +32,16 @@ function handleDiscordRollCommand(command: DiscordCommand): string {
 	const penaltyDie =
 		((command.options.find((t) => t.name === 'penalty') as DiscordOption)
 			?.value as number) || 0
+	const label =
+		((command.options.find((t) => t.name === 'label') as DiscordOption)
+			?.value as number) || ''
 
 	const result = rollAbility(skill, bonusDie, penaltyDie)
 
 	const bonusInfo =
 		result.rolls.length > 1 ? ` (out of ${result.rolls.join(', ')})` : ''
 	const successLevel = printSuccessDegree(result.degree)
-	const forLabel = ''
+	const forLabel = label ? ` for ${label}` : ''
 	return `You rolled **${
 		result.result
 	}**${bonusInfo}, **${successLevel}**${forLabel}.

@@ -17,6 +17,7 @@ const httpTrigger: AzureFunction = async function (
 		}
 
 		// Ack Setup
+		context.log('received', JSON.stringify(req.body, null, 4))
 		if (req.body.type === 1) {
 			context.res = {
 				headers: {
