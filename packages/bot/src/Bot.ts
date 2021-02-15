@@ -114,18 +114,18 @@ e.g. \`/cc roll 25b2 "handgun"\` rolls against a skill with a value of 25 labele
 			const extremeThresheld = Math.floor(abilityValue / 5)
 			const hardThreshold = Math.floor(abilityValue / 2)
 			const forLabel = command.label ? ` for ${command.label}` : ''
-			let response = `**${title} (${result})**${forLabel}. ${bonusInfo}`
+			let response = `**You rolled ${result}, ${title}**${forLabel}. ${bonusInfo}`
 			if (degree < SuccessDegree.Success) {
 				const diff = result - abilityValue
-				response += `\n  Success: ${abilityValue} *(burn ${diff})*`
+				response += `\n  Success: **${abilityValue}**, *burn ${diff}*`
 			}
 			if (degree < SuccessDegree.HardSuccess) {
 				const diff = result - hardThreshold
-				response += `\n  Hard Success: ${hardThreshold} *(burn ${diff})*`
+				response += `\n  Hard Success: **${hardThreshold}**, *burn ${diff}*`
 			}
 			if (degree < SuccessDegree.ExtremeSuccess) {
 				const diff = result - extremeThresheld
-				response += `\n  Extreme Success: ${extremeThresheld} *(burn ${diff})*`
+				response += `\n  Extreme Success: **${extremeThresheld}**, *burn ${diff}*`
 			}
 			return response
 		}
