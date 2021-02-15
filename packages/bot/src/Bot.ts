@@ -11,6 +11,7 @@ import {
 import { DataStore } from './DataStore'
 
 const CC = '/cc'
+type DiscordResponse = string | Discord.MessageEmbed
 
 export class Bot {
 	private client = new Discord.Client()
@@ -89,16 +90,16 @@ e.g. \`/cc roll 25b2 "handgun"\` rolls against a skill with a value of 25 labele
 		command: RollCommand,
 		msg: Discord.Message
 	): Promise<void> {
-		let resultMessage = "Oops, I didn't understand that command."
+		let response: DiscordResponse = "Oops, I didn't understand that command."
 		if (command.ability != null) {
-			resultMessage = this._executeCocRoll(command)
+			response = this._executeCocRoll(command)
 		} else if (command.expr != null) {
-			resultMessage = this._executeDieExpressionRoll(command)
+			response = this._executeDieExpressionRoll(command)
 		}
-		await msg.reply(resultMessage)
+		await msg.reply(response)
 	}
 
-	private _executeCocRoll(command: RollCommand): string {
+	private _executeCocRoll(command: RollCommand): DiscordResponse {
 		if (typeof command.ability === 'string') {
 			return `I can't handle ability names just yet. Try rolling against your ability value (e.g. roll against 75)`
 		} else {
@@ -109,15 +110,24 @@ e.g. \`/cc roll 25b2 "handgun"\` rolls against a skill with a value of 25 labele
 				command.penaltyDice || 0
 			)
 			const bonusInfo = rolls.length > 1 ? ` (out of ${rolls.join(', ')})` : ''
-			const successLevel = printSuccessDegree(degree)
+			const title = printSuccessDegree(degree)
 			const extremeThresheld = Math.floor(abilityValue / 5)
 			const hardThreshold = Math.floor(abilityValue / 2)
 			const forLabel = command.label ? ` for ${command.label}` : ''
-			return `You rolled **${result}**${bonusInfo}, **${successLevel}**${forLabel}.
-	Success: ${abilityValue}
-	Hard Success: ${hardThreshold}
-	Extreme Success: ${extremeThresheld}
-`
+			let response = `**${title} (${result})**${forLabel}. ${bonusInfo}`
+			if (degree < SuccessDegree.Success) {
+				const diff = result - abilityValue
+				response += `\n  Success: ${abilityValue} *(burn ${diff})*`
+			}
+			if (degree < SuccessDegree.HardSuccess) {
+				const diff = result - hardThreshold
+				response += `\n  Hard Success: ${hardThreshold} *(burn ${diff})*`
+			}
+			if (degree < SuccessDegree.ExtremeSuccess) {
+				const diff = result - extremeThresheld
+				response += `\n  Extreme Success: ${extremeThresheld} *(burn ${diff})*`
+			}
+			return response
 		}
 	}
 
