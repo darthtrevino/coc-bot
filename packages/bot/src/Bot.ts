@@ -26,6 +26,10 @@ export class Bot {
 		return await this.client.login(token)
 	}
 
+	public get uptime(): number | null {
+		return this.client.uptime
+	}
+
 	private _handleReady = (): void => {
 		console.log(`Logged in as ${this.client.user?.tag}!`)
 	}

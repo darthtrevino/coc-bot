@@ -14,6 +14,7 @@ const config = {
 		'dotenv',
 		'graphql',
 		'graphql-request',
+		'express',
 	],
 	plugins: [
 		alias({

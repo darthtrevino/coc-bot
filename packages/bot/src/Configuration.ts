@@ -15,6 +15,10 @@ export class Configuration {
 		return this.config.get<string>('service.url')
 	}
 
+	public get botServicePort(): number {
+		return this.config.get<number>('botService.port')
+	}
+
 	public get debug(): boolean {
 		return process.env.DEBUG != null && process.env.DEBUG !== 'false'
 	}

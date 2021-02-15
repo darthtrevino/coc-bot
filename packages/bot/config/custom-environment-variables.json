@@ -6,5 +6,8 @@
 	},
 	"service": {
 		"url": "SERVICE_URL"
+	},
+	"botService": {
+		"port": "PORT"
 	}
 }

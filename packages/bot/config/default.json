@@ -6,5 +6,8 @@
 	},
 	"service": {
 		"url": "http://localhost:7071/"
+	},
+	"botService": {
+		"port": 8081
 	}
 }
