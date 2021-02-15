@@ -3158,10 +3158,12 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@types/jest", "npm:26.0.20"],
             ["@types/nearley", "npm:2.11.1"],
             ["@types/node", "npm:14.14.22"],
+            ["@types/rimraf", "npm:3.0.0"],
             ["nearley", "npm:2.20.1"],
             ["nearley-unparse", "npm:1.0.1"],
             ["nodemon", "npm:2.0.7"],
             ["npm-run-all", "npm:4.1.5"],
+            ["rimraf", "npm:3.0.2"],
             ["typescript", "patch:typescript@npm%3A4.1.5#builtin<compat/typescript>::version=4.1.5&hash=cc6730"]
           ],
           "linkType": "SOFT",

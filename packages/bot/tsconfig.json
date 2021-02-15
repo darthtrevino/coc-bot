@@ -5,8 +5,8 @@
 		"outDir": "lib",
 		"declaration": true,
 		"allowSyntheticDefaultImports": true,
-		"isolatedModules": true,
-		"esModuleInterop": true
+		"isolatedModules": true
 	},
-	"include": ["src"]
+	"include": ["src"],
+	"exclude": ["**/__tests__/**"]
 }
