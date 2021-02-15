@@ -68,6 +68,8 @@ General Form: \`/cc roll <attribute> <bonusOrPenalty> <label>\`
 \`/cc roll d6\`
 \`/cc roll 2d8\`
 \`/cc roll d6+2d8 #label\`
+\`/cc roll 2d20kh1 #attack-with-advantage\`
+\`/cc roll 2d20kl1 #attack-with-disadvantage\`
 
 # Call of Cthulhu Die Rolling
 \`/cc roll <attributeScore>\`
