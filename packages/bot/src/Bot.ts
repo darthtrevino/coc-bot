@@ -1,6 +1,6 @@
 import * as Discord from 'discord.js'
 import { Game } from '@cocbot/schema/lib/client-types'
-import { rollAbility, SuccessDegree } from '@cocbot/core'
+import { rollCocAbility, SuccessDegree, rollDiceExpression } from '@cocbot/core'
 import {
 	Command,
 	HelpCommand,
@@ -63,6 +63,13 @@ __**CthulhuBot Available Commands**__
 General Form: \`/cc roll <attribute> <bonusOrPenalty> <label>\`
 
 \`/cc help\`
+
+# General Die Rolling
+\`/cc roll d6\`
+\`/cc roll 2d8\`
+\`/cc roll d6+2d8 #label\`
+
+# Call of Cthulhu Die Rolling
 \`/cc roll <attributeScore>\`
 \`/cc roll <attributeScore>b<numBonus>\`
 \`/cc roll <attributeScore>p<numPenalty>\`
@@ -76,13 +83,21 @@ e.g. \`/cc roll 25b2 "handgun"\` rolls against a skill with a value of 25 labele
 		command: RollCommand,
 		msg: Discord.Message
 	): Promise<void> {
+		let resultMessage = "Oops, I didn't understand that command."
+		if (command.ability != null) {
+			resultMessage = this._executeCocRoll(command)
+		} else if (command.expr != null) {
+			resultMessage = this._executeDieExpressionRoll(command)
+		}
+		await msg.reply(resultMessage)
+	}
+
+	private _executeCocRoll(command: RollCommand): string {
 		if (typeof command.ability === 'string') {
-			msg.reply(
-				`I can't handle ability names just yet. Try rolling against your ability value (e.g. roll against 75)`
-			)
+			return `I can't handle ability names just yet. Try rolling against your ability value (e.g. roll against 75)`
 		} else {
 			const abilityValue = command.ability as number
-			const { rolls, result, degree } = rollAbility(
+			const { rolls, result, degree } = rollCocAbility(
 				abilityValue,
 				command.bonusDice || 0,
 				command.penaltyDice || 0
@@ -92,13 +107,22 @@ e.g. \`/cc roll 25b2 "handgun"\` rolls against a skill with a value of 25 labele
 			const extremeThresheld = Math.floor(abilityValue / 5)
 			const hardThreshold = Math.floor(abilityValue / 2)
 			const forLabel = command.label ? ` for ${command.label}` : ''
-			const resultMessage = `You rolled **${result}**${bonusInfo}, **${successLevel}**${forLabel}.
-  Success: ${abilityValue}
-  Hard Success: ${hardThreshold}
-  Extreme Success: ${extremeThresheld}
+			return `You rolled **${result}**${bonusInfo}, **${successLevel}**${forLabel}.
+	Success: ${abilityValue}
+	Hard Success: ${hardThreshold}
+	Extreme Success: ${extremeThresheld}
 `
-			await msg.reply(resultMessage)
 		}
+	}
+
+	private _executeDieExpressionRoll(command: RollCommand): string {
+		if (command.expr == null) {
+			throw new Error('roll expression is not defined')
+		}
+		const [value, rolls] = rollDiceExpression(command.expr)
+		const forLabel = command.label ? ` for ${command.label}` : ''
+		return `rolled [${rolls.map((r) => r).join(', ')}] => ${value}${forLabel}
+		`
 	}
 
 	private _handleListGames = async (command: string, msg: Discord.Message) => {

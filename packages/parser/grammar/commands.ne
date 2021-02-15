@@ -32,13 +32,20 @@ help -> "help"
 d -> "d"
 plus -> "+"
 minus -> "-"
+kh -> "kh"
+kl -> "kl"
 
 diceExpr -> 
   PosInt {% d => ({ value: d[0].literal }) %}
   | d PosInt {% d => ({ die: d[1].literal, count: 1 }) %}
-  | PosInt d PosInt {% d => ({ count: d[0].literal, die: d[2].literal }) %}
+  | PosInt d PosInt KeepHighestOrLowest {% d => ({ count: d[0].literal, die: d[2].literal, ...d[3] }) %}
   | diceExpr plus diceExpr {% d => ({ operation: "add", operands: [d[0], d[2]]}) %}
   | diceExpr minus diceExpr {% d => ({ operation: "subtract", operands: [d[0], d[2]]}) %}
+
+KeepHighestOrLowest -> 
+  null {% d => ({}) %}
+  | kh PosInt {% d => ({ keepHighest: d[1].literal }) %}
+  | kl PosInt {% d => ({ keepLowest: d[1].literal }) %}
 
 ability ->
   PosInt {% d => d[0].literal %} 

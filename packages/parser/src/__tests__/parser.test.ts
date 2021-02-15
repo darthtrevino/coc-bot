@@ -93,6 +93,23 @@ describe('The Command Parser', () => {
 				operands: [{ die: 20, count: 1 }, { value: 2 }],
 			})
 		})
+
+		it('can roll kh<n> kl<n> rolls', () => {
+			let result = parseCommand<RollCommand>('roll 2d6kh1')
+			expect(result.expr).toEqual({ die: 6, count: 2, keepHighest: 1 })
+
+			result = parseCommand<RollCommand>('roll 2d20kl1')
+			expect(result.expr).toEqual({ die: 20, count: 2, keepLowest: 1 })
+
+			result = parseCommand<RollCommand>('roll 2d20kl1+2d6kh2')
+			expect(result.expr).toEqual({
+				operation: 'add',
+				operands: [
+					{ die: 20, count: 2, keepLowest: 1 },
+					{ die: 6, count: 2, keepHighest: 2 },
+				],
+			})
+		})
 	})
 
 	describe('Help Command', () => {

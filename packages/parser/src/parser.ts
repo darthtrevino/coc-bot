@@ -15,6 +15,8 @@ export interface Command {
 export interface RollExpressionClause {
 	die: number
 	count: number
+	keepHighest?: number
+	keepLowest?: number
 }
 
 export interface RollExpressionOp {

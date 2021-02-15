@@ -1,4 +1,10 @@
-import { rollD10 } from './dice'
+import {
+	RollExpression,
+	RollValueExpresionClause,
+	RollExpressionOp,
+	RollExpressionClause,
+} from '@cocbot/parser'
+import { rollD10, rollDN } from './dice'
 
 export enum SuccessDegree {
 	CriticalFailure = 'critical_failure',
@@ -15,7 +21,7 @@ export interface AbilityRollResult {
 	thresholds: Partial<Record<SuccessDegree, number>>
 }
 
-export function rollAbility(
+export function rollCocAbility(
 	ability: number,
 	bonus: number,
 	penalty: number
@@ -63,5 +69,57 @@ function getSuccessLevel(result: number, ability: number): SuccessDegree {
 		return SuccessDegree.Success
 	} else {
 		return SuccessDegree.Failure
+	}
+}
+
+export function rollDiceExpression(expr: RollExpression): [number, number[]] {
+	if ((expr as RollValueExpresionClause).value != null) {
+		const valueExpression = expr as RollValueExpresionClause
+		return [valueExpression.value, []]
+	} else if ((expr as RollExpressionOp).operation != null) {
+		const opExpression = expr as RollExpressionOp
+		const children = opExpression.operands.map((o) => rollDiceExpression(o))
+		const childVal1 = children[0][0]
+		const childVal2 = children[1][0]
+		const childRolls1 = children[0][1]
+		const childRolls2 = children[1][1]
+		const childRolls = [...childRolls1, ...childRolls2]
+		let numericResult = 0
+
+		if (opExpression.operation === 'subtract') {
+			numericResult = childVal1 - childVal2
+		} else if (opExpression.operation === 'add') {
+			numericResult = childVal1 + childVal2
+		} else {
+			throw new Error(`unhandled operation ${opExpression.operation}`)
+		}
+
+		return [numericResult, childRolls]
+	} else if ((expr as RollExpressionClause).die != null) {
+		const { die, count, keepHighest, keepLowest } = expr as RollExpressionClause
+		if (count > 100) {
+			throw new Error(`cannot role > 100 dice`)
+		}
+		const rolls = []
+		for (let i = 0; i < count; ++i) {
+			rolls.push(rollDN(die))
+		}
+		const sum = (vals: number[]) => vals.reduce((p, c) => p + c, 0)
+
+		let rollResult = 0
+		if (keepHighest != null) {
+			const sorted = rolls.sort((a, b) => b - a)
+			const slice = sorted.slice(0, keepHighest)
+			rollResult = sum(slice)
+		} else if (keepLowest != null) {
+			const sorted = rolls.sort((a, b) => a - b)
+			const slice = sorted.slice(0, keepLowest)
+			rollResult = sum(slice)
+		} else {
+			rollResult = sum(rolls)
+		}
+		return [rollResult, rolls]
+	} else {
+		throw new Error(`unknown clause type: ${JSON.stringify(expr, null, 4)}`)
 	}
 }
