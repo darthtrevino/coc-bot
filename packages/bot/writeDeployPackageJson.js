@@ -6,7 +6,10 @@ const { name, version, dependencies } = require('./package.json')
 const deployPackage = {
 	name,
 	version,
-	dependencies,
+	dependencies: {
+		'discord.js': dependencies['discord.js'],
+		config: dependencies.config,
+	},
 	main: 'index.js',
 }
 
