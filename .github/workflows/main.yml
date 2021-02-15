@@ -41,9 +41,11 @@ jobs:
           BOT_TOKEN: ${{ secrets.BOT_TOKEN }}
 
       - name: Install Deployment Modules
+        if: github.ref == 'refs/heads/main'
         run: pushd packages/bot/dist && npm install && popd
 
       - name: 'Deploy to Azure WebApp'
+        if: github.ref == 'refs/heads/main'
         uses: azure/webapps-deploy@v2
         with:
           app-name: ${{ env.AZURE_WEBAPP_NAME }}
