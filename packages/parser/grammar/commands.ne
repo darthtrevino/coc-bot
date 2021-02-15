@@ -4,6 +4,8 @@ command ->
 
 rollCommand -> 
   _ roll __ ability {% d => ({ type: 'roll', ability: d[3] }) %}
+  | _ roll __ diceExpr _ {% d => ({ type: 'roll', expr: d[3], ...d[5], ...d[7] }) %}
+  | _ roll __ diceExpr __ forLabel _ {% d => ({ type: 'roll', expr: d[3], ...d[5], ...d[7] }) %}
   | _ roll __ ability __ forLabel _ {% d => ({ type: 'roll', ability: d[3], ...d[5] }) %}
   | _ roll __ ability  _ withBonusOrPenalty _ {% d => ({ type: 'roll', ability: d[3], ...d[5] }) %}
   | _ roll __ ability  _ withBonusOrPenalty __ forLabel _ {% d => ({ type: 'roll', ability: d[3], ...d[5], ...d[7] }) %}
@@ -15,8 +17,8 @@ withBonusOrPenalty ->
   | penaltyShort PosInt {% d => ({penaltyDice: d[1].literal }) %}
   
 forLabel ->
-  for __ String {% d => ({label: d[2]}) %}
-  | String {% d => ({label: d[0]}) %}
+  startComment __ _string {% d => ({label: d[2].trim()}) %}
+  | startComment _string {% d => ({label: d[1].trim()}) %}
 
 helpCommand ->
   _ help _ {% d => ({type: 'help' }) %}
@@ -25,8 +27,18 @@ roll -> "roll"
 with -> "with" | null
 bonusShort -> "b"
 penaltyShort -> "p"
-for -> "for"
+startComment -> "#"
 help -> "help"
+d -> "d"
+plus -> "+"
+minus -> "-"
+
+diceExpr -> 
+  PosInt {% d => ({ value: d[0].literal }) %}
+  | d PosInt {% d => ({ die: d[1].literal, count: 1 }) %}
+  | PosInt d PosInt {% d => ({ count: d[0].literal, die: d[2].literal }) %}
+  | diceExpr plus diceExpr {% d => ({ operation: "add", operands: [d[0], d[2]]}) %}
+  | diceExpr minus diceExpr {% d => ({ operation: "subtract", operands: [d[0], d[2]]}) %}
 
 ability ->
   PosInt {% d => d[0].literal %} 

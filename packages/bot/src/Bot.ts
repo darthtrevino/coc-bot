@@ -66,7 +66,7 @@ General Form: \`/cc roll <attribute> <bonusOrPenalty> <label>\`
 \`/cc roll <attributeScore>\`
 \`/cc roll <attributeScore>b<numBonus>\`
 \`/cc roll <attributeScore>p<numPenalty>\`
-\`/cc roll <attributeScore> "label"\`
+\`/cc roll <attributeScore> #label\`
 
 e.g. \`/cc roll 25b2 "handgun"\` rolls against a skill with a value of 25 labeled "handgun" with 2 bonus dice
 `)
