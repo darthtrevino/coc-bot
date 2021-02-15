@@ -37,11 +37,11 @@ jobs:
 
       - name: Prepare Deployment
         run: yarn predeploy:bot
+        env:
+          BOT_TOKEN: ${{ secrets.BOT_TOKEN }}
 
       - name: Install Deployment Modules
         run: pushd packages/bot/dist && npm install && popd
-        env:
-          BOT_TOKEN: ${{ secrets.BOT_TOKEN }}
 
       - name: 'Deploy to Azure WebApp'
         uses: azure/webapps-deploy@v2
