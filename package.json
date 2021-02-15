@@ -11,12 +11,12 @@
 		"bundle:all": "yarn workspaces foreach -pv run bundle",
 		"test:all": "yarn workspaces foreach -pvt run test",
 		"start:all": "yarn workspaces foreach -piv run start",
-		"unit:test": "jest --ci --coverage",
+		"test:unit": "jest --ci --coverage",
 		"lint:eslint": "eslint . --ext .js,.ts,.tsx --fix",
 		"lint:formatting": "pretty-quick --check",
 		"lint": "run-s \"lint:*\"",
 		"git_is_clean": "git diff-index --quiet HEAD",
-		"ci": "run-s build:all lint test:all unit_test git_is_clean"
+		"ci": "run-s build:all lint test:all test:unit git_is_clean"
 	},
 	"author": "",
 	"license": "MIT",
