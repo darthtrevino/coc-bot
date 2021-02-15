@@ -3134,6 +3134,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./packages/core/",
           "packageDependencies": [
             ["@cocbot/core", "workspace:packages/core"],
+            ["@cocbot/parser", "workspace:packages/parser"],
             ["@types/jest", "npm:26.0.20"],
             ["@types/node", "npm:14.14.22"],
             ["@types/rimraf", "npm:3.0.0"],

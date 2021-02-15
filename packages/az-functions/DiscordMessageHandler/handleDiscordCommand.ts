@@ -1,4 +1,4 @@
-import { AbilityRollResult, rollAbility, SuccessDegree } from '@cocbot/core'
+import { AbilityRollResult, rollCocAbility, SuccessDegree } from '@cocbot/core'
 
 export interface DiscordOption {
 	name: string
@@ -55,7 +55,7 @@ function handleDiscordRollCommand(
 	const penaltyDie = getOption(command, 'penalty', 0)
 	const label = getOption(command, 'label', '')
 
-	const rollResult = rollAbility(skill, bonusDie, penaltyDie)
+	const rollResult = rollCocAbility(skill, bonusDie, penaltyDie)
 	return `<@${member.user.id}> rolled ${printRollResult(rollResult, label)}`
 }
 

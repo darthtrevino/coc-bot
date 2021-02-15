@@ -1,3 +1,5 @@
+const SUBCOMMAND_TYPE = 1
+const SUBCOMMAND_GROUP_TYPE = 2
 const STRING_TYPE = 3
 const INT_TYPE = 4
 
@@ -5,10 +7,11 @@ export const commandData = {
 	name: 'coc',
 	description: 'Call of Cthulhu Game Commands',
 	options: [
+		// Roll on a Skill
 		{
 			name: 'roll',
 			description: 'Roll against an attribute/skill',
-			type: 1,
+			type: SUBCOMMAND_TYPE,
 			options: [
 				{
 					name: 'target',
@@ -36,13 +39,14 @@ export const commandData = {
 				},
 			],
 		},
+		// Roll terse form
 		{
 			name: 'r',
 			description: 'Roll against an attribute/skill (terse form)',
 			type: 1,
 			options: [
 				{
-					name: 'expr',
+					name: 'target',
 					description:
 						'The roll expression <target>(b|p)<numDice>. (e.g. 25b, 25b2, 25p1) ',
 					type: STRING_TYPE,
@@ -55,6 +59,49 @@ export const commandData = {
 					required: false,
 				},
 			],
+		},
+		// Game Management
+		{
+			name: 'game',
+			description: 'Game management commands',
+			type: SUBCOMMAND_GROUP_TYPE,
+			options: [
+				{
+					name: 'create',
+					description: 'Create a new game',
+					type: SUBCOMMAND_TYPE,
+					options: [
+						{
+							name: 'title',
+							type: STRING_TYPE,
+						},
+						{
+							name: 'description',
+							type: STRING_TYPE,
+						},
+					],
+				},
+				{
+					name: 'delete',
+					description: 'Delete a game',
+					type: SUBCOMMAND_TYPE,
+					options: [{ name: 'id', type: INT_TYPE }],
+				},
+				{
+					name: 'info',
+					description:
+						'View information about a game; including how to update it',
+					type: SUBCOMMAND_TYPE,
+				},
+			],
+		},
+
+		// Play Commands
+		{
+			name: 'play',
+			description: 'Game play Commands',
+			type: SUBCOMMAND_GROUP_TYPE,
+			options: {},
 		},
 	],
 }
