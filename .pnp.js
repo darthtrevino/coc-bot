@@ -3128,8 +3128,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["graphql", "npm:15.5.0"],
             ["graphql-request", "virtual:4e40f9c1be96df55f9a03b0682f703a84bd8448bbdc62683a524181dcffa1398603e35575f84465f747455bf01a2c10175299b7e374e13fb4257eca0bdc5b699#npm:3.4.0"],
             ["nodemon", "npm:2.0.7"],
+            ["npm-run-all", "npm:4.1.5"],
             ["rimraf", "npm:3.0.2"],
             ["rollup", "npm:2.39.0"],
+            ["shx", "npm:0.3.3"],
             ["ts-node", "virtual:39d954704fa42b2c9f39d092f1737a6664a59e2a9b804feb4db70a65a753aa75f688c4e1ed858f7a3db68c50be91b951438e4149c698eb9d1998e821755825f6#npm:9.1.1"],
             ["typescript", "patch:typescript@npm%3A4.1.3#builtin<compat/typescript>::version=4.1.3&hash=cc6730"]
           ],
@@ -10763,6 +10765,13 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         }]
       ]],
       ["interpret", [
+        ["npm:1.4.0", {
+          "packageLocation": "./.yarn/cache/interpret-npm-1.4.0-17b4b5b0a4-f15725d762.zip/node_modules/interpret/",
+          "packageDependencies": [
+            ["interpret", "npm:1.4.0"]
+          ],
+          "linkType": "HARD",
+        }],
         ["npm:2.2.0", {
           "packageLocation": "./.yarn/cache/interpret-npm-2.2.0-3603a544e1-c89b6aa67f.zip/node_modules/interpret/",
           "packageDependencies": [
@@ -14479,6 +14488,14 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         }]
       ]],
       ["rechoir", [
+        ["npm:0.6.2", {
+          "packageLocation": "./.yarn/cache/rechoir-npm-0.6.2-0df5f171ec-6646a6bce7.zip/node_modules/rechoir/",
+          "packageDependencies": [
+            ["rechoir", "npm:0.6.2"],
+            ["resolve", "patch:resolve@npm%3A1.20.0#builtin<compat/resolve>::version=1.20.0&hash=3388aa"]
+          ],
+          "linkType": "HARD",
+        }],
         ["npm:0.7.0", {
           "packageLocation": "./.yarn/cache/rechoir-npm-0.7.0-9bea79bab8-1d4cc8db1d.zip/node_modules/rechoir/",
           "packageDependencies": [
@@ -15300,11 +15317,34 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "linkType": "HARD",
         }]
       ]],
+      ["shelljs", [
+        ["npm:0.8.4", {
+          "packageLocation": "./.yarn/cache/shelljs-npm-0.8.4-e2890f4ce2-bdf68e3c2a.zip/node_modules/shelljs/",
+          "packageDependencies": [
+            ["shelljs", "npm:0.8.4"],
+            ["glob", "npm:7.1.6"],
+            ["interpret", "npm:1.4.0"],
+            ["rechoir", "npm:0.6.2"]
+          ],
+          "linkType": "HARD",
+        }]
+      ]],
       ["shellwords", [
         ["npm:0.1.1", {
           "packageLocation": "./.yarn/cache/shellwords-npm-0.1.1-a091a78197-3559ff5509.zip/node_modules/shellwords/",
           "packageDependencies": [
             ["shellwords", "npm:0.1.1"]
+          ],
+          "linkType": "HARD",
+        }]
+      ]],
+      ["shx", [
+        ["npm:0.3.3", {
+          "packageLocation": "./.yarn/cache/shx-npm-0.3.3-6071b4b10c-0658009ba6.zip/node_modules/shx/",
+          "packageDependencies": [
+            ["shx", "npm:0.3.3"],
+            ["minimist", "npm:1.2.5"],
+            ["shelljs", "npm:0.8.4"]
           ],
           "linkType": "HARD",
         }]

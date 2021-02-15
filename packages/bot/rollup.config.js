@@ -28,7 +28,7 @@ const config = {
 		json(),
 	],
 	output: {
-		file: path.join(__dirname, 'dist/bundle.js'),
+		file: path.join(__dirname, 'dist/index.js'),
 		format: 'cjs',
 	},
 }

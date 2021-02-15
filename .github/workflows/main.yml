@@ -12,7 +12,7 @@ on:
 
 env:
   AZURE_WEBAPP_NAME: cocbot-bot-app
-  AZURE_WEBAPP_PACKAGE_PATH: 'packages/bot'
+  AZURE_WEBAPP_PACKAGE_PATH: 'packages/bot/dist'
   NODE_VERSION: '14.x'
 
 jobs:
@@ -34,6 +34,12 @@ jobs:
 
       - name: CI Verification
         run: yarn ci
+
+      - name: Prepare Deployment
+        run: yarn predeploy:bot
+
+      - name: Install Deployment Modules
+        run: pushd packages/bot/dist && npm install && popd
 
       - name: 'Deploy to Azure WebApp'
         uses: azure/webapps-deploy@v2
