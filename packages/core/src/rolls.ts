@@ -7,12 +7,12 @@ import {
 import { rollD10, rollDN } from './dice'
 
 export enum SuccessDegree {
-	CriticalFailure = 'critical_failure',
-	Failure = 'failure',
-	Success = 'success',
-	HardSuccess = 'hard_succes',
-	ExtremeSuccess = 'extreme_success',
-	CriticalSuccess = 'critical_success',
+	CriticalFailure,
+	Failure,
+	Success,
+	HardSuccess,
+	ExtremeSuccess,
+	CriticalSuccess,
 }
 export interface AbilityRollResult {
 	result: number
