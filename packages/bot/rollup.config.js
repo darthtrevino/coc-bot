@@ -7,7 +7,14 @@ const json = require('@rollup/plugin-json')
 
 const config = {
 	input: 'lib/index.js',
-	external: ['discord.js', 'config'],
+	external: [
+		'discord.js',
+		'config',
+		'cross-fetch',
+		'dotenv',
+		'graphql',
+		'graphql-request',
+	],
 	plugins: [
 		alias({
 			entries: {

@@ -3119,12 +3119,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@types/nearley", "npm:2.11.1"],
             ["@types/node", "npm:14.14.22"],
             ["@types/rimraf", "npm:3.0.0"],
-            ["@yarnpkg/esbuild-plugin-pnp", "virtual:39d954704fa42b2c9f39d092f1737a6664a59e2a9b804feb4db70a65a753aa75f688c4e1ed858f7a3db68c50be91b951438e4149c698eb9d1998e821755825f6#npm:0.0.1"],
             ["config", "npm:3.3.3"],
             ["cross-fetch", "npm:3.0.6"],
             ["discord.js", "npm:12.5.1"],
             ["dotenv", "npm:8.2.0"],
-            ["esbuild", "npm:0.8.46"],
             ["graphql", "npm:15.5.0"],
             ["graphql-request", "virtual:4e40f9c1be96df55f9a03b0682f703a84bd8448bbdc62683a524181dcffa1398603e35575f84465f747455bf01a2c10175299b7e374e13fb4257eca0bdc5b699#npm:3.4.0"],
             ["nodemon", "npm:2.0.7"],
@@ -5860,29 +5858,6 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/cache/@xtuc-long-npm-4.2.2-37236e6d72-ec09a359f9.zip/node_modules/@xtuc/long/",
           "packageDependencies": [
             ["@xtuc/long", "npm:4.2.2"]
-          ],
-          "linkType": "HARD",
-        }]
-      ]],
-      ["@yarnpkg/esbuild-plugin-pnp", [
-        ["npm:0.0.1", {
-          "packageLocation": "./.yarn/cache/@yarnpkg-esbuild-plugin-pnp-npm-0.0.1-d41e416c1a-ae0bdbfb50.zip/node_modules/@yarnpkg/esbuild-plugin-pnp/",
-          "packageDependencies": [
-            ["@yarnpkg/esbuild-plugin-pnp", "npm:0.0.1"]
-          ],
-          "linkType": "SOFT",
-        }],
-        ["virtual:39d954704fa42b2c9f39d092f1737a6664a59e2a9b804feb4db70a65a753aa75f688c4e1ed858f7a3db68c50be91b951438e4149c698eb9d1998e821755825f6#npm:0.0.1", {
-          "packageLocation": "./.yarn/$$virtual/@yarnpkg-esbuild-plugin-pnp-virtual-0473016f07/0/cache/@yarnpkg-esbuild-plugin-pnp-npm-0.0.1-d41e416c1a-ae0bdbfb50.zip/node_modules/@yarnpkg/esbuild-plugin-pnp/",
-          "packageDependencies": [
-            ["@yarnpkg/esbuild-plugin-pnp", "virtual:39d954704fa42b2c9f39d092f1737a6664a59e2a9b804feb4db70a65a753aa75f688c4e1ed858f7a3db68c50be91b951438e4149c698eb9d1998e821755825f6#npm:0.0.1"],
-            ["@types/esbuild", null],
-            ["esbuild", "npm:0.8.46"],
-            ["tslib", "npm:1.14.1"]
-          ],
-          "packagePeers": [
-            "@types/esbuild",
-            "esbuild"
           ],
           "linkType": "HARD",
         }]
@@ -8716,15 +8691,6 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["is-callable", "npm:1.2.2"],
             ["is-date-object", "npm:1.0.2"],
             ["is-symbol", "npm:1.0.3"]
-          ],
-          "linkType": "HARD",
-        }]
-      ]],
-      ["esbuild", [
-        ["npm:0.8.46", {
-          "packageLocation": "./.yarn/unplugged/esbuild-npm-0.8.46-ed38f30a24/node_modules/esbuild/",
-          "packageDependencies": [
-            ["esbuild", "npm:0.8.46"]
           ],
           "linkType": "HARD",
         }]

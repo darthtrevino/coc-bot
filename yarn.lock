@@ -1565,12 +1565,10 @@ __metadata:
     "@types/nearley": ^2.11.1
     "@types/node": ^14.14.22
     "@types/rimraf": ^3.0.0
-    "@yarnpkg/esbuild-plugin-pnp": ^0.0.1
     config: ^3.3.3
     cross-fetch: ^3.0.6
     discord.js: ^12.5.1
     dotenv: ^8.2.0
-    esbuild: ^0.8.46
     graphql: ^15.5.0
     graphql-request: ^3.4.0
     nodemon: ^2.0.7
@@ -3605,19 +3603,6 @@ __metadata:
   version: 4.2.2
   resolution: "@xtuc/long@npm:4.2.2"
   checksum: ec09a359f98e9f8c47bf6c965e73b520a1a65e93f1febf6472babc8b6b0b425a2084452be103da5be11aec8c502ecfa29400713d55ef774579d04f691db44a2d
-  languageName: node
-  linkType: hard
-
-"@yarnpkg/esbuild-plugin-pnp@npm:^0.0.1":
-  version: 0.0.1
-  resolution: "@yarnpkg/esbuild-plugin-pnp@npm:0.0.1"
-  dependencies:
-    tslib: ^1.13.0
-  peerDependencies:
-    esbuild: ^0.8.36
-  bin:
-    esbuild-plugin-pnp: ./lib/cli.js
-  checksum: ae0bdbfb5061cdbf92e005cbc6cd1e606445498c27db6032412f5121dcfdb9f9534b1e03d2a6494516ea6b3a0d1554fc5802ec4e1af0601cf4a78eca4d263d08
   languageName: node
   linkType: hard
 
@@ -5933,15 +5918,6 @@ __metadata:
     is-date-object: ^1.0.1
     is-symbol: ^1.0.2
   checksum: d20b7be268b84662469972ec7265a57d4d6a65b9bf2b73f040d75e14f9f6dbe266a1a88579162e11349f9cb70eaa17640efb515c90dab19745a904b680b14be3
-  languageName: node
-  linkType: hard
-
-"esbuild@npm:^0.8.46":
-  version: 0.8.46
-  resolution: "esbuild@npm:0.8.46"
-  bin:
-    esbuild: bin/esbuild
-  checksum: 1bcb6a4719e173df8bab1940961a75dc6c6b3afec52d226a6f6ad828959ff2365d97a0822f82f5862b9d29e7714bb23fa05958a44ccf5525509a18bce04e685f
   languageName: node
   linkType: hard
 
@@ -12575,7 +12551,7 @@ resolve@^1.19.0:
   languageName: node
   linkType: hard
 
-"tslib@npm:^1.10.0, tslib@npm:^1.13.0, tslib@npm:^1.14.1, tslib@npm:^1.8.1, tslib@npm:^1.9.0, tslib@npm:^1.9.3":
+"tslib@npm:^1.10.0, tslib@npm:^1.14.1, tslib@npm:^1.8.1, tslib@npm:^1.9.0, tslib@npm:^1.9.3":
   version: 1.14.1
   resolution: "tslib@npm:1.14.1"
   checksum: f44fe7f216946b17d3e3074df3746372703cf24e9127b4c045511456e8e4bf25515fb0a1bb3937676cc305651c5d4fcb6377b0588a4c6a957e748c4c28905d17
