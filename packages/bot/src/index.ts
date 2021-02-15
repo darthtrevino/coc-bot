@@ -41,6 +41,8 @@ async function startBot(config: Configuration): Promise<void> {
 	const identityToken = config.discordIdentityToken
 	if (identityToken == null) {
 		throw new Error('Discord identity token is not defined')
+	} else {
+		console.log(`connecting with token ${identityToken}`)
 	}
 	await bot.connect(identityToken)
 	await createHealthService(bot, config)
