@@ -4,7 +4,7 @@
 	"description": "Call of Cthulhu Game Services",
 	"main": "lib/index.js",
 	"scripts": {
-		"clean": "rimraf lib",
+		"clean": "rimraf lib dist",
 		"start": "nodemon",
 		"build": "tsc -b .",
 		"bundle": "rollup -c rollup.config.js",
