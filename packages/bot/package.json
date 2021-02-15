@@ -9,9 +9,8 @@
 		"build": "tsc -b .",
 		"bundle": "rollup -c rollup.config.js",
 		"writeDeployPackageJson": "node writeDeployPackageJson",
-		"writeDeployEnvFile": "node writeDeployEnvFile",
 		"copyConfiguration": "shx cp -r config/ dist/",
-		"predeploy:bot": "run-s writeDeployPackageJson writeDeployEnvFile copyConfiguration"
+		"predeploy:bot": "run-s writeDeployPackageJson copyConfiguration"
 	},
 	"author": "",
 	"license": "MIT",
