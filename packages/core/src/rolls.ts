@@ -72,29 +72,33 @@ function getSuccessLevel(result: number, ability: number): SuccessDegree {
 	}
 }
 
-export function rollDiceExpression(expr: RollExpression): [number, number[]] {
+export interface DiceExpressionRollResult {
+	value: number
+	rolls: number[]
+}
+export function rollDiceExpression(
+	expr: RollExpression
+): DiceExpressionRollResult {
 	if ((expr as RollValueExpresionClause).value != null) {
 		const valueExpression = expr as RollValueExpresionClause
-		return [valueExpression.value, []]
+		return { value: valueExpression.value, rolls: [] }
 	} else if ((expr as RollExpressionOp).operation != null) {
 		const opExpression = expr as RollExpressionOp
 		const children = opExpression.operands.map((o) => rollDiceExpression(o))
-		const childVal1 = children[0][0]
-		const childVal2 = children[1][0]
-		const childRolls1 = children[0][1]
-		const childRolls2 = children[1][1]
-		const childRolls = [...childRolls1, ...childRolls2]
+		const { value: val1, rolls: rolls1 } = children[0]
+		const { value: val2, rolls: rolls2 } = children[1]
+		const childRolls = [...rolls1, ...rolls2]
 		let numericResult = 0
 
 		if (opExpression.operation === 'subtract') {
-			numericResult = childVal1 - childVal2
+			numericResult = val1 - val2
 		} else if (opExpression.operation === 'add') {
-			numericResult = childVal1 + childVal2
+			numericResult = val1 + val2
 		} else {
 			throw new Error(`unhandled operation ${opExpression.operation}`)
 		}
 
-		return [numericResult, childRolls]
+		return { value: numericResult, rolls: childRolls }
 	} else if ((expr as RollExpressionClause).die != null) {
 		const { die, count, keepHighest, keepLowest } = expr as RollExpressionClause
 		if (count > 100) {
@@ -106,19 +110,19 @@ export function rollDiceExpression(expr: RollExpression): [number, number[]] {
 		}
 		const sum = (vals: number[]) => vals.reduce((p, c) => p + c, 0)
 
-		let rollResult = 0
+		let value = 0
 		if (keepHighest != null) {
 			const sorted = rolls.sort((a, b) => b - a)
 			const slice = sorted.slice(0, keepHighest)
-			rollResult = sum(slice)
+			value = sum(slice)
 		} else if (keepLowest != null) {
 			const sorted = rolls.sort((a, b) => a - b)
 			const slice = sorted.slice(0, keepLowest)
-			rollResult = sum(slice)
+			value = sum(slice)
 		} else {
-			rollResult = sum(rolls)
+			value = sum(rolls)
 		}
-		return [rollResult, rolls]
+		return { value, rolls }
 	} else {
 		throw new Error(`unknown clause type: ${JSON.stringify(expr, null, 4)}`)
 	}

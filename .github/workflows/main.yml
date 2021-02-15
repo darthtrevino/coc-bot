@@ -1,8 +1,5 @@
-# This is a basic workflow to help you get started with Actions
-
 name: CI
 
-# Controls when the action will run.
 on:
   # Triggers the workflow on push or pull request events but only for the master branch
   push:
@@ -13,22 +10,21 @@ on:
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
 
-# A workflow run is made up of one or more jobs that can run sequentially or in parallel
-jobs:
-  # This workflow contains a single job called "build"
-  build:
-    # The type of runner that the job will run on
-    runs-on: ubuntu-latest
+env:
+  AZURE_WEBAPP_NAME: cocbot-bot-app
+  AZURE_WEBAPP_PACKAGE_PATH: 'packages/bot/dist'
+  NODE_VERSION: '14.x'
 
-    # Steps represent a sequence of tasks that will be executed as part of the job
+jobs:
+  build:
+    runs-on: ubuntu-latest
     steps:
-      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
 
       - name: Setup Node.js environment
         uses: actions/setup-node@v2.1.4
         with:
-          node-version: 14.x
+          node-version: ${{ env.NODE_VERSION }}
 
       - name: Install Yarn Tooling
         run: npm i -g yarn
@@ -38,3 +34,20 @@ jobs:
 
       - name: CI Verification
         run: yarn ci
+
+      - name: Prepare Deployment
+        run: yarn predeploy:bot
+        env:
+          BOT_TOKEN: ${{ secrets.BOT_TOKEN }}
+
+      - name: Install Deployment Modules
+        if: github.ref == 'refs/heads/main'
+        run: pushd packages/bot/dist && npm install && popd
+
+      - name: 'Deploy to Azure WebApp'
+        if: github.ref == 'refs/heads/main'
+        uses: azure/webapps-deploy@v2
+        with:
+          app-name: ${{ env.AZURE_WEBAPP_NAME }}
+          publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE }}
+          package: ${{ env.AZURE_WEBAPP_PACKAGE_PATH }}

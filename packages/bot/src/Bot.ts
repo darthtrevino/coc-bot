@@ -26,6 +26,10 @@ export class Bot {
 		return await this.client.login(token)
 	}
 
+	public get uptime(): number | null {
+		return this.client.uptime
+	}
+
 	private _handleReady = (): void => {
 		console.log(`Logged in as ${this.client.user?.tag}!`)
 	}
@@ -121,7 +125,7 @@ e.g. \`/cc roll 25b2 "handgun"\` rolls against a skill with a value of 25 labele
 		if (command.expr == null) {
 			throw new Error('roll expression is not defined')
 		}
-		const [value, rolls] = rollDiceExpression(command.expr)
+		const { value, rolls } = rollDiceExpression(command.expr)
 		const forLabel = command.label ? ` for ${command.label}` : ''
 		return `rolled [${rolls.map((r) => r).join(', ')}] => ${value}${forLabel}
 		`
