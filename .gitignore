@@ -10,3 +10,4 @@ coverage/
 packages/*/dist/
 packages/*/lib/
 .env
+ecosystem.config.js
