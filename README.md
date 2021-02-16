@@ -1,21 +1,26 @@
 # coc-bot
 
-A Discord Bot for the Call of Cthulhu TTRPG
+A Discord Bot for the Call of Cthulhu TTRPG. Features include:
+
+- Roll dice expressions and d100 ability rolls
+- Prints success thresholds & luck-burn values to achieve higher success degrees
+
+![Ability Roll](./images/ability_roll.png)
+![Dice Expression](./images/standard_dice_roll.png)
 
 ## Usage
 
-You can invite the production bot using the following link
+[Join the Bot to your Server](https://discord.com/oauth2/authorize?client_id=805146614841999371&scope=bot)
 
-[Invite the Bot](https://discord.com/oauth2/authorize?client_id=805146614841999371&scope=bot)
+****CthulhuBot Available Commands****
 
-__**CthulhuBot Available Commands**__
-
-**Rolling** 
+**Rolling**
 General Form: \`/cc roll <attribute> <bonusOrPenalty> <label>\`
 
 `/cc help`
 
 ### General Die Rolling
+
 `/cc roll d6`
 
 `/cc roll 2d8`
