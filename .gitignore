@@ -6,8 +6,25 @@
 !.yarn/sdks
 !.yarn/versions
 
-coverage/
+# Build Outputs
 packages/*/dist/
 packages/*/lib/
-.env
+packages/*/build/
+
+# Test Outputs
+coverage/
 ecosystem.config.js
+
+# Environment Files
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Misc
+.DS_Store
+.eslintcache
+
+# Logs
+*-*.log*
