@@ -1,3 +1,4 @@
 export * from './constants'
 export * from './printSuccessDegree'
-export * from './printAbilityRoll'
+export * from './printAbilityRollResult'
+export * from './printDiceExpressionResult'

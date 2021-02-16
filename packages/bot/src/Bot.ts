@@ -12,7 +12,8 @@ import {
 	HELP_MESSAGE_BOT,
 	DID_NOT_UNDERSTAND_MESSAGE,
 	ABILITY_STRINGS_NOT_IMPL,
-	printAbilityRoll,
+	printAbilityRollResult,
+	printDiceExpressionResult,
 } from '@cocbot/messages'
 
 const CC = '/cc'
@@ -92,7 +93,7 @@ export class Bot {
 				command.bonusDice || 0,
 				command.penaltyDice || 0
 			)
-			return printAbilityRoll(rollResult)
+			return printAbilityRollResult(rollResult)
 		}
 	}
 
@@ -100,10 +101,8 @@ export class Bot {
 		if (command.expr == null) {
 			throw new Error('roll expression is not defined')
 		}
-		const { value, rolls } = rollDiceExpression(command.expr)
-		const forLabel = command.label ? ` for ${command.label}` : ''
-		return `rolled [${rolls.map((r) => r).join(', ')}] => ${value}${forLabel}
-		`
+		const rollResult = rollDiceExpression(command.expr)
+		return printDiceExpressionResult(rollResult)
 	}
 }
 

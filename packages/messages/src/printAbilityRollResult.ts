@@ -1,7 +1,7 @@
 import { AbilityRollResult, SuccessDegree } from '@cocbot/core'
 import { printSuccessDegree } from './printSuccessDegree'
 
-export function printAbilityRoll(
+export function printAbilityRollResult(
 	roll: AbilityRollResult,
 	label?: string
 ): string {
