@@ -4,20 +4,21 @@ __**Available Commands**__
 **Print Usage**
 \`/cc help\`
 
-**General Die Rolling**
-\`/cc roll d6\`
-\`/cc roll 2d8\`
-\`/cc roll d6+2d8 #label\`
-\`/cc roll 2d20kh1 #attack-with-advantage\`
-\`/cc roll 2d20kl1 #attack-with-disadvantage\`
+**General Dice Rolling Examples**
+\`/cc roll d6\` (single six-sided die)
+\`/cc roll 2d8\` (two eight-sided dice)
+\`/cc d6\` (shorthand)
+\`/cc 2d8\` (shorthand)
+\`/cc d6+2d8+4 #fireball\` (add rolls, use label)
+\`/cc 2d20kh1 #attack-with-advantage\` (keep-highest form)
+\`/cc 2d20kl1 #attack-with-disadvantage\` (keep-lowest form)
 
-**Call of Cthulhu Die Rolling**
-\`/cc roll <attributeScore>\`
-\`/cc roll <attributeScore>b<numBonus>\`
-\`/cc roll <attributeScore>p<numPenalty>\`
-\`/cc roll <attributeScore> #label\`
-
-e.g. \`/cc roll 25b2 "handgun"\` rolls against a skill with a value of 25 labeled "handgun" with 2 bonus dice
+**_Call of Cthulhu_ Die Rolling Examples**
+\`/cc roll 40 #stealth\` (against an attribute score of 40, labeled for stealth)
+\`/cc roll 25b\` (with a single bonus die)
+\`/cc roll 25p\` (with a single penalty die)
+\`/cc 25b2\` (shorthand, two bonus dice)
+\`/cc 25p2\` (shorthand, twe penalty dice)
 `
 
 export const DID_NOT_UNDERSTAND_MESSAGE =
