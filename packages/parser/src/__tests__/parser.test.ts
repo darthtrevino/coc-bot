@@ -4,6 +4,8 @@ import {
 	parseCommand,
 	RollCommand,
 	RollExpressionOpType,
+	GameSubCommandType,
+	GameCommand,
 } from '../parser'
 
 describe('The Command Parser', () => {
@@ -12,6 +14,16 @@ describe('The Command Parser', () => {
 	})
 
 	describe('roll commands', () => {
+		it('can treat the roll symbol as optional', () => {
+			let result = parseCommand<RollCommand>('75')
+			expect(result.type).toEqual(CommandType.Roll)
+			expect(result.ability).toEqual(75)
+
+			result = parseCommand<RollCommand>('2d20')
+			expect(result.type).toEqual(CommandType.Roll)
+			expect(result.expr).toEqual({ die: 20, count: 2 })
+		})
+
 		it('can handle a roll command on a numeric skill value', () => {
 			const command = 'roll 100'
 			const result = parseCommand<RollCommand>(command)
@@ -148,6 +160,18 @@ describe('The Command Parser', () => {
 					{ die: 6, count: 2, keepHighest: 2 },
 				],
 			})
+		})
+	})
+
+	describe('game commands', () => {
+		it('can get help on a game command', () => {
+			let result = parseCommand<GameCommand>('game help')
+			expect(result.type).toEqual(CommandType.Game)
+			expect(result.subcommand).toEqual(GameSubCommandType.Help)
+
+			result = parseCommand<GameCommand>('game')
+			expect(result.type).toEqual(CommandType.Game)
+			expect(result.subcommand).toEqual(GameSubCommandType.Help)
 		})
 	})
 
