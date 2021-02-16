@@ -35,6 +35,7 @@
 	},
 	"dependencies": {
 		"@cocbot/core": "workspace:packages/core",
+		"@cocbot/messages": "workspace:packages/messages",
 		"@cocbot/parser": "workspace:packages/parser",
 		"@cocbot/schema": "workspace:packages/schema",
 		"config": "^3.3.3",

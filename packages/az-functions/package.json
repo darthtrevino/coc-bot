@@ -13,6 +13,7 @@
 	"dependencies": {
 		"@azure/functions": "^1.2.3",
 		"@cocbot/core": "workspace:packages/core",
+		"@cocbot/messages": "workspace:packages/messages",
 		"@cocbot/parser": "workspace:packages/parser",
 		"tweetnacl": "^1.0.3"
 	},

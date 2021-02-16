@@ -35,6 +35,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         "reference": "workspace:packages/core"
       },
       {
+        "name": "@cocbot/messages",
+        "reference": "workspace:packages/messages"
+      },
+      {
         "name": "@cocbot/parser",
         "reference": "workspace:packages/parser"
       },
@@ -53,6 +57,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
       ["@cocbot/azure-functions", ["workspace:packages/az-functions"]],
       ["@cocbot/bot", ["workspace:packages/bot"]],
       ["@cocbot/core", ["workspace:packages/core"]],
+      ["@cocbot/messages", ["workspace:packages/messages"]],
       ["@cocbot/parser", ["workspace:packages/parser"]],
       ["@cocbot/project", ["workspace:."]],
       ["@cocbot/schema", ["workspace:packages/schema"]],
@@ -3086,6 +3091,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@cocbot/azure-functions", "workspace:packages/az-functions"],
             ["@azure/functions", "npm:1.2.3"],
             ["@cocbot/core", "workspace:packages/core"],
+            ["@cocbot/messages", "workspace:packages/messages"],
             ["@cocbot/parser", "workspace:packages/parser"],
             ["@types/node", "npm:14.14.22"],
             ["@types/rimraf", "npm:3.0.0"],
@@ -3108,6 +3114,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageDependencies": [
             ["@cocbot/bot", "workspace:packages/bot"],
             ["@cocbot/core", "workspace:packages/core"],
+            ["@cocbot/messages", "workspace:packages/messages"],
             ["@cocbot/parser", "workspace:packages/parser"],
             ["@cocbot/schema", "workspace:packages/schema"],
             ["@rollup/plugin-alias", "virtual:39d954704fa42b2c9f39d092f1737a6664a59e2a9b804feb4db70a65a753aa75f688c4e1ed858f7a3db68c50be91b951438e4149c698eb9d1998e821755825f6#npm:3.1.2"],
@@ -3142,6 +3149,22 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         ["workspace:packages/core", {
           "packageLocation": "./packages/core/",
           "packageDependencies": [
+            ["@cocbot/core", "workspace:packages/core"],
+            ["@cocbot/parser", "workspace:packages/parser"],
+            ["@types/jest", "npm:26.0.20"],
+            ["@types/node", "npm:14.14.22"],
+            ["@types/rimraf", "npm:3.0.0"],
+            ["rimraf", "npm:3.0.2"],
+            ["typescript", "patch:typescript@npm%3A4.1.3#builtin<compat/typescript>::version=4.1.3&hash=cc6730"]
+          ],
+          "linkType": "SOFT",
+        }]
+      ]],
+      ["@cocbot/messages", [
+        ["workspace:packages/messages", {
+          "packageLocation": "./packages/messages/",
+          "packageDependencies": [
+            ["@cocbot/messages", "workspace:packages/messages"],
             ["@cocbot/core", "workspace:packages/core"],
             ["@cocbot/parser", "workspace:packages/parser"],
             ["@types/jest", "npm:26.0.20"],

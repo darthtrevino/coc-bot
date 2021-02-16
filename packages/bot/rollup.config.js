@@ -13,6 +13,7 @@ const config = {
 			entries: {
 				'@cocbot/core': '@cocbot/core/lib/index',
 				'@cocbot/parser': '@cocbot/parser/lib/index',
+				'@cocbot/messages': '@cocbot/messages/lib/index',
 			},
 		}),
 		nodeResolve(),

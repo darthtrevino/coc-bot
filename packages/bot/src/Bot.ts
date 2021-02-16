@@ -1,6 +1,5 @@
 import * as Discord from 'discord.js'
-import { Game } from '@cocbot/schema/lib/client-types'
-import { rollBrpAbility, SuccessDegree, rollDiceExpression } from '@cocbot/core'
+import { rollBrpAbility, rollDiceExpression } from '@cocbot/core'
 import {
 	Command,
 	HelpCommand,
@@ -9,6 +8,13 @@ import {
 	parseCommand,
 } from '@cocbot/parser'
 import { DataStore } from './DataStore'
+import {
+	HELP_MESSAGE_BOT,
+	DID_NOT_UNDERSTAND_MESSAGE,
+	ABILITY_STRINGS_NOT_IMPL,
+	printAbilityRollResult,
+	printDiceExpressionResult,
+} from '@cocbot/messages'
 
 const CC = '/cc'
 type DiscordResponse = string | Discord.MessageEmbed
@@ -46,7 +52,7 @@ export class Bot {
 			try {
 				command = parseCommand(commandText)
 			} catch (err) {
-				msg.reply("Oops, I didn't understand that command.")
+				msg.reply(DID_NOT_UNDERSTAND_MESSAGE)
 				return
 			}
 			console.log('command:', command)
@@ -55,42 +61,20 @@ export class Bot {
 			} else if (command.type === CommandType.Roll) {
 				this._executeRollCommand(command as RollCommand, msg)
 			} else {
-				msg.reply("Oops, I didn't understand that command.")
+				msg.reply(DID_NOT_UNDERSTAND_MESSAGE)
 			}
 		}
 	}
 
 	private _executeHelpCommand(command: HelpCommand, msg: Discord.Message) {
-		msg.reply(`\n
-__**CthulhuBot Available Commands**__
-
-**Rolling** 
-General Form: \`/cc roll <attribute> <bonusOrPenalty> <label>\`
-
-\`/cc help\`
-
-# General Die Rolling
-\`/cc roll d6\`
-\`/cc roll 2d8\`
-\`/cc roll d6+2d8 #label\`
-\`/cc roll 2d20kh1 #attack-with-advantage\`
-\`/cc roll 2d20kl1 #attack-with-disadvantage\`
-
-# Call of Cthulhu Die Rolling
-\`/cc roll <attributeScore>\`
-\`/cc roll <attributeScore>b<numBonus>\`
-\`/cc roll <attributeScore>p<numPenalty>\`
-\`/cc roll <attributeScore> #label\`
-
-e.g. \`/cc roll 25b2 "handgun"\` rolls against a skill with a value of 25 labeled "handgun" with 2 bonus dice
-`)
+		msg.reply(HELP_MESSAGE_BOT)
 	}
 
 	private async _executeRollCommand(
 		command: RollCommand,
 		msg: Discord.Message
 	): Promise<void> {
-		let response: DiscordResponse = "Oops, I didn't understand that command."
+		let response: DiscordResponse = DID_NOT_UNDERSTAND_MESSAGE
 		if (command.ability != null) {
 			response = this._executeCocRoll(command)
 		} else if (command.expr != null) {
@@ -101,33 +85,15 @@ e.g. \`/cc roll 25b2 "handgun"\` rolls against a skill with a value of 25 labele
 
 	private _executeCocRoll(command: RollCommand): DiscordResponse {
 		if (typeof command.ability === 'string') {
-			return `I can't handle ability names just yet. Try rolling against your ability value (e.g. roll against 75)`
+			return ABILITY_STRINGS_NOT_IMPL
 		} else {
 			const abilityValue = command.ability as number
-			const { rolls, result, degree } = rollBrpAbility(
+			const rollResult = rollBrpAbility(
 				abilityValue,
 				command.bonusDice || 0,
 				command.penaltyDice || 0
 			)
-			const bonusInfo = rolls.length > 1 ? ` (out of ${rolls.join(', ')})` : ''
-			const title = printSuccessDegree(degree)
-			const extremeThresheld = Math.floor(abilityValue / 5)
-			const hardThreshold = Math.floor(abilityValue / 2)
-			const forLabel = command.label ? ` for ${command.label}` : ''
-			let response = `**You rolled ${result}, ${title}**${forLabel}. ${bonusInfo}`
-			if (degree < SuccessDegree.Success) {
-				const diff = result - abilityValue
-				response += `\n  Success: **${abilityValue}**, *burn ${diff}*`
-			}
-			if (degree < SuccessDegree.HardSuccess) {
-				const diff = result - hardThreshold
-				response += `\n  Hard Success: **${hardThreshold}**, *burn ${diff}*`
-			}
-			if (degree < SuccessDegree.ExtremeSuccess) {
-				const diff = result - extremeThresheld
-				response += `\n  Extreme Success: **${extremeThresheld}**, *burn ${diff}*`
-			}
-			return response
+			return printAbilityRollResult(rollResult, command.label)
 		}
 	}
 
@@ -135,46 +101,11 @@ e.g. \`/cc roll 25b2 "handgun"\` rolls against a skill with a value of 25 labele
 		if (command.expr == null) {
 			throw new Error('roll expression is not defined')
 		}
-		const { value, rolls } = rollDiceExpression(command.expr)
-		const forLabel = command.label ? ` for ${command.label}` : ''
-		return `rolled [${rolls.map((r) => r).join(', ')}] => ${value}${forLabel}
-		`
-	}
-
-	private _handleListGames = async (command: string, msg: Discord.Message) => {
-		const games = await this.dataStore.getGames()
-		msg.reply(
-			'The following games are being run:\n\n' +
-				games.map((game) => `\t${describeGame(game)}`).join('\n')
-		)
+		const rollResult = rollDiceExpression(command.expr)
+		return printDiceExpressionResult(rollResult, command.label)
 	}
 }
 
 function peel(command: string, value: string) {
 	return command.substring(value.length).trim()
-}
-
-function describeGame(game: Game): string {
-	const { title, description } = game
-	return `**Title**: _${title}_
-	**Description**: _${description}_
-	**Code**: _TBD_
-	`
-}
-
-function printSuccessDegree(deg: SuccessDegree): string {
-	switch (deg) {
-		case SuccessDegree.CriticalFailure:
-			return 'Critical Failure'
-		case SuccessDegree.CriticalSuccess:
-			return 'Critical Success'
-		case SuccessDegree.ExtremeSuccess:
-			return 'Extreme Success'
-		case SuccessDegree.Failure:
-			return 'Failure'
-		case SuccessDegree.HardSuccess:
-			return 'Hard Success'
-		case SuccessDegree.Success:
-			return 'Success'
-	}
 }

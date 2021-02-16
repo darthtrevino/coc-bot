@@ -1,4 +1,9 @@
-import { AbilityRollResult, rollBrpAbility, SuccessDegree } from '@cocbot/core'
+import { rollBrpAbility } from '@cocbot/core'
+import {
+	printAbilityRollResult,
+	NOT_IMPL,
+	DID_NOT_UNDERSTAND_MESSAGE,
+} from '@cocbot/messages'
 
 export interface DiscordOption {
 	name: string
@@ -34,13 +39,10 @@ export function handleDiscordCommand({ data: command, member }: Body): string {
 				member
 			)
 		} else if (subcommand.name === 'r') {
-			return handleDiscordTerseRollCommand(
-				command.options[0] as DiscordCommand,
-				member
-			)
+			return handleDiscordTerseRollCommand()
 		}
 	} else {
-		return "Ooops, I wasn't able to handle that command"
+		return DID_NOT_UNDERSTAND_MESSAGE
 	}
 }
 
@@ -56,14 +58,14 @@ function handleDiscordRollCommand(
 	const label = getOption(command, 'label', '')
 
 	const rollResult = rollBrpAbility(skill, bonusDie, penaltyDie)
-	return `<@${member.user.id}> rolled ${printRollResult(rollResult, label)}`
+	return `<@${member.user.id}> rolled ${printAbilityRollResult(
+		rollResult,
+		label
+	)}`
 }
 
-function handleDiscordTerseRollCommand(
-	command: DiscordCommand,
-	member: MemberInfo
-): string {
-	return 'TBD'
+function handleDiscordTerseRollCommand(): string {
+	return NOT_IMPL
 }
 
 function getOption<T>(
@@ -73,35 +75,4 @@ function getOption<T>(
 ): T {
 	const found = command.options.find((t) => t.name === name) as DiscordOption
 	return (found?.value as T) || defaultValue
-}
-
-function printRollResult(
-	{ rolls, degree, result, thresholds }: AbilityRollResult,
-	label: string
-): string {
-	const bonusInfo = rolls.length > 1 ? ` (out of ${rolls.join(', ')})` : ''
-	const successLevel = printSuccessDegree(degree)
-	const forLabel = label ? ` for ${label}` : ''
-	return `**${result}**${bonusInfo}, **${successLevel}**${forLabel}.
-\tSuccess: ${thresholds[SuccessDegree.Success]}
-\tHard Success: ${thresholds[SuccessDegree.HardSuccess]}
-\tExtreme Success: ${thresholds[SuccessDegree.ExtremeSuccess]}
-`
-}
-
-function printSuccessDegree(deg: SuccessDegree) {
-	switch (deg) {
-		case SuccessDegree.CriticalFailure:
-			return 'Critical Failure'
-		case SuccessDegree.CriticalSuccess:
-			return 'Critical Success'
-		case SuccessDegree.ExtremeSuccess:
-			return 'Extreme Success'
-		case SuccessDegree.Failure:
-			return 'Failure'
-		case SuccessDegree.HardSuccess:
-			return 'Hard Success'
-		case SuccessDegree.Success:
-			return 'Success'
-	}
 }
