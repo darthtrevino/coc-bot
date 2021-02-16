@@ -6,6 +6,7 @@
 		"strict": true,
 		"react": "react-jsx",
 		"forceConsistentCasingInFileNames": true,
-		"esModuleInterop": true
+		"esModuleInterop": true,
+		"allowSyntheticDefaultImports": true
 	}
 }
