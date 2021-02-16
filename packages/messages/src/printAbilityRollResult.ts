@@ -6,11 +6,11 @@ export function printAbilityRollResult(
 	label?: string
 ): string {
 	const { rolls, result, degree, canBurnLuck, thresholds } = roll
-	const rollsInfo = rolls.length > 1 ? ` (rolls are ${rolls.join(', ')})` : ''
+	const rollsInfo = rolls.length > 1 ? ` (rolls were ${rolls.join(', ')})` : ''
 	const title = `You rolled **${result}, ${printSuccessDegree(degree)}**`
 	const forLabel = label ? ` for ${label}` : ''
 
-	let response = `${title}${forLabel}. ${rollsInfo}`
+	let response = `${title}${forLabel}${rollsInfo}`
 	if (degree < SuccessDegree.Success) {
 		response += printThreshold(SuccessDegree.Success)
 	}
