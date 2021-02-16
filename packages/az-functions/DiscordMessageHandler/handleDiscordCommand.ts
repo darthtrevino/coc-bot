@@ -1,6 +1,6 @@
 import { rollBrpAbility } from '@cocbot/core'
 import {
-	printAbilityRoll,
+	printAbilityRollResult,
 	NOT_IMPL,
 	DID_NOT_UNDERSTAND_MESSAGE,
 } from '@cocbot/messages'
@@ -58,7 +58,10 @@ function handleDiscordRollCommand(
 	const label = getOption(command, 'label', '')
 
 	const rollResult = rollBrpAbility(skill, bonusDie, penaltyDie)
-	return `<@${member.user.id}> rolled ${printAbilityRoll(rollResult, label)}`
+	return `<@${member.user.id}> rolled ${printAbilityRollResult(
+		rollResult,
+		label
+	)}`
 }
 
 function handleDiscordTerseRollCommand(): string {
