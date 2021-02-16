@@ -7,7 +7,7 @@ export function printAbilityRollResult(
 ): string {
 	const { rolls, result, degree, canBurnLuck, thresholds } = roll
 	const rollsInfo = rolls.length > 1 ? ` (out of ${rolls.join(', ')})` : ''
-	const title = `**You rolled ${result}, ${printSuccessDegree(degree)}**`
+	const title = `You rolled **${result}, ${printSuccessDegree(degree)}**`
 	const forLabel = label ? ` for ${label}` : ''
 
 	let response = `${title}${forLabel}. ${rollsInfo}`

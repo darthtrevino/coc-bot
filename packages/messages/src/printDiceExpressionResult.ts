@@ -6,5 +6,5 @@ export function printDiceExpressionResult(
 ): string {
 	const forLabel = label ? ` for ${label}` : ''
 	const rollsInfo = rolls.length > 1 ? ` (out of ${rolls.join(', ')})` : ''
-	return `**You rolled ${value}${forLabel}**${rollsInfo}`
+	return `You rolled **${value}**${forLabel}${rollsInfo}`
 }

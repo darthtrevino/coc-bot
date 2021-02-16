@@ -93,7 +93,7 @@ export class Bot {
 				command.bonusDice || 0,
 				command.penaltyDice || 0
 			)
-			return printAbilityRollResult(rollResult)
+			return printAbilityRollResult(rollResult, command.label)
 		}
 	}
 
@@ -102,7 +102,7 @@ export class Bot {
 			throw new Error('roll expression is not defined')
 		}
 		const rollResult = rollDiceExpression(command.expr)
-		return printDiceExpressionResult(rollResult)
+		return printDiceExpressionResult(rollResult, command.label)
 	}
 }
 
