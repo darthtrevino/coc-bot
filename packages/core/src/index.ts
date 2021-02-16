@@ -1,2 +1,1 @@
-export * from './dice'
-export * from './rolls'
+export * from './rolling'

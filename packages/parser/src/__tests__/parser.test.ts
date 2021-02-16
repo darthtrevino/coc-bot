@@ -1,4 +1,10 @@
-import { CommandType, HelpCommand, parseCommand, RollCommand } from '../parser'
+import {
+	CommandType,
+	HelpCommand,
+	parseCommand,
+	RollCommand,
+	RollExpressionOpType,
+} from '../parser'
 
 describe('The Command Parser', () => {
 	it('can handle a malformed command', () => {
@@ -14,9 +20,14 @@ describe('The Command Parser', () => {
 		})
 
 		it('can handle roll labels', () => {
-			const command = 'roll 20 # stealth'
-			const result = parseCommand<RollCommand>(command)
+			let command = 'roll 20'
+			let result = parseCommand<RollCommand>(command)
+			expect(result.type).toEqual(CommandType.Roll)
+			expect(result.ability).toEqual(20)
+			expect(result.label).toBeFalsy()
 
+			command = 'roll 20 # stealth'
+			result = parseCommand<RollCommand>(command)
 			expect(result.type).toEqual(CommandType.Roll)
 			expect(result.label).toEqual('stealth')
 		})
@@ -55,7 +66,16 @@ describe('The Command Parser', () => {
 
 			result = parseCommand<RollCommand>('roll 2d6+2d8')
 			expect(result.expr).toEqual({
-				operation: 'add',
+				operation: RollExpressionOpType.Add,
+				operands: [
+					{ die: 6, count: 2 },
+					{ die: 8, count: 2 },
+				],
+			})
+
+			result = parseCommand<RollCommand>('roll 2d6 + 2d8')
+			expect(result.expr).toEqual({
+				operation: RollExpressionOpType.Add,
 				operands: [
 					{ die: 6, count: 2 },
 					{ die: 8, count: 2 },
@@ -64,7 +84,7 @@ describe('The Command Parser', () => {
 
 			result = parseCommand<RollCommand>('roll 1d6-1d4')
 			expect(result.expr).toEqual({
-				operation: 'subtract',
+				operation: RollExpressionOpType.Subtract,
 				operands: [
 					{ die: 6, count: 1 },
 					{ die: 4, count: 1 },
@@ -73,23 +93,42 @@ describe('The Command Parser', () => {
 
 			result = parseCommand<RollCommand>('roll 1d6-1d4')
 			expect(result.expr).toEqual({
-				operation: 'subtract',
+				operation: RollExpressionOpType.Subtract,
 				operands: [
 					{ die: 6, count: 1 },
 					{ die: 4, count: 1 },
 				],
 			})
 
+			result = parseCommand<RollCommand>('roll 1d6 + 1d4 + 1d2 + 2 #stealth')
+			expect(result.label).toEqual('stealth')
+			expect(result.expr).toEqual({
+				operation: RollExpressionOpType.Add,
+				operands: [
+					{ die: 6, count: 1 },
+					{
+						operation: RollExpressionOpType.Add,
+						operands: [
+							{ die: 4, count: 1 },
+							{
+								operation: RollExpressionOpType.Add,
+								operands: [{ die: 2, count: 1 }, { value: 2 }],
+							},
+						],
+					},
+				],
+			})
+
 			result = parseCommand<RollCommand>('roll 1d6-2')
 			expect(result.expr).toEqual({
-				operation: 'subtract',
+				operation: RollExpressionOpType.Subtract,
 				operands: [{ die: 6, count: 1 }, { value: 2 }],
 			})
 
 			result = parseCommand<RollCommand>('roll d20+2 #stealth')
 			expect(result.label).toEqual('stealth')
 			expect(result.expr).toEqual({
-				operation: 'add',
+				operation: RollExpressionOpType.Add,
 				operands: [{ die: 20, count: 1 }, { value: 2 }],
 			})
 		})
@@ -103,7 +142,7 @@ describe('The Command Parser', () => {
 
 			result = parseCommand<RollCommand>('roll 2d20kl1+2d6kh2')
 			expect(result.expr).toEqual({
-				operation: 'add',
+				operation: RollExpressionOpType.Add,
 				operands: [
 					{ die: 20, count: 2, keepLowest: 1 },
 					{ die: 6, count: 2, keepHighest: 2 },

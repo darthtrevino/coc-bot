@@ -39,8 +39,8 @@ diceExpr ->
   PosInt {% d => ({ value: d[0].literal }) %}
   | d PosInt {% d => ({ die: d[1].literal, count: 1 }) %}
   | PosInt d PosInt KeepHighestOrLowest {% d => ({ count: d[0].literal, die: d[2].literal, ...d[3] }) %}
-  | diceExpr plus diceExpr {% d => ({ operation: "add", operands: [d[0], d[2]]}) %}
-  | diceExpr minus diceExpr {% d => ({ operation: "subtract", operands: [d[0], d[2]]}) %}
+  | diceExpr _ plus _ diceExpr {% d => ({ operation: "add", operands: [d[0], d[4]]}) %}
+  | diceExpr _ minus _ diceExpr {% d => ({ operation: "subtract", operands: [d[0], d[4]]}) %}
 
 KeepHighestOrLowest -> 
   null {% d => ({}) %}

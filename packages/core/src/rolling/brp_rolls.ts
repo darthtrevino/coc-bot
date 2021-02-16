@@ -3,9 +3,13 @@ import {
 	RollValueExpresionClause,
 	RollExpressionOp,
 	RollExpressionClause,
+	RollExpressionOpType,
 } from '@cocbot/parser'
 import { rollD10, rollDN } from './dice'
 
+/**
+ * The success degree of a d100 roll in BRP
+ */
 export enum SuccessDegree {
 	CriticalFailure,
 	Failure,
@@ -14,14 +18,33 @@ export enum SuccessDegree {
 	ExtremeSuccess,
 	CriticalSuccess,
 }
+
+/**
+ * The result of roll in BRP
+ */
 export interface AbilityRollResult {
+	/**
+	 * The resultant value
+	 */
 	result: number
-	rolls: number[]
+
+	/**
+	 * The degree of success achieved
+	 */
 	degree: SuccessDegree
+
+	/**
+	 * The rolls that were executed. This includes any penalty or bonus die rolls
+	 */
+	rolls: number[]
+
+	/**
+	 * The die thresholds for success degrees that require calculation (e.g regular, hard & extreme successes)
+	 */
 	thresholds: Partial<Record<SuccessDegree, number>>
 }
 
-export function rollCocAbility(
+export function rollBrpAbility(
 	ability: number,
 	bonus: number,
 	penalty: number
@@ -90,9 +113,9 @@ export function rollDiceExpression(
 		const childRolls = [...rolls1, ...rolls2]
 		let numericResult = 0
 
-		if (opExpression.operation === 'subtract') {
+		if (opExpression.operation === RollExpressionOpType.Subtract) {
 			numericResult = val1 - val2
-		} else if (opExpression.operation === 'add') {
+		} else if (opExpression.operation === RollExpressionOpType.Add) {
 			numericResult = val1 + val2
 		} else {
 			throw new Error(`unhandled operation ${opExpression.operation}`)
