@@ -8,6 +8,11 @@ export enum CommandType {
 	Help = 'help',
 }
 
+export enum RollExpressionOpType {
+	Add = 'add',
+	Subtract = 'subtract',
+}
+
 export interface Command {
 	type: CommandType
 }
@@ -20,7 +25,7 @@ export interface RollExpressionClause {
 }
 
 export interface RollExpressionOp {
-	operation: 'add' | 'subtract'
+	operation: RollExpressionOpType
 	operands: [RollExpression]
 }
 

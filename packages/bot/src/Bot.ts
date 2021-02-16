@@ -1,6 +1,6 @@
 import * as Discord from 'discord.js'
 import { Game } from '@cocbot/schema/lib/client-types'
-import { rollCocAbility, SuccessDegree, rollDiceExpression } from '@cocbot/core'
+import { rollBrpAbility, SuccessDegree, rollDiceExpression } from '@cocbot/core'
 import {
 	Command,
 	HelpCommand,
@@ -104,7 +104,7 @@ e.g. \`/cc roll 25b2 "handgun"\` rolls against a skill with a value of 25 labele
 			return `I can't handle ability names just yet. Try rolling against your ability value (e.g. roll against 75)`
 		} else {
 			const abilityValue = command.ability as number
-			const { rolls, result, degree } = rollCocAbility(
+			const { rolls, result, degree } = rollBrpAbility(
 				abilityValue,
 				command.bonusDice || 0,
 				command.penaltyDice || 0
