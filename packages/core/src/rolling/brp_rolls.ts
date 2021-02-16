@@ -42,12 +42,24 @@ export interface AbilityRollResult {
 	 * The die thresholds for success degrees that require calculation (e.g regular, hard & extreme successes)
 	 */
 	thresholds: Partial<Record<SuccessDegree, number>>
+
+	/**
+	 * Whether this ability roll can burn luck.
+	 * You cannot burn luck on:
+	 * 	- Pushed rolls
+	 *  - Luck Rolls
+	 *  - Dmg Rolls
+	 *  - Sanity Rolls
+	 *  - Critical Failures
+	 */
+	canBurnLuck: boolean
 }
 
 export function rollBrpAbility(
 	ability: number,
 	bonus: number,
-	penalty: number
+	penalty: number,
+	preventLuckBurn?: boolean
 ): AbilityRollResult {
 	const rollValue = (tens: number, ones: number) =>
 		tens === 0 && ones === 0 ? 100 : tens * 10 + ones
@@ -65,12 +77,14 @@ export function rollBrpAbility(
 	const result = bonus ? Math.min(...rolls) : Math.max(...rolls)
 	const extremeThresheld = Math.floor(ability / 5)
 	const hardThreshold = Math.floor(ability / 2)
-	const success = getSuccessLevel(result, ability)
+	const degree = getSuccessLevel(result, ability)
+	const canBurnLuck = !preventLuckBurn && degree > SuccessDegree.CriticalFailure
 
 	return {
-		degree: success,
+		degree,
 		result,
 		rolls,
+		canBurnLuck,
 		thresholds: {
 			[SuccessDegree.Success]: ability,
 			[SuccessDegree.HardSuccess]: hardThreshold,

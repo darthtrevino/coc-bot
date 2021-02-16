@@ -1,5 +1,9 @@
-import { AbilityRollResult, rollBrpAbility, SuccessDegree } from '@cocbot/core'
-import { printSuccessDegree } from '@cocbot/messages'
+import { rollBrpAbility } from '@cocbot/core'
+import {
+	printAbilityRoll,
+	NOT_IMPL,
+	DID_NOT_UNDERSTAND_MESSAGE,
+} from '@cocbot/messages'
 
 export interface DiscordOption {
 	name: string
@@ -35,13 +39,10 @@ export function handleDiscordCommand({ data: command, member }: Body): string {
 				member
 			)
 		} else if (subcommand.name === 'r') {
-			return handleDiscordTerseRollCommand(
-				command.options[0] as DiscordCommand,
-				member
-			)
+			return handleDiscordTerseRollCommand()
 		}
 	} else {
-		return "Ooops, I wasn't able to handle that command"
+		return DID_NOT_UNDERSTAND_MESSAGE
 	}
 }
 
@@ -57,14 +58,11 @@ function handleDiscordRollCommand(
 	const label = getOption(command, 'label', '')
 
 	const rollResult = rollBrpAbility(skill, bonusDie, penaltyDie)
-	return `<@${member.user.id}> rolled ${printRollResult(rollResult, label)}`
+	return `<@${member.user.id}> rolled ${printAbilityRoll(rollResult, label)}`
 }
 
-function handleDiscordTerseRollCommand(
-	command: DiscordCommand,
-	member: MemberInfo
-): string {
-	return 'TBD'
+function handleDiscordTerseRollCommand(): string {
+	return NOT_IMPL
 }
 
 function getOption<T>(
@@ -74,18 +72,4 @@ function getOption<T>(
 ): T {
 	const found = command.options.find((t) => t.name === name) as DiscordOption
 	return (found?.value as T) || defaultValue
-}
-
-function printRollResult(
-	{ rolls, degree, result, thresholds }: AbilityRollResult,
-	label: string
-): string {
-	const bonusInfo = rolls.length > 1 ? ` (out of ${rolls.join(', ')})` : ''
-	const successLevel = printSuccessDegree(degree)
-	const forLabel = label ? ` for ${label}` : ''
-	return `**${result}**${bonusInfo}, **${successLevel}**${forLabel}.
-\tSuccess: ${thresholds[SuccessDegree.Success]}
-\tHard Success: ${thresholds[SuccessDegree.HardSuccess]}
-\tExtreme Success: ${thresholds[SuccessDegree.ExtremeSuccess]}
-`
 }

@@ -19,3 +19,11 @@ __**Available Commands**__
 
 e.g. \`/cc roll 25b2 "handgun"\` rolls against a skill with a value of 25 labeled "handgun" with 2 bonus dice
 `
+
+export const DID_NOT_UNDERSTAND_MESSAGE =
+	"Oops, I didn't understand that command."
+
+export const ABILITY_STRINGS_NOT_IMPL =
+	"I can't handle ability names just yet. Try rolling against your ability value (e.g. roll against 75)"
+
+export const NOT_IMPL = `Oops, that's not implemented yet`

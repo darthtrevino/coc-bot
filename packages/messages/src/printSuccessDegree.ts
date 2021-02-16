@@ -1,6 +1,10 @@
 import { SuccessDegree } from '@cocbot/core'
 
-export function printSuccessDegree(deg: SuccessDegree) {
+/**
+ * Prints out the success degree
+ * @param deg The success degree to print
+ */
+export function printSuccessDegree(deg: SuccessDegree): string {
 	switch (deg) {
 		case SuccessDegree.CriticalFailure:
 			return 'Critical Failure'
