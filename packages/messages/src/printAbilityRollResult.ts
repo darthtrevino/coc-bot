@@ -6,7 +6,7 @@ export function printAbilityRollResult(
 	label?: string
 ): string {
 	const { rolls, result, degree, canBurnLuck, thresholds } = roll
-	const rollsInfo = rolls.length > 1 ? ` (out of ${rolls.join(', ')})` : ''
+	const rollsInfo = rolls.length > 1 ? ` (rolls are ${rolls.join(', ')})` : ''
 	const title = `You rolled **${result}, ${printSuccessDegree(degree)}**`
 	const forLabel = label ? ` for ${label}` : ''
 
@@ -26,7 +26,7 @@ export function printAbilityRollResult(
 		const name = printSuccessDegree(degree)
 		const threshold = thresholds[degree] as number
 		const diff = result - threshold
-		const burn = canBurnLuck ? `, *burn ${diff}*` : ", *can't burn*"
+		const burn = canBurnLuck ? `  [🔥 ${diff} luck]` : ''
 		return threshold > 0 ? `\n  ${name}: **${threshold}**${burn}` : ''
 	}
 }
