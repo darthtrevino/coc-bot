@@ -1,3 +1,5 @@
+node_modules/
+
 # Yarn Gitignores
 .yarn/*
 !.yarn/cache
