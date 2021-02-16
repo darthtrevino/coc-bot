@@ -6,6 +6,13 @@ const grammar = require('../grammar')
 export enum CommandType {
 	Roll = 'roll',
 	Help = 'help',
+	Game = 'game',
+}
+
+export enum GameSubCommandType {
+	Create = 'create',
+	List = 'list',
+	Help = 'help',
 }
 
 export enum RollExpressionOpType {
@@ -15,6 +22,11 @@ export enum RollExpressionOpType {
 
 export interface Command {
 	type: CommandType
+}
+
+export interface GameCommand {
+	type: CommandType.Game
+	subcommand: GameSubCommandType
 }
 
 export interface RollExpressionClause {

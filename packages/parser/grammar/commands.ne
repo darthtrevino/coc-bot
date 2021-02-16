@@ -1,14 +1,15 @@
 command -> 
   rollCommand {% d => d[0] %}
   | helpCommand {% d => d[0] %}
+  | gameCommand {% d => d[0] %}
 
 rollCommand -> 
-  _ roll __ ability {% d => ({ type: 'roll', ability: d[3] }) %}
-  | _ roll __ diceExpr _ {% d => ({ type: 'roll', expr: d[3], ...d[5], ...d[7] }) %}
-  | _ roll __ diceExpr __ forLabel _ {% d => ({ type: 'roll', expr: d[3], ...d[5], ...d[7] }) %}
-  | _ roll __ ability __ forLabel _ {% d => ({ type: 'roll', ability: d[3], ...d[5] }) %}
-  | _ roll __ ability  _ withBonusOrPenalty _ {% d => ({ type: 'roll', ability: d[3], ...d[5] }) %}
-  | _ roll __ ability  _ withBonusOrPenalty __ forLabel _ {% d => ({ type: 'roll', ability: d[3], ...d[5], ...d[7] }) %}
+  _ roll _ ability {% d => ({ type: 'roll', ability: d[3] }) %}
+  | _ roll _ diceExpr _ {% d => ({ type: 'roll', expr: d[3], ...d[5], ...d[7] }) %}
+  | _ roll _ diceExpr __ forLabel _ {% d => ({ type: 'roll', expr: d[3], ...d[5], ...d[7] }) %}
+  | _ roll _ ability __ forLabel _ {% d => ({ type: 'roll', ability: d[3], ...d[5] }) %}
+  | _ roll _ ability  _ withBonusOrPenalty _ {% d => ({ type: 'roll', ability: d[3], ...d[5] }) %}
+  | _ roll _ ability  _ withBonusOrPenalty __ forLabel _ {% d => ({ type: 'roll', ability: d[3], ...d[5], ...d[7] }) %}
   
 withBonusOrPenalty ->
   bonusShort {% d => ({bonusDice: 1 }) %}
@@ -23,12 +24,23 @@ forLabel ->
 helpCommand ->
   _ help _ {% d => ({type: 'help' }) %}
 
-roll -> "roll"
+gameCommand ->
+  _ game _ {% d => ({ type: 'game', subcommand: "help" }) %}
+  | _ game __ help _ {% d => ({ type: 'game', subcommand: "help" }) %}
+  | _ game __ list _ {% d => ({ type: 'game', subcommand: "list" }) %}
+  | _ game __ create _ {% d => ({ type: 'game', subcommand: "create" }) %}
+
+roll -> 
+  "roll" __
+  | null _
+game -> "game"
 with -> "with" | null
 bonusShort -> "b"
 penaltyShort -> "p"
 startComment -> "#"
 help -> "help"
+list -> "list"
+create -> "create"
 d -> "d"
 plus -> "+"
 minus -> "-"
