@@ -27,6 +27,6 @@ export function printAbilityRollResult(
 		const threshold = thresholds[degree] as number
 		const diff = result - threshold
 		const burn = canBurnLuck ? `, *burn ${diff}*` : ", *can't burn*"
-		return `\n  ${name}: **${threshold}**${burn}`
+		return threshold > 0 ? `\n  ${name}: **${threshold}**${burn}` : ''
 	}
 }
