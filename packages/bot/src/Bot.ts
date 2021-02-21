@@ -30,7 +30,16 @@ export class Bot {
 	}
 
 	public async connect(token: string): Promise<string> {
-		return await this.client.login(token)
+		const result = await this.client.login(token)
+		await this.client.user?.setPresence({
+			status: 'online',
+			activity: {
+				name: 'with minds `/cc help`',
+				type: 'PLAYING',
+			},
+		})
+		await this.client.user?.setStatus('online')
+		return result
 	}
 
 	public get uptime(): number | null {
