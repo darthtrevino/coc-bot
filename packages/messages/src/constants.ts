@@ -1,4 +1,6 @@
 export const HELP_MESSAGE_BOT = `\n
+Report Issues: https://github.com/darthtrevino/coc-bot/issues
+
 __**Available Commands**__
 
 **Print Usage**
