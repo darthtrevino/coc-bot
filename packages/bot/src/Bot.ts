@@ -57,21 +57,27 @@ export class Bot {
 			)
 
 			const commandText = peel(msg.content, CC)
-			let command: Command
 			try {
-				command = parseCommand(commandText)
+				const cmd = parseCommand(commandText)
+				console.log('command:', cmd)
+				this._handleCommand(cmd, msg)
 			} catch (err) {
 				msg.reply(DID_NOT_UNDERSTAND_MESSAGE)
-				return
 			}
-			console.log('command:', command)
-			if (command.type === CommandType.Help) {
-				this._executeHelpCommand(command as HelpCommand, msg)
-			} else if (command.type === CommandType.Roll) {
-				this._executeRollCommand(command as RollCommand, msg)
-			} else {
+		}
+	}
+
+	private _handleCommand(command: Command, msg: Discord.Message) {
+		switch (command.type) {
+			case CommandType.Help: {
+				return this._executeHelpCommand(command as HelpCommand, msg)
+			}
+			case CommandType.Roll:
+				return this._executeRollCommand(command as RollCommand, msg)
+			case CommandType.Game:
+				return msg.reply("I'm still working on that 😉")
+			default:
 				msg.reply(DID_NOT_UNDERSTAND_MESSAGE)
-			}
 		}
 	}
 
